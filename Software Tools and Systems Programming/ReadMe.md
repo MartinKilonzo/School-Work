@@ -7,7 +7,7 @@ This folder contains all of the course work written in Shell and C for my Softwa
 	- <b>numPyramid</b>, which builds a pyramid of specified width;
 	- <b>odd_Prn</b>, which prints out all of the odd numbered arguments.
 * Assignment 3 contains C programs:
-	- <b>approxE.c</b>, which returns an approximation of Euler's e, to the nearest x, where x is the least significant digit in the input, where the input is < 1;
+	- <b>approxE.c</b>, which returns an approximation of Euler's e, to the nearest x, where x is the least significant digit in the input, where the input is less than 1;
 	- <b>bankBalance.c</b>, which returns the balance of a loan given a specified principle, interest rate (compounded monthly), monthly payment, and number of payments;
 	- <b>timeAfterTime.c</b>, which returns the end time after a specified start time, both of the form HHMM.
 * Assignment 4 contains C programs:
