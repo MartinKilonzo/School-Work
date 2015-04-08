@@ -1,0 +1,24 @@
+
+
+# odd_prn prints its command name and every odd numbered argument after it
+
+#!/bin/sh
+
+echo $0				# Prints the command.
+
+# This loop checks to make sure the number of arguments is more than zero and then prints the next argument.
+# After that, it discards the most recently printed argument and the following one to successfully print each odd numbered argument.
+
+while [ $# -gt 0 ]
+do
+	echo "$1"		# Prints the current argument.
+
+	if [ $# -eq 1 ] # Check to make sure that we don't shift twice if there is only one argument left. 
+	then
+		shift		# If the current argument is the last argument left, discard it.
+	
+	else			# Otherwise, if there is more than one argument left, proceed:
+		shift		# Discards the current argument.	
+		shift		# Discards the next (even numbered) argument.
+	fi
+done

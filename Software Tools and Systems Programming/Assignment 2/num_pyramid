@@ -1,0 +1,42 @@
+
+
+
+# num_pyramid prints a horizontal pyramid of specified width
+
+#!/bin/sh
+
+read input							# Assigns an input to variable "input.
+width=0 							# Initializes width with a value of 0. "Width" defines the number of columns that each row will have printed.
+
+while [ $width -lt $input ]			# This loop creates the first half of the pyramid (ascending), up until "input" - 1. 
+do
+
+column=0
+
+	while [ $column -le $width ]	# This loop creates each row individually by incrementing "column" to a maximum specified by "width."
+	do
+		echo -n "$column "
+		column=`expr $column + 1`	# Increments "column" by one each time.		
+	done
+
+	echo							# Prints an empty line to begin the next row.	
+	width=`expr $width + 1`			# Increments "width" to accommodate for a bigger row.
+
+done
+
+width=`expr $width - 2`				# Decrements "width" by 2 to prepare it for the bottom half of the pyramid.
+									# It does so because, at this point, "width" is equal to n and it needs to be at n - 2 for the next row.
+while [ $width -ge 0 ]				# This loop creates the bottom portion of the pyramid by decrementing "width" back down to 0.
+do
+
+column=0
+
+	while [ $column -le $width ]	# Like the above loop, this loop creates each row individually by incrementing "column to a maximum of "width".
+	do
+		echo -n "$column "
+		column=`expr $column + 1`	# Increments "column" by one each time.
+	done
+
+	echo							# Prints an empty line to begin the next row.
+	width=`expr $width - 1`			# Decrements "width" to prepare it for the next row.
+done

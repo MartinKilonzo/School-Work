@@ -1,0 +1,30 @@
+
+# nums 0 finds the first and second smallest numbers inside of a file. 
+# nums 1 finds the first and second largest numbers inside of a file.
+
+#!/bin/sh
+
+if [ $# -ne 2 ]					# Checks to make sure that there are two arguments present. 
+then
+	echo "Usage: nums option input-file"	# If not, displays a warning message.
+	exit 001				# And exit with status 001 (unsuccessful). 
+fi
+
+if [ ! -f  "$2" ]				# Checks to make sure that the input file exists. 
+then
+	echo "input-file not found"		# If not, display a warning message.
+	exit 002				# And exit with status 002 (unsuccessful).
+fi 
+ 
+if [ $1 -eq 0 ]					# Checks to see if the first argument is "0". 
+then
+	sort -nu $2 | head -2 			# If yes, sort the inputted file (argument 2) numerically in ascending order
+						# and display the first two lines.
+elif [ $1 -eq 1 ] 				# Otherwise, checks to see if the first argument is "1".
+then
+	sort -nu $2 | tail -2			# If yes, sort the inputted file (argument 2) numerically in ascending order 
+						# and display the last two lines. 
+else						# Finally, if the number is neither 0 nor 1,
+	echo "Option must be 0 or 1."		# Display a warning message. 
+	exit 003				# And exit with status 003
+fi

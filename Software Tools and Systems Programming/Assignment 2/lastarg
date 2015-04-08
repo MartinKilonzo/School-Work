@@ -1,0 +1,18 @@
+
+
+
+# lastarg finds and prints the last argument it is given. 
+
+#!/bin/sh
+
+# This loop discards every argument until there is only one argument left.
+
+while [ $# -gt 1 ]	# Waits until there is only one argument left. 
+do
+	shift			# Discards each argument whenever the number of arguments is greater than 1.	
+done
+
+if [ $# -eq 1 ] 	# Verifies that there is only one argument left before printing.
+then
+	echo "$1"		# Prints the only remaining argument.
+fi 
