@@ -1,6 +1,7 @@
 #Computer Organization
 This folder contains all of the programs written in ARM for my Computer Organization class.
 
+##Contents
 * Assignment 3 contains an ARM 
   - palindrome detector and 
   - a UPC vertifier.
