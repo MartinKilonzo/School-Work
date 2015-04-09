@@ -9,7 +9,7 @@ Upper and lower time and space bounds; levels of intractability; graph algorithm
 ##Computer Organization
 <b>Languages used:</b> ARM Assembly Language<br>
 <b>Brief course content:</b><br>
-Computer architecture; data representations; hardware; memory management; instruction sets; exposure to an assembly language for a RISC machine; assembly and linking.
+>Computer architecture; data representations; hardware; memory management; instruction sets; exposure to an assembly language for a RISC machine; assembly and linking.
 
 ##Data Structures and Algorithms
 <b>Languages used:</b> Java<br>
