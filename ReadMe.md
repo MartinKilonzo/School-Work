@@ -17,6 +17,6 @@ Computer architecture; data representations; hardware; memory management; instru
 Lists, stacks, queues, priority queues, trees, graphs, and their associated algorithms; file structures; sorting, searching, and hashing techniques; time and space complexity.
 
 ##Software Tools and Systems Programming
-<b>Languages used:</b> Bash/Bourne shell, <Br>
+<b>Languages used:</b> Bash/Bourne shell, C<Br>
 <b>Brief course content:</b><br>
 Understanding how programs execute (compilation, linking and loading); an introduction to a complex operating system (UNIX); scripting languages; the C programming language; system calls; memory management; libraries; multi-component program organization and builds; version control; debuggers and profilers.
