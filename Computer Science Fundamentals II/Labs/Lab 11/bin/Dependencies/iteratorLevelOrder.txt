@@ -1,0 +1,26 @@
+public Iterator<T> iteratorLevelOrder() 
+   {
+      ArrayUnorderedList<BinaryTreeNode<T>> nodes = new ArrayUnorderedList<BinaryTreeNode<T>>();
+          
+      ArrayUnorderedList<T> result = new ArrayUnorderedList<T>();
+      
+      BinaryTreeNode<T> current;
+
+      nodes.addToRear (root);
+
+      while (! nodes.isEmpty()) 
+	 {
+         current = (BinaryTreeNode<T>)nodes.removeFirst();
+
+         if (current != null) 
+	    {
+            result.addToRear(current.getElement());
+            nodes.addToRear (current.getLeft());
+            nodes.addToRear (current.getRight());
+         }//if
+         else
+            result.addToRear(null);
+      }//while
+      
+      return result.iterator();
+   }  

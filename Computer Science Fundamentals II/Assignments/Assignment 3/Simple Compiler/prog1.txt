@@ -1,0 +1,7 @@
+add m n {
+  m n +
+}
+
+sub m n {
+  m n -
+}

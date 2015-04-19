@@ -1,0 +1,7 @@
+add m n {
+  m n +
+}
+
+func m n {
+  m n add n add
+}

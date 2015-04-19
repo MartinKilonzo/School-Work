@@ -1,0 +1,4 @@
+fact n {
+  n zero? 1 done
+  n nonzero? n n 1 - fact * done
+}
