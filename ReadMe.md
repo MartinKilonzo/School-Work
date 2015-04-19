@@ -1,32 +1,32 @@
 # School-Work
 Programming assignments completed during my time at university.
 
-##Analysis of Algorithms I
+##[Analysis of Algorithms I](https://github.com/MartinKilonzo/School-Work/Analysis of Algorithms I)
 <b>Languages used:</b> Java<br>
 <b>Brief course content:</b><br>
 Upper and lower time and space bounds; levels of intractability; graph algorithms; greedy algorithms; dynamic algorithms; exhaustive search techniques; parallel algorithms.
 
-##Computer Organization
+##[Computer Organization](https://github.com/MartinKilonzo/School-Work/Computer Organization)
 <b>Languages used:</b> ARM Assembly Language<br>
 <b>Brief course content:</b><br>
 Computer architecture; data representations; hardware; memory management; instruction sets; exposure to an assembly language for a RISC machine; assembly and linking.
 
-##Computer Science Fundamentals I
+##[Computer Science Fundamentals I](https://github.com/MartinKilonzo/School-Work/Computer Science Fundamentals I)
 <b>Languages used:</b> Java<br>
 <b>Brief course content:</b><br>
 The nature of Computer Science as a discipline; the design and analysis of algorithms and their implementation as modular, reliable, well-documented programs written in an object-oriented language (Java). Intended for students with little or no background in programming. 
 
-##Computer Science Fundamentals II
+##[Computer Science Fundamentals II](https://github.com/MartinKilonzo/School-Work/Computer Science Fundamentals II)
 <b>Languages used:</b> Java<br>
 <b>Brief course content:</b><br>
 A continuation of Computer Science Fundamentals I. Data organization and manipulation; abstract data types and their implementations in an object-oriented setting (Java); lists, stacks, queues, trees; pointers; recursion; file handling and storage. 
 
-##Data Structures and Algorithms
+##[Data Structures and Algorithms](https://github.com/MartinKilonzo/School-Work/Data Structures and Algorithms)
 <b>Languages used:</b> Java<br>
 <b>Brief course content:</b><br>
 Lists, stacks, queues, priority queues, trees, graphs, and their associated algorithms; file structures; sorting, searching, and hashing techniques; time and space complexity.
 
-##Software Tools and Systems Programming
+##[Software Tools and Systems Programming](https://github.com/MartinKilonzo/School-Work/Software Tools and Systems Programming)
 <b>Languages used:</b> Bash/Bourne shell, C<Br>
 <b>Brief course content:</b><br>
 Understanding how programs execute (compilation, linking and loading); an introduction to a complex operating system (UNIX); scripting languages; the C programming language; system calls; memory management; libraries; multi-component program organization and builds; version control; debuggers and profilers.<br>
