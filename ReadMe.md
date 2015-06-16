@@ -36,4 +36,4 @@ A team project course that provides practical experience in the software enginee
 <b>Brief course content:</b><br>
 Understanding how programs execute (compilation, linking and loading); an introduction to a complex operating system (UNIX); scripting languages; the C programming language; system calls; memory management; libraries; multi-component program organization and builds; version control; debuggers and profilers.<br>
 
-Certain files, images, or other content found in this repository are not the property of myself, and are the property of their respective owners wherever appropriate.
+<sub>Certain files, images, or other content found in this repository are not the property of myself, and are the property of their respective owners wherever appropriate.</sub>

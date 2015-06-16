@@ -3,7 +3,7 @@ This folder contains course work written in Java for my Computer Science Fundame
 
 ##Contents
 ###Assignments
-* Assignment 1 or <i>Turtle Art</i>, contains a Java class 'TurtleArt.java', which uses "Drunken Turtles" to draw an image of a house.
+* Assignment 1 or <i>Turtle Art</i>, contains a Java class `TurtleArt.java`, which uses "Drunken Turtles" to draw an image of a house.
 
 * Assignment 2 or <i>Create Album</i>, contains Java class `PhotoList.java`, which takes an input text file with image locations and descriptors and combines them to generate an "album" of images and their descriptors.
 
