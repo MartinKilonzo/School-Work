@@ -30,3 +30,4 @@ Click on the header for a video about our application!
 [JavaDoc](https://github.com/UWO-2212-W2015/team12/tree/master/doc) created for the Team 12 Weather Application.
 
 Original GitHub Page can be found [here](https://github.com/UWO-2212-W2015/team12).
+Original Wiki Page can be found [here](https://github.com/UWO-2212-W2015/team12/wiki).
