@@ -26,6 +26,11 @@ A continuation of Computer Science Fundamentals I. Data organization and manipul
 <b>Brief course content:</b><br>
 Lists, stacks, queues, priority queues, trees, graphs, and their associated algorithms; file structures; sorting, searching, and hashing techniques; time and space complexity.
 
+##Introduction to Software Engineering
+<b>Languages used:</b> Java<br>
+<b>Brief course content:</b><br>
+A team project course that provides practical experience in the software engineering field. Introduction to the structure and unique characteristics of large software systems, and concepts and techniques in the design, management and implementation of large software systems.
+
 ##Software Tools and Systems Programming
 <b>Languages used:</b> Bash/Bourne shell, C<Br>
 <b>Brief course content:</b><br>
