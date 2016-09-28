@@ -110,10 +110,9 @@ def depthFirstSearch(problem):
                         path.push(n[1])  # push n to stack
                         return  # return
 
-
     DFS((problem.getStartState(), 'None', 0))
     path.pop()  # Remove the start instruction from the stack
-    path.list.reverse() # Reverse the stack as instructions are read in incremental index order
+    path.list.reverse()  # Reverse the stack as instructions are read in incremental index order
     return path.list
 
 
@@ -127,63 +126,60 @@ def breadthFirstSearch(problem):
     from util import Queue, dynamicMatrix
 
     def BFS(start):
-        graph = dynamicMatrix()
-        queue = Queue()
-        nodeHistory = []
-        path = []
+        nodeHistory = dynamicMatrix() # A 2D array representation of the visited nodes in the graph
+        nodeQueue = []    # The queue used to store the children of nodes in the
+        path = []   # A stack-acting list that will contain the path from the start (inclusive) to the end (inclusive) in reverse order
 
         # Check to see if the start is the goal state
         if problem.isGoalState(start) == True:
-            return path # If it is, return the empty path
+            return path  # If it is, return the empty path
 
         # Mark the start
-        graph.insert(start[0][0], start[0][1], True)
+        nodeHistory.insert(start[0][0], start[0][1], True)
 
         # Enqueue start
         s = {'node': start, 'parent': None}   # save the parent of n
-        nodeHistory.append([s]) # enqueue start
+        nodeQueue.append(s)  # enqueue start
 
         # Iterate through the queue to traverse the graph
         level = 0
-        while level <= len(nodeHistory):
-            # Iterate through each node at this level, i.e. siblings
-            parents = nodeHistory[level]
-            print 'level:', level
-            for (i, parent) in enumerate(parents):
-                # print 'parent:', parent
-                children = []
-                for (i, child) in enumerate(problem.getSuccessors(parent['node'][0])):
-                    list1Index = child[0][0]
-                    list2Index = child[0][1]
-                    # Check to see if the child has been visited
-                    if graph.get(list1Index, list2Index) == None:
-                        # Check to see if the goal state has been reached
-                        if problem.isGoalState(child[0]) == True:
-                            print 'goalFound'
-                            path.append(child[1])
-                            pathNode = parent
-                            # If it has, populate the path from this node to the start
-                            while pathNode != None:
-                                path.append(pathNode['node'][1])
-                                pathNode = pathNode['parent']
-                            return path
+        while level <= len(nodeQueue):
+            # Get the parent node
+            parent = nodeQueue[level]
+            # For each child of the parent,
+            for (i, child) in enumerate(problem.getSuccessors(parent['node'][0])):
+                list1Index = child[0][0]
+                list2Index = child[0][1]
+                # Check to see if the child has been visited
+                if nodeHistory.get(list1Index, list2Index) == None:
+                    # If not,
+                    # Check to see if the goal state has been reached
+                    if problem.isGoalState(child[0]) == True:
+                        print 'goalFound'
+                        path.append(child[1])
+                        pathNode = parent
+                        # If it has, populate the path from this node to the start
+                        while pathNode != None:
+                            path.append(pathNode['node'][1])
+                            pathNode = pathNode['parent']
+                        return path
 
-                        # Otherwise,
-                        else:
-                            # Mark the node as visited
-                            graph.insert(list1Index, list2Index, True)
-                            # Enqueue all siblings for processing
-                            node = {'node': child, 'parent': parent}
-                            children.append(node)
-                nodeHistory.append(children)
+                    # Otherwise,
+                    else:
+                        # Mark the node as visited
+                        nodeHistory.insert(list1Index, list2Index, True)
+                        # Store the parent
+                        node = {'node': child, 'parent': parent}
+                        # And enqueue the child
+                        nodeQueue.append(node)
             level = level + 1
+
     print 'Start BFS'
     p = BFS((problem.getStartState(), 'None', 0))
-    p.pop()
-    p.reverse()
+    p.pop() # Remove the start instruction from the stack
+    p.reverse() # Reverse the stack as instructions are read in incremental index order
     print 'path:', p
     return p
-
 
 
 def uniformCostSearch(problem):
