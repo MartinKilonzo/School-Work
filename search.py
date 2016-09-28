@@ -86,7 +86,10 @@ def depthFirstSearch(problem):
     "*** YOUR CODE HERE ***"
 
     """
-    Implementation of recursive DFS using a stack as the path
+    Implementation of recursive DFS, where the path is returned as a stack, if
+    one exists. Nodes are marked as visited using a 2D array representation of
+    the problem graph (nodeHistory), where a node's x and y coordinates map to
+    the 2D array.
     """
     from util import Stack, dynamicMatrix
 
@@ -120,15 +123,20 @@ def breadthFirstSearch(problem):
     "Search the shallowest nodes in the search tree first. [p 81]"
     "*** YOUR CODE HERE ***"
     """
-    Implements BFS by traversing the graph in level-order, using a Queue to flatten
-    the tree and return a path to the goal, if one exists.
+    Implements BFS by traversing the graph in level-order, using a Queue, and
+    return a path to the goal, if one exists. Nodes are marked as visited using
+    a 2D array representation of the problem graph (nodeHistory), where a node's x and y
+    coordinates map to the 2D array.
     """
     from util import Queue, dynamicMatrix
 
     def BFS(start):
-        nodeHistory = dynamicMatrix() # A 2D array representation of the visited nodes in the graph
+        # A 2D array representation of the visited nodes in the graph
+        nodeHistory = dynamicMatrix()
         nodeQueue = []    # The queue used to store the children of nodes in the
-        path = []   # A stack-acting list that will contain the path from the start (inclusive) to the end (inclusive) in reverse order
+        # A stack-acting list that will contain the path from the start
+        # (inclusive) to the end (inclusive) in reverse order
+        path = []
 
         # Check to see if the start is the goal state
         if problem.isGoalState(start) == True:
@@ -158,7 +166,8 @@ def breadthFirstSearch(problem):
                         print 'goalFound'
                         path.append(child[1])
                         pathNode = parent
-                        # If it has, populate the path from this node to the start
+                        # If it has, populate the path from this node to the
+                        # start
                         while pathNode != None:
                             path.append(pathNode['node'][1])
                             pathNode = pathNode['parent']
@@ -176,8 +185,8 @@ def breadthFirstSearch(problem):
 
     print 'Start BFS'
     p = BFS((problem.getStartState(), 'None', 0))
-    p.pop() # Remove the start instruction from the stack
-    p.reverse() # Reverse the stack as instructions are read in incremental index order
+    p.pop()  # Remove the start instruction from the stack
+    p.reverse()  # Reverse the stack as instructions are read in incremental index order
     print 'path:', p
     return p
 
