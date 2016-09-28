@@ -84,13 +84,106 @@ def depthFirstSearch(problem):
     print "Start's successors:", problem.getSuccessors(problem.getStartState())
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+
+    """
+    Implementation of recursive DFS using a stack as the path
+    """
+    from util import Stack, dynamicMatrix
+
+    global goalStateFound, graph, path
+    goalStateFound = False
+    graph = dynamicMatrix()
+    path = Stack()
+
+    def DFS(n):
+        global goalStateFound
+        node = n[0]
+        graph.insert(node[0], node[1], True)  # mark n
+        if problem.isGoalState(node):  # if n is goalState,
+            goalStateFound = True   # set goalStateFound as true
+            path.push(n[1])  # add the goal state to the path
+        else:
+            for (i, successor) in enumerate(problem.getSuccessors(node)):  # for all successors of n
+                if graph.get(successor[0][0], successor[0][1]) == None:
+                    DFS(successor)  # dfs(m)
+                    if goalStateFound:  # if goalStateFound,
+                        path.push(n[1])  # push n to stack
+                        return  # return
+
+
+    DFS((problem.getStartState(), 'None', 0))
+    path.pop()  # Remove the start instruction from the stack
+    path.list.reverse() # Reverse the stack as instructions are read in incremental index order
+    return path.list
 
 
 def breadthFirstSearch(problem):
     "Search the shallowest nodes in the search tree first. [p 81]"
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    """
+    Implements BFS by traversing the graph in level-order, using a Queue to flatten
+    the tree and return a path to the goal, if one exists.
+    """
+    from util import Queue, dynamicMatrix
+
+    def BFS(start):
+        graph = dynamicMatrix()
+        queue = Queue()
+        nodeHistory = []
+        path = []
+
+        # Check to see if the start is the goal state
+        if problem.isGoalState(start) == True:
+            return path # If it is, return the empty path
+
+        # Mark the start
+        graph.insert(start[0][0], start[0][1], True)
+
+        # Enqueue start
+        s = {'node': start, 'parent': None}   # save the parent of n
+        nodeHistory.append([s]) # enqueue start
+
+        # Iterate through the queue to traverse the graph
+        level = 0
+        while level <= len(nodeHistory):
+            # Iterate through each node at this level, i.e. siblings
+            parents = nodeHistory[level]
+            print 'level:', level
+            for (i, parent) in enumerate(parents):
+                # print 'parent:', parent
+                children = []
+                for (i, child) in enumerate(problem.getSuccessors(parent['node'][0])):
+                    list1Index = child[0][0]
+                    list2Index = child[0][1]
+                    # Check to see if the child has been visited
+                    if graph.get(list1Index, list2Index) == None:
+                        # Check to see if the goal state has been reached
+                        if problem.isGoalState(child[0]) == True:
+                            print 'goalFound'
+                            path.append(child[1])
+                            pathNode = parent
+                            # If it has, populate the path from this node to the start
+                            while pathNode != None:
+                                path.append(pathNode['node'][1])
+                                pathNode = pathNode['parent']
+                            return path
+
+                        # Otherwise,
+                        else:
+                            # Mark the node as visited
+                            graph.insert(list1Index, list2Index, True)
+                            # Enqueue all siblings for processing
+                            node = {'node': child, 'parent': parent}
+                            children.append(node)
+                nodeHistory.append(children)
+            level = level + 1
+    print 'Start BFS'
+    p = BFS((problem.getStartState(), 'None', 0))
+    p.pop()
+    p.reverse()
+    print 'path:', p
+    return p
+
 
 
 def uniformCostSearch(problem):
