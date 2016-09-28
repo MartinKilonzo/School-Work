@@ -141,7 +141,9 @@ class dynamicArray(object):
                 self.list[index] = None
 
     def get(self, index):
-        return self.list[index]
+        if index < len(self.list):
+            return self.list[index]
+        else: return None
 
 
 class dynamicMatrix(object):
@@ -177,7 +179,10 @@ class dynamicMatrix(object):
                     i = len(self.list) - 1
 
     def get(self, xIndex, yIndex):
-        return self.list[xIndex].get(yIndex)
+        if xIndex < len(self.list):
+            if self.list[xIndex] != None:
+                return self.list[xIndex].get(yIndex)
+        return None
 
 
 """
