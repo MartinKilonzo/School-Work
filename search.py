@@ -133,7 +133,79 @@ def breadthFirstSearch(problem):
     def BFS(start):
         # A 2D array representation of the visited nodes in the graph
         nodeHistory = dynamicMatrix()
-        nodeQueue = []    # The queue used to store the children of nodes in the
+        # A list used to store the nodes visited. It is also referenced by a
+        # node's parent key to determine that node's parent.
+        nodeQueue = []
+        # The path containing the nodes from the start (inclusive) to a goal
+        # (inclusive) in reverse order
+        path = []
+
+        # Check to see if the start is the goal state
+        if problem.isGoalState(start) == True:
+            return path  # If it is, return the empty path
+
+        # Mark the start
+        nodeHistory.insert(start[0][0], start[0][1], True)
+
+        # Enqueue start
+        s = {'node': start, 'parent': 0}   # save the parent of n
+        nodeQueue.append(None)  # enqueue None as the parent for the start node
+        nodeQueue.append(s)  # enqueue start
+
+        # Iterate through the queue to traverse the graph
+        iParent = 1
+        while iParent < len(nodeQueue):
+            # Get the parent node
+            parent = nodeQueue[iParent]
+            # For each child of the parent,
+            for (i, child) in enumerate(problem.getSuccessors(parent['node'][0])):
+                list1Index = child[0][0]
+                list2Index = child[0][1]
+                # Check to see if the child has been visited
+                if nodeHistory.get(list1Index, list2Index) == None:
+                    # If not,
+                    # Check to see if the goal state has been reached
+                    if problem.isGoalState(child[0]) == True:
+                        path.append(child[1])
+                        pathNode = nodeQueue[iParent]
+                        # If it has, populate the path from this node to the
+                        # start
+                        while pathNode != None:
+                            path.append(pathNode['node'][1])
+                            pathNode = nodeQueue[pathNode['parent']]
+                        return path
+
+                    # Otherwise,
+                    else:
+                        # Mark the node as visited
+                        nodeHistory.insert(list1Index, list2Index, True)
+                        # Store the parent
+                        node = {'node': child, 'parent': iParent}
+                        # And enqueue the child
+                        nodeQueue.append(node)
+            iParent = iParent + 1
+
+    p = BFS((problem.getStartState(), 'None', 0))
+    p.pop()  # Remove the start instruction from the stack
+    p.reverse()  # Reverse the stack as instructions are read in incremental index order
+    return p
+
+
+def uniformCostSearch(problem):
+    "Search the node of least total cost first. "
+    "*** YOUR CODE HERE ***"
+    """
+    Implements BFS using a min-piority queue to prioritize expanding the
+    cheaper nodes first. Nodes are marked as visited using a 2D array
+    representation of the problem graph (nodeHistory), where a node's x and y
+    coordinates map to the 2D array.
+    """
+    from util import PriorityQueue
+
+    def BFS(start):
+        # A 2D array representation of the visited nodes in the graph
+        nodeHistory = dynamicMatrix()
+        nodeQueue = PriorityQueue()    # The queue used to store the children of nodes in the
         # A stack-acting list that will contain the path from the start
         # (inclusive) to the end (inclusive) in reverse order
         path = []
@@ -150,7 +222,6 @@ def breadthFirstSearch(problem):
         nodeQueue.append(s)  # enqueue start
 
         # Iterate through the queue to traverse the graph
-        level = 0
         while level <= len(nodeQueue):
             # Get the parent node
             parent = nodeQueue[level]
@@ -163,7 +234,6 @@ def breadthFirstSearch(problem):
                     # If not,
                     # Check to see if the goal state has been reached
                     if problem.isGoalState(child[0]) == True:
-                        print 'goalFound'
                         path.append(child[1])
                         pathNode = parent
                         # If it has, populate the path from this node to the
@@ -183,18 +253,10 @@ def breadthFirstSearch(problem):
                         nodeQueue.append(node)
             level = level + 1
 
-    print 'Start BFS'
     p = BFS((problem.getStartState(), 'None', 0))
     p.pop()  # Remove the start instruction from the stack
     p.reverse()  # Reverse the stack as instructions are read in incremental index order
-    print 'path:', p
     return p
-
-
-def uniformCostSearch(problem):
-    "Search the node of least total cost first. "
-    "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
 
 
 def nullHeuristic(state, problem=None):
