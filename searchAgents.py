@@ -304,12 +304,20 @@ class CornersProblem(search.SearchProblem):
     def getStartState(self):
         "Returns the start state (in your state space, not the full Pacman state space)"
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        # Return current location
+            # return last achieved goal state, or if none
+            # return original start
+        return self.startingPosition
 
     def isGoalState(self, state):
         "Returns whether this search state is a goal state of the problem"
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        try:
+            self.corners.index(state)
+            return True
+        except Exception as e:
+            return False
+
 
     def getSuccessors(self, state):
         """

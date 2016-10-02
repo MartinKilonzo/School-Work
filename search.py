@@ -312,7 +312,99 @@ def nullHeuristic(state, problem=None):
 def aStarSearch(problem, heuristic=nullHeuristic):
     "Search the node that has the lowest combined cost and heuristic first."
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    """
+    Implements BFS using a min-piority queue to prioritize expanding the
+    cheaper nodes first. Nodes are marked as visited using a 2D array
+    representation of the problem graph (nodeHistory), where a node's x and y
+    coordinates map to the 2D array.
+    """
+    from util import PriorityQueue, dynamicMatrix
+
+    # Constants for readability
+    COORDS = 0
+    DIRECTION = 1
+    COST = 2
+    X = 0
+    Y = 1
+
+    def UCBFS(start):
+        # A 2D array representation of the visited nodes in the graph
+        nodeHistory = dynamicMatrix()
+        # A min-piority queue used to store the nodes visited.
+        nodeQueue = PriorityQueue()
+        # A list referenced by a node's parent key to determine that node's
+        # parent
+        parents = []
+        # The path containing the nodes from the start (inclusive) to a goal
+        # (inclusive) in reverse order
+        path = []
+
+        # Check to see if the start is the goal state
+        if problem.isGoalState(start) == True:
+            return path  # If it is, return the empty path
+
+        # Mark the start
+        nodeHistory.insert(start[X][Y], start[X][Y], True)
+
+        # Enqueue start
+        s = {'node': start, 'parent': 0}   # save the parent of n
+        parents.append(None)  # enqueue None as the parent for the start node
+        nodeQueue.push(s, start[COST])  # enqueue start
+        # Iterate through the queue to traverse the graph
+        iParent = 1
+        while nodeQueue.isEmpty() != True:
+            # Get the parent node
+            parent = nodeQueue.pop()
+            parents.append(parent)
+            # For each child of the parent,
+            for (i, child) in enumerate(problem.getSuccessors(parent['node'][COORDS])):
+                pathCost = parent['node'][COST] + child[COST] + heuristic(child[COORDS], problem)
+                child = (child[COORDS], child[DIRECTION], pathCost)
+                # If not,
+                # Check to see if the goal state has been reached
+                if problem.isGoalState(child[COORDS]) == True:
+                    path.append(child[DIRECTION])
+                    pathNode = parents[iParent]
+                    # If it has, populate the path from this node to the
+                    # start
+                    while pathNode != None:
+                        path.append(pathNode['node'][DIRECTION])
+                        pathNode = parents[pathNode['parent']]
+                    return path
+
+                # Otherwise,
+                list1Index = child[COORDS][X]
+                list2Index = child[COORDS][Y]
+                # Check to see if the child has been visited
+                if nodeHistory.get(list1Index, list2Index) == None:
+                    # If the child has not been visited
+                    # Mark the node as visited
+                    nodeHistory.insert(list1Index, list2Index, True)
+                    # Store the parent
+                    newNode = {'node': child, 'parent': iParent}
+                    # And enqueue the child
+                    nodeQueue.push(newNode, child[COST])
+                # If the child has been visited, update its reference in the
+                # nodeQueue if its current cost is lower
+                else:
+                    for (i, node) in enumerate(nodeQueue.heap):
+                        node = node[DIRECTION]['node']
+                        nodeCoords = node[COORDS]
+                        nodeCost = node[COST]
+
+                        childCoords = child[COORDS]
+                        childCost = child[COST] # child[Cost] == pathCost
+                        if childCoords[X] == nodeCoords[X] and childCoords[Y] == nodeCoords[Y] and childCost < nodeCost:
+                            newNode = {'node': child, 'parent': iParent}
+                            # print 'recosting:', nodeQueue.heap[i], 'to: ', newNode
+                            nodeQueue.push(newNode, child[COST])
+
+            iParent = iParent + 1
+
+    p = UCBFS((problem.getStartState(), 'None', 0))
+    p.pop()  # Remove the start instruction from the stack
+    p.reverse()  # Reverse the stack as instructions are read in incremental index order
+    return p
 
 
 # Abbreviations
