@@ -134,75 +134,55 @@ def breadthFirstSearch(problem):
     a 2D array representation of the problem graph (nodeHistory), where a node's x and y
     coordinates map to the 2D array.
     """
-    from util import dynamicMatrix
+    from util import dynamicMatrix, Queue
 
     # Constants for readability
-    COORDS = 0
+    STATE = 0
     DIRECTION = 1
+    COST = 2
     X = 0
     Y = 1
 
-    def BFS(start):
+    def BFS():
         # A 2D array representation of the visited nodes in the graph
-        nodeHistory = dynamicMatrix()
+        nodeHistory = []
         # A list used to store the nodes visited. It is also referenced by a
         # node's parent key to determine that node's parent.
-        nodeQueue = []
+        nodeQueue = Queue()
         # The path containing the nodes from the start (inclusive) to a goal
         # (inclusive) in reverse order
-        path = []
-        # Check to see if the start is the goal state
-        if problem.isGoalState(start[COORDS]) == True:
-            return path  # If it is, return the empty path
-
-        s = {'node': start, 'parent': 0}   # save the parent of n
-        # Mark the start
-        nodeHistory.insert(start[COORDS][X], start[COORDS][Y], s['node'][COORDS])
-
-        # Enqueue start
-
-        nodeQueue.append(None)  # enqueue None as the parent for the start node
-        nodeQueue.append(s)  # enqueue start
+        nodeQueue.push(((problem.getStartState(), 'None', 0), []))   # enqueue the start, along with an empty path
+        count = 0
 
         # Iterate through the queue to traverse the graph
-        iParent = 1
-        while iParent < len(nodeQueue):
+        while not nodeQueue.isEmpty() and count < 10000:
             # Get the parent node
-            parent = nodeQueue[iParent]
+            node, path = nodeQueue.pop()
+            parent = node[STATE]
             # For each child of the parent,
-            for (i, child) in enumerate(problem.getSuccessors(parent['node'][COORDS])):
-                # Store the parent
-                child = {'node': child, 'parent': iParent}
-                list1Index = child['node'][COORDS][X]
-                list2Index = child['node'][COORDS][Y]
+            for i, child in enumerate(problem.getSuccessors(parent)):
+                # list1Index = child['node'][STATE][X]
+                # list2Index = child['node'][STATE][Y]
                 # Check to see if the child has been explored
-                if nodeHistory.get(list1Index, list2Index) != child['node'][COORDS]:
+                # if nodeHistory.get(list1Index, list2Index) != child['node'][STATE]:
+
+                if not child[STATE] in nodeHistory:
                     # If yes,
                     # Check to see if the goal state has been reached
-                    if problem.isGoalState(child['node'][COORDS]) == True:
-                        path.append(child['node'][DIRECTION])
-                        pathNode = nodeQueue[iParent]
-                        # If it has, populate the path from this node to the
-                        # start
-                        while pathNode != None:
-                            path.append(pathNode['node'][DIRECTION])
-                            pathNode = nodeQueue[pathNode['parent']]
+                    if problem.isGoalState(child[STATE]):
+                        path = path + [child[DIRECTION]]
                         return path
-
                     # Otherwise,
                     else:
                         # Mark the node as explored
-                        nodeHistory.insert(list1Index, list2Index, child['node'][COORDS])
+                        nodeQueue.push((child, path + [child[DIRECTION]]))
                         # And enqueue the child
-                        nodeQueue.append(child)
-            iParent = iParent + 1
-        return path
+                        nodeHistory.append(child[STATE])
+            count = count + 1
+        # Return an empty list if no path can be found
+        return []
 
-    p = BFS((problem.getStartState(), 'None', 0))
-    if len(p) > 0:
-        p.pop()  # Remove the start instruction from the stack
-        p.reverse()  # Reverse the stack as instructions are read in incremental index order
-    return p
+    return BFS()
 
 
 def uniformCostSearch(problem):
