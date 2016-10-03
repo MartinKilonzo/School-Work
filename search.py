@@ -129,10 +129,8 @@ def breadthFirstSearch(problem):
     "Search the shallowest nodes in the search tree first. [p 81]"
     "*** YOUR CODE HERE ***"
     """
-    Implements BFS by traversing the graph in level-order, using a Queue, and
-    return a path to the goal, if one exists. Nodes are marked as visited using
-    a 2D array representation of the problem graph (nodeHistory), where a node's x and y
-    coordinates map to the 2D array.
+    Implements BFS by traversing the graph in "level-order" using a Queue,
+    returning a path to the goal if one exists.
     """
     from util import Queue
 
@@ -179,10 +177,9 @@ def uniformCostSearch(problem):
     "Search the node of least total cost first. "
     "*** YOUR CODE HERE ***"
     """
-    Implements BFS using a min-piority queue to prioritize expanding the
-    cheaper nodes first. Nodes are marked as visited using a 2D array
-    representation of the problem graph (nodeHistory), where a node's x and y
-    coordinates map to the 2D array.
+    Implements UCS using BFS and a min-piority queue to prioritize expanding the
+    cheaper nodes first. Returns a path if one exists, or an empty list if one
+    cannot be found.
     """
     from util import PriorityQueue
 
@@ -246,9 +243,8 @@ def aStarSearch(problem, heuristic=nullHeuristic):
     Implements A* using a min-piority queue to prioritize expanding the
     cheaper nodes first. The cost of each node is the sum of its cost from the
     start and its distance (based on the provided heuristic) from the goal
-    state. Nodes are marked as visited using a 2D array representation of the
-    problem graph (nodeHistory), where a node's x and y coordinates map to the
-    2D array.
+    state. Returns a path where one can be found, or an empty list if one
+    cannot be found.
     """
     from util import PriorityQueue
 
