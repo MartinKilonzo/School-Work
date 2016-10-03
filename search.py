@@ -134,55 +134,45 @@ def breadthFirstSearch(problem):
     a 2D array representation of the problem graph (nodeHistory), where a node's x and y
     coordinates map to the 2D array.
     """
-    from util import dynamicMatrix, Queue
+    from util import Queue
 
     # Constants for readability
     STATE = 0
     DIRECTION = 1
-    COST = 2
-    X = 0
-    Y = 1
 
-    def BFS():
-        # A 2D array representation of the visited nodes in the graph
-        nodeHistory = []
-        # A list used to store the nodes visited. It is also referenced by a
-        # node's parent key to determine that node's parent.
-        nodeQueue = Queue()
-        # The path containing the nodes from the start (inclusive) to a goal
-        # (inclusive) in reverse order
-        nodeQueue.push(((problem.getStartState(), 'None', 0), []))   # enqueue the start, along with an empty path
-        count = 0
+    # A list containing the states already encountered
+    nodeHistory = []
+    # A list used to store the nodes to explore
+    nodeQueue = Queue()
 
-        # Iterate through the queue to traverse the graph
-        while not nodeQueue.isEmpty() and count < 10000:
-            # Get the parent node
-            node, path = nodeQueue.pop()
-            parent = node[STATE]
-            # For each child of the parent,
-            for i, child in enumerate(problem.getSuccessors(parent)):
-                # list1Index = child['node'][STATE][X]
-                # list2Index = child['node'][STATE][Y]
-                # Check to see if the child has been explored
-                # if nodeHistory.get(list1Index, list2Index) != child['node'][STATE]:
+    # Start by enqueueing the start, along with an empty path
+    nodeQueue.push(((problem.getStartState(), 'None', 0), []))
 
-                if not child[STATE] in nodeHistory:
-                    # If yes,
-                    # Check to see if the goal state has been reached
-                    if problem.isGoalState(child[STATE]):
-                        path = path + [child[DIRECTION]]
-                        return path
-                    # Otherwise,
-                    else:
-                        # Mark the node as explored
-                        nodeQueue.push((child, path + [child[DIRECTION]]))
-                        # And enqueue the child
-                        nodeHistory.append(child[STATE])
-            count = count + 1
-        # Return an empty list if no path can be found
-        return []
+    # Iterate through the queue
+    while not nodeQueue.isEmpty():
+        # Get the parent node, and the path to it
+        node, path = nodeQueue.pop()
+        # Seperate the parent state for successor query
+        parent = node[STATE]
+        # For each child of the parent state,
+        for i, child in enumerate(problem.getSuccessors(parent)):
+            # Check to see if the child has been explored
+            if not child[STATE] in nodeHistory:
+                # If no,
+                # Check to see if the goal state has been reached
+                if problem.isGoalState(child[STATE]):
+                    path = path + [child[DIRECTION]]
+                    return path
+                # Otherwise,
+                else:
+                    # Mark the node as explored
+                    nodeQueue.push((child, path + [child[DIRECTION]]))
+                    # And enqueue the child
+                    nodeHistory.append(child[STATE])
 
-    return BFS()
+    # Return an empty list if no path can be found
+    return []
+
 
 
 def uniformCostSearch(problem):
@@ -194,95 +184,51 @@ def uniformCostSearch(problem):
     representation of the problem graph (nodeHistory), where a node's x and y
     coordinates map to the 2D array.
     """
-    from util import PriorityQueue, dynamicMatrix
+    from util import PriorityQueue
 
     # Constants for readability
-    COORDS = 0
+    STATE = 0
     DIRECTION = 1
-    COST = 2
-    X = 0
-    Y = 1
 
-    def UCBFS(start):
-        # A 2D array representation of the visited nodes in the graph
-        nodeHistory = dynamicMatrix()
-        # A min-piority queue used to store the nodes visited.
-        nodeQueue = PriorityQueue()
-        # A list referenced by a node's parent key to determine that node's
-        # parent
-        parents = []
-        # The path containing the nodes from the start (inclusive) to a goal
-        # (inclusive) in reverse order
-        path = []
+    # A list containing the states already encountered
+    nodeHistory = []
+    # A list used to store the nodes to explore
+    nodeQueue = PriorityQueue()
 
-        # Check to see if the start is the goal state
-        if problem.isGoalState(start[COORDS]) == True:
-            return path  # If it is, return the empty path
+    # Start by enqueueing the start, along with an empty path
+    # and its cost of 0
+    nodeQueue.push(((problem.getStartState(), 'None'), []), 0)
 
-        # Mark the start
-        nodeHistory.insert(start[COORDS][X], start[COORDS][Y], True)
-
-        # Enqueue start
-        s = {'node': start, 'parent': 0}   # save the parent of n
-        parents.append(None)  # enqueue None as the parent for the start node
-        nodeQueue.push(s, start[COST])  # enqueue start
-        # Iterate through the queue to traverse the graph
-        iParent = 1
-        while nodeQueue.isEmpty() != True:
-            # Get the parent node
-            parent = nodeQueue.pop()
-            parents.append(parent)
-            # For each child of the parent,
-            for (i, child) in enumerate(problem.getSuccessors(parent['node'][COORDS])):
-                pathCost = parent['node'][COST] + child[COST]
-                child = (child[COORDS], child[DIRECTION], pathCost)
-                # If not,
+    # Iterate through the queue
+    while not nodeQueue.isEmpty():
+        # Get the parent node, and the path to it
+        node, path = nodeQueue.pop()
+        # Seperate the parent state for successor query
+        parent = node[STATE]
+        # For each child of the parent state,
+        for i, child in enumerate(problem.getSuccessors(parent)):
+            # Check to see if the child has been explored
+            if not child[STATE] in nodeHistory:
+                # If no,
                 # Check to see if the goal state has been reached
-                if problem.isGoalState(child[COORDS]) == True:
-                    path.append(child[DIRECTION])
-                    pathNode = parents[iParent]
-                    # If it has, populate the path from this node to the
-                    # start
-                    while pathNode != None:
-                        path.append(pathNode['node'][DIRECTION])
-                        pathNode = parents[pathNode['parent']]
+                if problem.isGoalState(child[STATE]):
+                    path = path + [child[DIRECTION]]
                     return path
-
                 # Otherwise,
-                list1Index = child[COORDS][X]
-                list2Index = child[COORDS][Y]
-                # Check to see if the child has been visited
-                if nodeHistory.get(list1Index, list2Index) == None:
-                    # If the child has not been visited
-                    # Mark the node as visited
-                    nodeHistory.insert(list1Index, list2Index, True)
-                    # Store the parent
-                    newNode = {'node': child, 'parent': iParent}
-                    # And enqueue the child
-                    nodeQueue.push(newNode, child[COST])
-                # If the child has been visited, update its reference in the
-                # nodeQueue if its current cost is lower
                 else:
-                    for (i, node) in enumerate(nodeQueue.heap):
-                        node = node[DIRECTION]['node']
-                        nodeCoords = node[COORDS]
-                        nodeCost = node[COST]
+                    # Mark the node as explored
+                    actions = path + [child[DIRECTION]]
+                    # As our min-priority queue prioritizes min-cost paths,
+                    # An identical state that may exist in the queue with a
+                    # higher path cost will always be explored after a
+                    # cheaper one
+                    nodeQueue.push((child, actions), problem.getCostOfActions(actions))
+                    # And enqueue the child
+                    nodeHistory.append(child[STATE])
 
-                        childCoords = child[COORDS]
-                        childCost = child[COST]
-                        if childCoords[X] == nodeCoords[X] and childCoords[Y] == nodeCoords[Y] and childCost < nodeCost:
-                            newNode = {'node': child, 'parent': iParent}
-                            # print 'recosting:', nodeQueue.heap[i], 'to: ', newNode
-                            nodeQueue.push(newNode, child[COST])
+    # Return an empty list if no path can be found
+    return []
 
-            iParent = iParent + 1
-        return path
-
-    p = UCBFS((problem.getStartState(), 'None', 0))
-    if len(p) > 0:
-        p.pop()  # Remove the start instruction from the stack
-        p.reverse()  # Reverse the stack as instructions are read in incremental index order
-    return p
 
 
 def nullHeuristic(state, problem=None):
@@ -304,95 +250,50 @@ def aStarSearch(problem, heuristic=nullHeuristic):
     problem graph (nodeHistory), where a node's x and y coordinates map to the
     2D array.
     """
-    from util import PriorityQueue, dynamicMatrix
+    from util import PriorityQueue
 
     # Constants for readability
-    COORDS = 0
+    STATE = 0
     DIRECTION = 1
-    COST = 2
-    X = 0
-    Y = 1
 
-    def UCBFS(start):
-        # A 2D array representation of the visited nodes in the graph
-        nodeHistory = dynamicMatrix()
-        # A min-piority queue used to store the nodes visited.
-        nodeQueue = PriorityQueue()
-        # A list referenced by a node's parent key to determine that node's
-        # parent
-        parents = []
-        # The path containing the nodes from the start (inclusive) to a goal
-        # (inclusive) in reverse order
-        path = []
+    # A list containing the states already encountered
+    nodeHistory = []
+    # A list used to store the nodes to explore
+    nodeQueue = PriorityQueue()
 
-        # Check to see if the start is the goal state
-        if problem.isGoalState(start[COORDS]) == True:
-            return path  # If it is, return the empty path
+    # Start by enqueueing the start, along with an empty path
+    # and its cost of 0
+    nodeQueue.push(((problem.getStartState(), 'None'), []), 0)
 
-        # Mark the start
-        nodeHistory.insert(start[COORDS][X], start[COORDS][Y], True)
-
-        # Enqueue start
-        s = {'node': start, 'parent': 0}   # save the parent of n
-        parents.append(None)  # enqueue None as the parent for the start node
-        nodeQueue.push(s, start[COST])  # enqueue start
-        # Iterate through the queue to traverse the graph
-        iParent = 1
-        while nodeQueue.isEmpty() != True:
-            # Get the parent node
-            parent = nodeQueue.pop()
-            parents.append(parent)
-            # For each child of the parent,
-            for (i, child) in enumerate(problem.getSuccessors(parent['node'][COORDS])):
-                pathCost = parent['node'][COST] + child[COST] + heuristic(child[COORDS], problem)
-                child = (child[COORDS], child[DIRECTION], pathCost)
-                # If not,
+    # Iterate through the queue
+    while not nodeQueue.isEmpty():
+        # Get the parent node, and the path to it
+        node, path = nodeQueue.pop()
+        # Seperate the parent state for successor query
+        parent = node[STATE]
+        # For each child of the parent state,
+        for i, child in enumerate(problem.getSuccessors(parent)):
+            # Check to see if the child has been explored
+            if not child[STATE] in nodeHistory:
+                # If no,
                 # Check to see if the goal state has been reached
-                if problem.isGoalState(child[COORDS]) == True:
-                    path.append(child[DIRECTION])
-                    pathNode = parents[iParent]
-                    # If it has, populate the path from this node to the
-                    # start
-                    while pathNode != None:
-                        path.append(pathNode['node'][DIRECTION])
-                        pathNode = parents[pathNode['parent']]
+                if problem.isGoalState(child[STATE]):
+                    path = path + [child[DIRECTION]]
                     return path
-
                 # Otherwise,
-                list1Index = child[COORDS][X]
-                list2Index = child[COORDS][Y]
-                # Check to see if the child has been visited
-                if nodeHistory.get(list1Index, list2Index) == None:
-                    # If the child has not been visited
-                    # Mark the node as visited
-                    nodeHistory.insert(list1Index, list2Index, True)
-                    # Store the parent
-                    newNode = {'node': child, 'parent': iParent}
-                    # And enqueue the child
-                    nodeQueue.push(newNode, child[COST])
-                # If the child has been visited, update its reference in the
-                # nodeQueue if its current cost is lower
                 else:
-                    for (i, node) in enumerate(nodeQueue.heap):
-                        node = node[DIRECTION]['node']
-                        nodeCoords = node[COORDS]
-                        nodeCost = node[COST]
+                    # Mark the node as explored
+                    actions = path + [child[DIRECTION]]
+                    # As our min-priority queue prioritizes min-cost paths,
+                    # An identical state that may exist in the queue with a
+                    # higher path cost will always be explored after a
+                    # cheaper one
+                    nodeQueue.push((child, actions), problem.getCostOfActions(actions) + heuristic(child[STATE], problem))
+                    # And enqueue the child
+                    nodeHistory.append(child[STATE])
 
-                        childCoords = child[COORDS]
-                        childCost = child[COST] # child[Cost] == pathCost
-                        if childCoords[X] == nodeCoords[X] and childCoords[Y] == nodeCoords[Y] and childCost < nodeCost:
-                            newNode = {'node': child, 'parent': iParent}
-                            # print 'recosting:', nodeQueue.heap[i], 'to: ', newNode
-                            nodeQueue.push(newNode, child[COST])
-
-            iParent = iParent + 1
-        return path
-
-    p = UCBFS((problem.getStartState(), 'None', 0))
-    if len(p) > 0:
-        p.pop()  # Remove the start instruction from the stack
-        p.reverse()  # Reverse the stack as instructions are read in incremental index order
-    return p
+    # Return an empty list if no path can be found
+    return []
 
 
 # Abbreviations

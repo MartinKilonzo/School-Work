@@ -319,7 +319,6 @@ class CornersProblem(search.SearchProblem):
             if not node in visitedCorners:
                 visitedCorners.append(node)
             if len(visitedCorners) == 4:
-                print visitedCorners
                 print 'goal achieved!'
                 return True
         return False
@@ -353,7 +352,6 @@ class CornersProblem(search.SearchProblem):
                 nextVisitedCorners = list(visitedCorners)
                 nextNode = (nextx, nexty)
                 if nextNode in self.corners:
-                    print 'new', nextNode
                     if not nextNode in nextVisitedCorners:
                         nextVisitedCorners.append(nextNode)
                 nextState = (nextx, nexty, list(nextVisitedCorners))
