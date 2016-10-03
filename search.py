@@ -151,13 +151,12 @@ def breadthFirstSearch(problem):
         # The path containing the nodes from the start (inclusive) to a goal
         # (inclusive) in reverse order
         path = []
-
         # Check to see if the start is the goal state
-        if problem.isGoalState(start) == True:
+        if problem.isGoalState(start[COORDS]) == True:
             return path  # If it is, return the empty path
 
         # Mark the start
-        nodeHistory.insert(start[X][Y], start[X][Y], True)
+        nodeHistory.insert(start[COORDS][X], start[COORDS][Y], start)
 
         # Enqueue start
         s = {'node': start, 'parent': 0}   # save the parent of n
@@ -171,14 +170,16 @@ def breadthFirstSearch(problem):
             parent = nodeQueue[iParent]
             # For each child of the parent,
             for (i, child) in enumerate(problem.getSuccessors(parent['node'][COORDS])):
-                list1Index = child[COORDS][X]
-                list2Index = child[COORDS][Y]
-                # Check to see if the child has been visited
-                if nodeHistory.get(list1Index, list2Index) == None:
-                    # If not,
+                # Store the parent
+                child = {'node': child, 'parent': iParent}
+                list1Index = child['node'][COORDS][X]
+                list2Index = child['node'][COORDS][Y]
+                # Check to see if the child has been explored
+                if nodeHistory.get(list1Index, list2Index) != child['node'][COORDS]:
+                    # If yes,
                     # Check to see if the goal state has been reached
-                    if problem.isGoalState(child[COORDS]) == True:
-                        path.append(child[DIRECTION])
+                    if problem.isGoalState(child['node'][COORDS]) == True:
+                        path.append(child['node'][DIRECTION])
                         pathNode = nodeQueue[iParent]
                         # If it has, populate the path from this node to the
                         # start
@@ -189,17 +190,17 @@ def breadthFirstSearch(problem):
 
                     # Otherwise,
                     else:
-                        # Mark the node as visited
-                        nodeHistory.insert(list1Index, list2Index, True)
-                        # Store the parent
-                        node = {'node': child, 'parent': iParent}
+                        # Mark the node as explored
+                        nodeHistory.insert(list1Index, list2Index, child['node'][COORDS])
                         # And enqueue the child
-                        nodeQueue.append(node)
+                        nodeQueue.append(child)
             iParent = iParent + 1
+        return path
 
     p = BFS((problem.getStartState(), 'None', 0))
-    p.pop()  # Remove the start instruction from the stack
-    p.reverse()  # Reverse the stack as instructions are read in incremental index order
+    if len(p) > 0:
+        p.pop()  # Remove the start instruction from the stack
+        p.reverse()  # Reverse the stack as instructions are read in incremental index order
     return p
 
 
@@ -234,11 +235,11 @@ def uniformCostSearch(problem):
         path = []
 
         # Check to see if the start is the goal state
-        if problem.isGoalState(start) == True:
+        if problem.isGoalState(start[COORDS]) == True:
             return path  # If it is, return the empty path
 
         # Mark the start
-        nodeHistory.insert(start[X][Y], start[X][Y], True)
+        nodeHistory.insert(start[COORDS][X], start[COORDS][Y], True)
 
         # Enqueue start
         s = {'node': start, 'parent': 0}   # save the parent of n
@@ -294,10 +295,12 @@ def uniformCostSearch(problem):
                             nodeQueue.push(newNode, child[COST])
 
             iParent = iParent + 1
+        return path
 
     p = UCBFS((problem.getStartState(), 'None', 0))
-    p.pop()  # Remove the start instruction from the stack
-    p.reverse()  # Reverse the stack as instructions are read in incremental index order
+    if len(p) > 0:
+        p.pop()  # Remove the start instruction from the stack
+        p.reverse()  # Reverse the stack as instructions are read in incremental index order
     return p
 
 
@@ -313,10 +316,12 @@ def aStarSearch(problem, heuristic=nullHeuristic):
     "Search the node that has the lowest combined cost and heuristic first."
     "*** YOUR CODE HERE ***"
     """
-    Implements BFS using a min-piority queue to prioritize expanding the
-    cheaper nodes first. Nodes are marked as visited using a 2D array
-    representation of the problem graph (nodeHistory), where a node's x and y
-    coordinates map to the 2D array.
+    Implements A* using a min-piority queue to prioritize expanding the
+    cheaper nodes first. The cost of each node is the sum of its cost from the
+    start and its distance (based on the provided heuristic) from the goal
+    state. Nodes are marked as visited using a 2D array representation of the
+    problem graph (nodeHistory), where a node's x and y coordinates map to the
+    2D array.
     """
     from util import PriorityQueue, dynamicMatrix
 
@@ -340,11 +345,11 @@ def aStarSearch(problem, heuristic=nullHeuristic):
         path = []
 
         # Check to see if the start is the goal state
-        if problem.isGoalState(start) == True:
+        if problem.isGoalState(start[COORDS]) == True:
             return path  # If it is, return the empty path
 
         # Mark the start
-        nodeHistory.insert(start[X][Y], start[X][Y], True)
+        nodeHistory.insert(start[COORDS][X], start[COORDS][Y], True)
 
         # Enqueue start
         s = {'node': start, 'parent': 0}   # save the parent of n
@@ -400,10 +405,12 @@ def aStarSearch(problem, heuristic=nullHeuristic):
                             nodeQueue.push(newNode, child[COST])
 
             iParent = iParent + 1
+        return path
 
     p = UCBFS((problem.getStartState(), 'None', 0))
-    p.pop()  # Remove the start instruction from the stack
-    p.reverse()  # Reverse the stack as instructions are read in incremental index order
+    if len(p) > 0:
+        p.pop()  # Remove the start instruction from the stack
+        p.reverse()  # Reverse the stack as instructions are read in incremental index order
     return p
 
 
