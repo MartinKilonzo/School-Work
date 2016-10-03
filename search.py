@@ -155,11 +155,12 @@ def breadthFirstSearch(problem):
         if problem.isGoalState(start[COORDS]) == True:
             return path  # If it is, return the empty path
 
+        s = {'node': start, 'parent': 0}   # save the parent of n
         # Mark the start
-        nodeHistory.insert(start[COORDS][X], start[COORDS][Y], start)
+        nodeHistory.insert(start[COORDS][X], start[COORDS][Y], s['node'][COORDS])
 
         # Enqueue start
-        s = {'node': start, 'parent': 0}   # save the parent of n
+
         nodeQueue.append(None)  # enqueue None as the parent for the start node
         nodeQueue.append(s)  # enqueue start
 
