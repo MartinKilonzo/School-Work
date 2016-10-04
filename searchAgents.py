@@ -302,6 +302,12 @@ class CornersProblem(search.SearchProblem):
         "*** YOUR CODE HERE ***"
         self.visitedCorners = []
 
+    def getWalls(self):
+        return self.walls
+
+    def getPacmanPosition(self):
+        return self.startingPosition
+
     def getStartState(self):
         "Returns the start state (in your state space, not the full Pacman state space)"
         "*** YOUR CODE HERE ***"
@@ -398,20 +404,19 @@ def cornersHeuristic(state, problem):
     "*** YOUR CODE HERE ***"
     # Use the manhattanDistance to find the closest corner that has not been
     # visited
-    minDistance = 999999    # A very large number
-    visitedCorners = state[2]
+    totalDistance = 0
+    x,y, visitedCorners = state
+    found = []
     # For each corner...
-    for corner in corners:
+    for corner in problem.corners:
         # That has not been visited
         if not corner in visitedCorners:
-            # Find the Manhattan distance
-            currentLocation = (state[0], state[1])
-            distance = util.manhattanDistance(currentLocation, corner)
-            # If this corner is closest, save it
-            if distance < minDistance:
-                minDistance = distance
-    # Return the closest corner
-    return minDistance
+            # Find the Manhattan distance for the goal corner
+            distance = util.manhattanDistance((x,y), corner)
+            # Add it to the running total
+            totalDistance += distance
+    # Return the total distance from goal corners as the heuristic
+    return totalDistance
 
 
 class AStarCornersAgent(SearchAgent):
@@ -421,6 +426,7 @@ class AStarCornersAgent(SearchAgent):
         self.searchFunction = lambda prob: search.aStarSearch(
             prob, cornersHeuristic)
         self.searchType = CornersProblem
+        print 'This one takes some time (2 minutes for me). I suggest you minimize the pacman window to improve performance.'
 
 
 class FoodSearchProblem:
