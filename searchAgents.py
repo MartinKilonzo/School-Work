@@ -400,19 +400,29 @@ def cornersHeuristic(state, problem):
     # These are the walls of the maze, as a Grid (game.py)
     walls = problem.walls
 
-
     "*** YOUR CODE HERE ***"
+    """
+    This heuristic returns the sum of the distances of each unachived goal.
+    This is why it works:
+    By summing the distances between each goal node, the algorithm paths
+    towards each goal at the same time. Once the first goal is achieved (i.e.
+    the closest goal), each of the existing paths are effectively discarded as
+    their costs are made up of m goals, whereas the one that achived a goal is
+    made up of m - 1 goals, pushing its paths to the front of the priority
+    queue. This process repeats until m = 0, where the shortest path from each
+    goal to the next is found.
+    """
     # Use the manhattanDistance to find the closest corner that has not been
     # visited
     totalDistance = 0
-    x,y, visitedCorners = state
+    x, y, visitedCorners = state
     found = []
     # For each corner...
     for corner in problem.corners:
         # That has not been visited
         if not corner in visitedCorners:
             # Find the Manhattan distance for the goal corner
-            distance = util.manhattanDistance((x,y), corner)
+            distance = util.manhattanDistance((x, y), corner)
             # Add it to the running total
             totalDistance += distance
     # Return the total distance from goal corners as the heuristic
