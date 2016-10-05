@@ -91,37 +91,28 @@ def depthFirstSearch(problem):
     the problem graph (nodeHistory), where a node's x and y coordinates map to
     the 2D array.
     """
-    from util import Stack, dynamicMatrix
+    from util import Queue
 
     # Constants for readability
     COORDS = 0
     DIRECTION = 1
-    X = 0
-    Y = 1
+    nodeHistory = []
+    path = Queue()  # A queue is used to store the path as this implementation is recursive, and uses the call stack as the stack. This queue stores the path from goal to start in reverse order (ie from start to goal)
 
-    global goalStateFound, graph, path
-    goalStateFound = False
-    graph = dynamicMatrix()
-    path = Stack()
-
-    def DFS(n):
-        global goalStateFound
-        node = n[COORDS]
-        graph.insert(node[COORDS], node[DIRECTION], True)  # mark n
+    def DFS(start):
+        node = start[COORDS]
+        nodeHistory.append(node)  # mark n
         if problem.isGoalState(node):  # if n is goalState,
-            goalStateFound = True   # set goalStateFound as true
-            path.push(n[DIRECTION])  # add the goal state to the path
+            path.push(start[DIRECTION])  # add the goal state to the path
+            return True   # set goalStateFound as true
         else:
-            for (i, successor) in enumerate(problem.getSuccessors(node)):  # for all successors of n
-                if graph.get(successor[COORDS][X], successor[COORDS][Y]) == None:
-                    DFS(successor)  # dfs(m)
-                    if goalStateFound:  # if goalStateFound,
-                        path.push(n[DIRECTION])  # push n to stack
-                        return  # return
+            for i, successor in enumerate(problem.getSuccessors(node)):  # for all successors of n
+                if not successor[COORDS] in nodeHistory:
+                    if DFS(successor):  # if goalStateFound,
+                        path.push(start[DIRECTION])  # push n to stack
+                        return True  # return
 
-    DFS((problem.getStartState(), 'None', 0))
-    path.pop()  # Remove the start instruction from the stack
-    path.list.reverse()  # Reverse the stack as instructions are read in incremental index order
+    DFS((problem.getStartState(), 'Stop', 0))
     return path.list
 
 
@@ -144,7 +135,7 @@ def breadthFirstSearch(problem):
     nodeQueue = Queue()
 
     # Start by enqueueing the start, along with an empty path
-    nodeQueue.push(((problem.getStartState(), 'None', 0), []))
+    nodeQueue.push(((problem.getStartState(), 'Stop', 0), []))
 
     # Iterate through the queue
     while not nodeQueue.isEmpty():
@@ -194,7 +185,7 @@ def uniformCostSearch(problem):
 
     # Start by enqueueing the start, along with an empty path
     # and its cost of 0
-    nodeQueue.push(((problem.getStartState(), 'None'), []), 0)
+    nodeQueue.push(((problem.getStartState(), 'Stop'), []), 0)
 
     # Iterate through the queue
     while not nodeQueue.isEmpty():
@@ -259,7 +250,7 @@ def aStarSearch(problem, heuristic=nullHeuristic):
 
     # Start by enqueueing the start, along with an empty path
     # and its cost of 0
-    nodeQueue.push(((problem.getStartState(), 'None'), []), 0)
+    nodeQueue.push(((problem.getStartState(), 'Stop'), []), 0)
 
     # Iterate through the queue
     while not nodeQueue.isEmpty():
