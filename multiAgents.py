@@ -98,13 +98,13 @@ class ReflexAgent(Agent):
         # oldFood])
 
         # Return the reciprical of the average distance to food, with the tax
-        totalDistance = 0
-        # numFood = 0
+        averageDistance = 0
+        numFood = 0
         for food in oldFood:
-            # numFood = numFood + 1
-            totalDistance += manhattanDistance(newPos, food)
-        # totalDistance /= numFood
-        return (1 - tax) / totalDistance
+            numFood = numFood + 1
+            averageDistance += manhattanDistance(newPos, food)
+        averageDistance /= numFood
+        return (1 - tax) / averageDistance
 
 
 def scoreEvaluationFunction(currentGameState):
