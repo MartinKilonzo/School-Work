@@ -91,21 +91,20 @@ class ReflexAgent(Agent):
         tax = 0
         # Apply a tax on positions that have fewer legal options (corners,
         # trap-states)
-        safeMoves = len(newGhostStates) - \
-            len(successorGameState.getLegalActions()) + 1
+        safeMoves = len(newGhostStates) - len(successorGameState.getLegalActions()) + 1
         if safeMoves <= 0:
             tax = 5 * safeMoves
         # return (1 - tax) / min([manhattanDistance(newPos, food) for food in
         # oldFood])
 
         # Return the reciprical of the average distance to food, with the tax
-        averageDistance = 0
-        numFood = 0
+        totalDistance = 0
+        # numFood = 0
         for food in oldFood:
-            numFood = numFood + 1
-            averageDistance += manhattanDistance(newPos, food)
-        averageDistance /= numFood
-        return (1 - tax) / averageDistance
+            # numFood = numFood + 1
+            totalDistance += manhattanDistance(newPos, food)
+        # totalDistance /= numFood
+        return (1 - tax) / totalDistance
 
 
 def scoreEvaluationFunction(currentGameState):
