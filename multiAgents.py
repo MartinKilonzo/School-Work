@@ -84,6 +84,10 @@ class ReflexAgent(Agent):
                 elif ghost.scaredTimer > safetyZone + 1:
                     return 9999
 
+        # Disincentivise staying in the same spot
+        if currentGameState.getPacmanPosition() == newPos:
+            return -9999
+
         # Otherwise If the next state has food, prefer it
         x, y = newPos
         if oldFood[x][y]:
@@ -100,11 +104,12 @@ class ReflexAgent(Agent):
         # Return the reciprical of the average distance to food, with the tax
         averageDistance = 0
         numFood = 0
-        for food in oldFood:
+        oldFoodList = oldFood.asList()
+        for food in oldFoodList:
             numFood = numFood + 1
             averageDistance += manhattanDistance(newPos, food)
         averageDistance /= numFood
-        return (1 - tax) / averageDistance
+        return (1.0 - tax) / averageDistance
 
 
 def scoreEvaluationFunction(currentGameState):
