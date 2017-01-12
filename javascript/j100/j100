@@ -1,0 +1,64 @@
+The j1xx tasks are designed to take a bit more effort than the j0xx tasks.
+As mentioned in class, I am a big fan of youtube.  So the notion that there
+is a javascript library for managing youtube caught might interest early on.
+Task j100 is about using the library to create a web page that lets a
+user choose among different ways of playing a few different youtube videos.
+Again, this task is split up into stages, as was done with j001.
+
+Before starting this task, you want to glance over the one page `tutorial'
+at http://tutorialzine.com/2015/08/how-to-control-youtubes-video-player-with-javascript/ , so that you can see what basic functionality you have available.
+Since this comes from 2015, it is possible that newer versions have changed
+things.  When I used it, I used it on Chrome, so I am not sure about general
+browser compatibility of this either (one of the reasons I am a fan of Chrome
+is that I am a fan of youtube and I figure that Google has to make sure 
+youtube always works on Chrome).
+
+Stage 1: The tutorial How to Control YouTube's Video Player with
+JavaScript seems to tell you everything you need to include a youtube
+video on a web page under JavaScript control, although stackoverflow
+is still a useful resource on clarifying some parts. To test this out,
+use the video IN LIMBO (Clip A) whose URL is
+https://www.youtube.com/watch?v=LaSRU5m_7og . It is less than a minute
+long, from Canada's National Film Board. You want to be able to load
+it on the web page under JavaScript control (rather than just as an
+embedded youtube object) and the user should be able to control it
+with typical youtube controls.  This should be in j100.html .
+
+Stage 2: Following up on the stage 1, set things up so that the video
+plays as soon as the page loads (i.e., the user doesn't have to press
+the play button).
+
+Stage 3: After the first video has completed from stage 3, a second
+video should start up. Once it is done, we should cycle back to the
+first video and proceed again. A good second video would be IN LIMBO
+(Clip B) whose URL is https://www.youtube.com/watch?v=pbMO7uwu-ok
+which is also less than a minute long.
+
+Stage 4: Lets get a few more videos in the sequence: IN LIMBO (Clip C)
+(https://www.youtube.com/watch?v=OElxUkigPUE) and IN LIMBO (Clip D)
+(https://www.youtube.com/watch?v=hgx7L9Nyfjw). While the video
+sequence is playing, there should be a selector to let the user pick
+which video to play next (skipping ahead in the cyclic sequence).
+
+Stage 5: Now that we see how the API works, we might want to allow the
+user to create their own list of videos to play with rather than these
+four fascinating clips from NFB's In Limbo video.  To make this more
+general, we want to change the page so that it displays to the user the
+current list of videos.
+
+Stage 6: Now we want to change the way the current list of videos is
+managed so that it comes from the localStorage feature discussed in
+https://wiki.gaul.csd.uwo.ca/display/CS33422017/CS50+2016+-+Week+10+-+JavaScript
+
+Stage 7: We should now add functionality to j100.html so that the user
+can delete any video in the displayed list.  If localStorage is working
+right, this change should persist from one load of the page to the next.
+It would probably be useful to have a reset button so that the user can
+always go back to a standard list (like the exciting In Limbo series).
+
+Stage 8: And, now, we should add functionality that allows the user to
+add a url and title to the current list.  
+
+If you find this page worth using, but would be better with a different
+design, please let me know.  Depending on complexity, new practice tasks 
+might be generated from your design.
