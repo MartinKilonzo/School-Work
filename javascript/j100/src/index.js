@@ -1,6 +1,4 @@
-const player = document.createElement('script');
-player.src = './src/player.js';
+const player = require('player.js');
 
 $(document).ready(() => {
-  document.head.appendChild(player);
 });
