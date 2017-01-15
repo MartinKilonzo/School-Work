@@ -20,7 +20,7 @@ git config --global push.default simple
 
 cd ${start}/3342/${username}
 date > .update-${username}
-git add --all
+git add .
 git commit -m "uploading my work"
 git push
 
