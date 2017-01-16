@@ -36,5 +36,4 @@ The scripts included are:
 3342msg -- launches my default editor to create a commit message that is 
            then comitted to the Git log
 3342push -- pushes my git repository back to BitBucket
-
-
+3342time -- finds header lines in Git log that start with the word time
