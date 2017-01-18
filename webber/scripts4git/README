@@ -1,0 +1,39 @@
+This directory contains scripts that I created to make using git easier for me.
+These scripts have been used without problem on my Ubuntu account.
+Probably they will work on other Unix-based systems.
+
+One thing I have done that is worth noting is in the 3342msg script, I set 
+my default editor to be /usr/bin/emacs (you should check both the location of
+your editor and what editor you actually want to use as your default and 
+update that script accordingly).
+
+I also set the default push mode in the 3342push script to simple to get 
+rid of the version change message I was getting before when I did a push.
+
+More generally, the scripts assume that in your Unix home directory there are
+two files:
+.3342me  contains your gaul login name
+.3342base contains the name of the directory where you keep your git 
+           repositories.  it is assumed that you have created a directory
+           named 3342 in that directory.  
+
+As it is easy to forget to set up these files, the first thing each script
+does is check to find out if theses files exist and contain anything other
+than spaces.  If they don't, then the scripts output an error message and exit.
+If the scripts get non-blank info, then the scripts proceed with the actions 
+indicated.
+
+The scripts all execute as bash shell scripts.  To make sure a script will
+execute when invoked with its name on a Unix system, you set its execute
+bit by typing something like chmod 755 ~/3342clone .  Then when I type
+~/3342clone it does its thing (in this case pulls my BitBucket repository
+into my workarea).
+
+The scripts included are:
+
+3342clone --  clones my git repository from BitBucket
+3342log -- shows me my Git log
+3342msg -- launches my default editor to create a commit message that is 
+           then comitted to the Git log
+3342push -- pushes my git repository back to BitBucket
+3342time -- finds header lines in Git log that start with the word time
