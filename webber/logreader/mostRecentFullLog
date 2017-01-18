@@ -1,3 +1,28 @@
+commit da4811decd5b411b735551e8a7865e290f8c4c9e
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Wed Jan 18 16:52:44 2017 -0500
+
+    time j100 30 Added a dev server to the repo; video playlist now loops
+
+commit ff9b00efbbaded1fe0994b49c37f0639ff942200
+Merge: 010d4bf 0346d29
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Wed Jan 18 15:43:42 2017 -0500
+
+    Merge branch 'master' of ssh://repo.gaul.csd.uwo.ca:7999/cs3342_w2017/rkilonzo
+
+commit 010d4bfa60bfc091df9e01050123c014d6428d60
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Wed Jan 18 15:43:11 2017 -0500
+
+    time j100 15 Added video player which plays a queue of videos.
+
+commit 0346d29b5b24d104e5eb34766323da49e634d2df
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Wed Jan 18 12:55:48 2017 -0500
+
+    updating practice framework and running summary.rb
+
 commit 9af3f086bd6aa3cf0f25fe99ccb2f640e4031da3
 Author: Bob Webber <webber@csd.uwo.ca>
 Date:   Tue Jan 17 21:12:30 2017 -0500
