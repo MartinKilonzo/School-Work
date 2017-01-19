@@ -1,8 +1,12 @@
-/*global YT */
+/* global YT */
 const iframe = require('https://www.youtube.com/iframe_api');
 
-var videoPlayer;
-const playlist = 'taJ60kskkns,FG0fTKAqZ5g,OElxUkigPUE,hgx7L9Nyfjw';
+var videoPlayer, playlist;
+
+window.addEventListener('playlist', (event) => {
+  console.log(event)
+});
+
 
 function onYouTubeIframeAPIReady() {
   videoPlayer = new YT.Player('video-placeholder', {
@@ -11,6 +15,6 @@ function onYouTubeIframeAPIReady() {
       color: 'white',
       playlist: playlist,
     },
-    loopPlaylists: true
+    loopPlaylists: true,
   });
 }

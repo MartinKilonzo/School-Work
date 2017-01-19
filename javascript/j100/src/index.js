@@ -1,4 +1,2 @@
-const player = require('player.js');
-
-$(document).ready(() => {
-});
+require('player.js');
+require('playlist.js');
