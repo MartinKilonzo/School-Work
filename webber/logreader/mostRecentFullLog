@@ -1,3 +1,22 @@
+commit b2d98808c75b92136f08f48bbb3ce2b038ae935e
+Merge: bd08d5a b75489c
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Thu Jan 19 00:08:02 2017 -0500
+
+    Merge branch 'master' of ssh://repo.gaul.csd.uwo.ca:7999/cs3342_w2017/rkilonzo
+
+commit bd08d5a2e7896072d463ad6cbebf5cad79b365b2
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Thu Jan 19 00:06:53 2017 -0500
+
+    time j100 15 Added a playlist button to edit the playlist
+
+commit b75489c1cb39349b0353990d0e8d52d043ea3124
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Wed Jan 18 23:00:03 2017 -0500
+
+    updating practice framework and running summary.rb
+
 commit de162ad0752642b28de39d40bb12a30da6ccfc6e
 Author: Bob Webber <webber@csd.uwo.ca>
 Date:   Wed Jan 18 18:03:54 2017 -0500
