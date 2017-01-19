@@ -1,3 +1,9 @@
+commit a53756e807072871f6d3d38ce1f3beafb6488296
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Thu Jan 19 15:11:52 2017 -0500
+
+    updating practice framework and running summary.rb
+
 commit b2d98808c75b92136f08f48bbb3ce2b038ae935e
 Merge: bd08d5a b75489c
 Author: MartinKilonzo <martinkilonzo2@gmail.com>
