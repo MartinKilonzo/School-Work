@@ -148,7 +148,7 @@ class NewTimeLog
     # need to read the log into Ruby
     # http://blog.honeybadger.io/capturing-stdout-stderr-from-shell-commands-via-ruby/
     # https://ruby-doc.org/stdlib-2.2.1/libdoc/open3/rdoc/Open3.html
-    stdout, stderr, status = Open3.capture3('git --no-pager log --pretty=oneline --grep "^time"')
+    stdout, stderr, status = Open3.capture3('git --no-pager log --pretty=oneline --grep "^time "')
     @time_log = TimeLog.new(stdout, known_tasks)
   end
   def print()
