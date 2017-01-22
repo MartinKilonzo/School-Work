@@ -1,3 +1,46 @@
+commit ac49daf3edfe67714c6bfd94fdd53b5ad853791d
+Merge: 7140cd2 053d4ad
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sat Jan 21 19:18:34 2017 -0500
+
+    Merge branch 'master' of ssh://repo.gaul.csd.uwo.ca:7999/cs3342_w2017/rkilonzo
+
+commit 7140cd2f6e66909bcc9d5b7920e12079baebb421
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sat Jan 21 19:18:11 2017 -0500
+
+    time j001 10 Timer keeps time state on pause
+
+commit 912f3b0f042fadb8685c6c09092ceff32198f5f2
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sat Jan 21 19:04:09 2017 -0500
+
+    time j001 50 Created a timer
+
+commit c9f2be2f61073f5cc58bed6c9f712b46e82d3a10
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sat Jan 21 18:03:19 2017 -0500
+
+    time j001 5 Added timer component
+
+commit 4092b11b87d7afb62f74ec3708bfba8995a8c3ab
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sat Jan 21 18:02:34 2017 -0500
+
+    time j100 10 added addition buttons
+
+commit 9e4cbdad860edb25ad991a60203b86464b267d9e
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sat Jan 21 17:59:40 2017 -0500
+
+    time j001 15 Scaffolded the project structure
+
+commit 053d4adbd950e13b9013973c1c1171d57234bb5b
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sat Jan 21 17:59:45 2017 -0500
+
+    updating practice framework and running summary.rb
+
 commit 9aab7225c03594e6292d6198bdbbfdfdcaf593ef
 Author: Bob Webber <webber@csd.uwo.ca>
 Date:   Sat Jan 21 16:01:57 2017 -0500

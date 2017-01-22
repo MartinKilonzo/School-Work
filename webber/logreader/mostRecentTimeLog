@@ -1,3 +1,8 @@
+7140cd2f6e66909bcc9d5b7920e12079baebb421 time j001 10 Timer keeps time state on pause
+912f3b0f042fadb8685c6c09092ceff32198f5f2 time j001 50 Created a timer
+c9f2be2f61073f5cc58bed6c9f712b46e82d3a10 time j001 5 Added timer component
+4092b11b87d7afb62f74ec3708bfba8995a8c3ab time j100 10 added addition buttons
+9e4cbdad860edb25ad991a60203b86464b267d9e time j001 15 Scaffolded the project structure
 bd08d5a2e7896072d463ad6cbebf5cad79b365b2 time j100 15 Added a playlist button to edit the playlist
 da4811decd5b411b735551e8a7865e290f8c4c9e time j100 30 Added a dev server to the repo; video playlist now loops
 010d4bfa60bfc091df9e01050123c014d6428d60 time j100 15 Added video player which plays a queue of videos.
