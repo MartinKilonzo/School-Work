@@ -32,6 +32,8 @@ into my workarea).
 The scripts included are:
 
 3342clone --  clones my git repository from BitBucket
+3342pull -- pulls updates to my local copy of the git repository from the copy 
+          in BitBucket (which may have changed because of uploads from the prof)
 3342log -- shows me my Git log
 3342msg -- launches my default editor to create a commit message that is 
            then comitted to the Git log

@@ -14,6 +14,11 @@ else
   echo "username consists of spaces only, aborting"
   exit 1;
 fi
+# got idea to set the editor from http://stackoverflow.com/questions/2596805/how-do-i-make-git-use-the-editor-of-my-choice-for-commits
+git config --global core.editor "/usr/bin/emacs"
+git config --global push.default simple
+
 cd ${start}/3342/${username}
-git --no-pager log --oneline --grep "^time "
+git pull
+
 
