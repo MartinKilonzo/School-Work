@@ -1,6 +1,3 @@
-require 'open3'
-# see NewTimeLog#initialize
-
 class KnownTasks
   def initialize(known_task_file_name)
    # need to read file into memory
@@ -148,7 +145,10 @@ class NewTimeLog
     # need to read the log into Ruby
     # http://blog.honeybadger.io/capturing-stdout-stderr-from-shell-commands-via-ruby/
     # https://ruby-doc.org/stdlib-2.2.1/libdoc/open3/rdoc/Open3.html
-    stdout, stderr, status = Open3.capture3('git --no-pager log --pretty=oneline --grep "^time "')
+    # didn't work on Windows
+    # stdout, stderr, status = Open3.capture3('git --no-pager log --pretty=oneline --grep "^time"')
+    puts "hope you remembered to: " + 'git --no-pager log --pretty=oneline --grep "^time" > windowsCurrentLog'
+    stdout = IO.read("windowsCurrentLog")
     @time_log = TimeLog.new(stdout, known_tasks)
   end
   def print()

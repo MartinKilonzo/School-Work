@@ -1,3 +1,70 @@
+commit 9aab7225c03594e6292d6198bdbbfdfdcaf593ef
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sat Jan 21 16:01:57 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 8fef13b3728bc39233e603c7da0fdb366a29601c
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sat Jan 21 15:55:40 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 6a78c9fd495c3e536a69fe065c2d2e7b1117517b
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sat Jan 21 15:20:35 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 79f59860e72f0e40c4d44b27b0d285e1812ca2e9
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sat Jan 21 15:02:20 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit eb84a8a235f897399075361147ca75c10f7bc758
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Fri Jan 20 19:08:19 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit f073db7cc304f12d487f60b21c600fc7775c85d3
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Fri Jan 20 14:30:22 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit df390220d0cc54b3eb584cb1ce8215ec85e1bf93
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Thu Jan 19 16:13:57 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit a53756e807072871f6d3d38ce1f3beafb6488296
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Thu Jan 19 15:11:52 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit b2d98808c75b92136f08f48bbb3ce2b038ae935e
+Merge: bd08d5a b75489c
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Thu Jan 19 00:08:02 2017 -0500
+
+    Merge branch 'master' of ssh://repo.gaul.csd.uwo.ca:7999/cs3342_w2017/rkilonzo
+
+commit bd08d5a2e7896072d463ad6cbebf5cad79b365b2
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Thu Jan 19 00:06:53 2017 -0500
+
+    time j100 15 Added a playlist button to edit the playlist
+
+commit b75489c1cb39349b0353990d0e8d52d043ea3124
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Wed Jan 18 23:00:03 2017 -0500
+
+    updating practice framework and running summary.rb
+
 commit de162ad0752642b28de39d40bb12a30da6ccfc6e
 Author: Bob Webber <webber@csd.uwo.ca>
 Date:   Wed Jan 18 18:03:54 2017 -0500
