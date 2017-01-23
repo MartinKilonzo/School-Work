@@ -5,8 +5,16 @@ j002
 j100
 ----- Fetching list of already processed practice times
 -------- Already processed practice times 
+aceeef88a116ea15bed13a57dd6e8e6b5edd3a0f j002 65
+7140cd2f6e66909bcc9d5b7920e12079baebb421 j001 10
+912f3b0f042fadb8685c6c09092ceff32198f5f2 j001 50
+c9f2be2f61073f5cc58bed6c9f712b46e82d3a10 j001 5
+4092b11b87d7afb62f74ec3708bfba8995a8c3ab j100 10
+9e4cbdad860edb25ad991a60203b86464b267d9e j001 15
+bd08d5a2e7896072d463ad6cbebf5cad79b365b2 j100 15
+da4811decd5b411b735551e8a7865e290f8c4c9e j100 30
+010d4bfa60bfc091df9e01050123c014d6428d60 j100 15
 ----- Fetching current practice times
-WARNING: minutes reduced to 60 from 65
 -------- Current practice times 
 aceeef88a116ea15bed13a57dd6e8e6b5edd3a0f j002 65
 7140cd2f6e66909bcc9d5b7920e12079baebb421 j001 10
@@ -18,12 +26,7 @@ bd08d5a2e7896072d463ad6cbebf5cad79b365b2 j100 15
 da4811decd5b411b735551e8a7865e290f8c4c9e j100 30
 010d4bfa60bfc091df9e01050123c014d6428d60 j100 15
 ----- Summary Report
-aceeef88a116ea15bed13a57dd6e8e6b5edd3a0f j002 65
 ----- Time Log Report
 ------- By Task
-total time spent on task j002 was 60
-total time spent on task j001 was 80
-total time spent on task j100 was 70
-total time on all tasks according to this log was 210
-Note: time reported in excess of 180 minutes does not count toward practice
-the percentage of weekly required practice time spent so far is 100.0% (target is 100.0%)
+total time on all tasks according to this log was 0
+the percentage of weekly required practice time spent so far is 0.0% (target is 100.0%)
