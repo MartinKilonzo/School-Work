@@ -1,3 +1,21 @@
+commit aceeef88a116ea15bed13a57dd6e8e6b5edd3a0f
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 22 22:51:00 2017 -0500
+
+    time j002 65 Reached stage 5 of task
+
+commit 3a1a6906b7fb46dcae3cf3b89975f9a787fc2591
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 22 21:47:56 2017 -0500
+
+    Scaffolded project
+
+commit a6301af2fdaab5c4713aeb43d27a63b50384a8ba
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sun Jan 22 21:21:08 2017 -0500
+
+    updating practice framework and running summary.rb
+
 commit c4e67c33ce26f69a78434b073cdf50de3586e64e
 Author: Bob Webber <webber@csd.uwo.ca>
 Date:   Sun Jan 22 16:55:07 2017 -0500

@@ -186,10 +186,10 @@ class TimeLogReport
     if total > config.max_week_time then
        total = config.max_week_time
     end
-    puts "javascript practice time for previous week " + (total.to_s)
-    puts "ruby practice time for previous week " + "0"
-    puts "haskell practice time for previous week " + "0"
-    puts "mark for previous week " + (((10.0 * total)/config.max_week_time).to_s) + " (out of 10)"
+    puts "javascript practice time this week " + (total.to_s)
+    puts "ruby practice time this week " + "0"
+    puts "haskell practice time this week " + "0"
+    puts "mark for this week " + (((10.0 * total)/config.max_week_time).to_s) + " (out of 10)"
   end
   def printGeneral(config)
     config.putsq "----- Time Log Report"
