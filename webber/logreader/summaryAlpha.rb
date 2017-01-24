@@ -139,7 +139,11 @@ end
 class NewTimeLog 
   def initialize(config, known_tasks)
     #use of back quotes in Ruby: http://ruby-doc.org/core-2.4.0/Kernel.html#method-i-60
-    stdout = `git --no-pager log --pretty=oneline --grep "^time "`
+    if config.git_from_file then
+      stdout = IO.read("windowsCurrentLog")
+    else
+      stdout = `git --no-pager log --pretty=oneline --grep "^time "`
+    end
     # matches on lines where time is not in the first line, sigh!
     @time_log = TimeLog.new(config, stdout, known_tasks)
   end
@@ -207,7 +211,7 @@ class TimeLogReport
 end
 
 class Config
-  attr_accessor :date, :report_type, :quiet, :error_out, :max_entry_time, :max_week_time
+  attr_accessor :date, :report_type, :quiet, :error_out, :max_entry_time, :max_week_time, :git_from_file
   def initialize(arg_list)
     if arg_list.include?("mark") then
       @report_type = :mark
@@ -227,6 +231,11 @@ class Config
     else
       # http://www.rubyinside.com/what-rubys-double-pipe-or-equals-really-does-5488.html
       @quiet ||= false
+    end
+    if arg_list.include?("gitfromfile") then
+      @git_from_file = true
+    else
+      @git_from_file = false
     end
     @error_out = STDERR
     @max_entry_time = 60
