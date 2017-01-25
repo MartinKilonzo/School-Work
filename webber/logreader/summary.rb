@@ -210,7 +210,7 @@ class TimeLogReport
   end
 end
 
-class Config
+class SummaryConfig
   attr_accessor :date, :report_type, :quiet, :error_out, :max_entry_time, :max_week_time, :git_from_file
   def initialize(arg_list)
     if arg_list.include?("mark") then
@@ -249,7 +249,7 @@ class Config
   end
 end
 
-config = Config.new(ARGV)
+config = SummaryConfig.new(ARGV)
 # http://alvinalexander.com/blog/post/ruby/how-read-command-line-arguments-args-script-program
 
 
