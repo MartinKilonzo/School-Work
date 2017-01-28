@@ -1,3 +1,21 @@
+commit 551ab2fa1b1f90c9a1908e355552199b7b6f364b
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sat Jan 28 15:20:16 2017 -0500
+
+    time j200 70 Configured timer to work correctly
+
+commit 8e47b9864992322d537715e1fb389641c85bfd2b
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sat Jan 28 14:06:05 2017 -0500
+
+    Initial commit
+
+commit d7f24ee7b25a707d6c033931cdc91d10e450f2ed
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Thu Jan 26 18:13:34 2017 -0500
+
+    updating practice framework and running summary.rb
+
 commit 94d222f8c9ec4a33251ea7a8106623d90ea16b9c
 Author: Bob Webber <webber@csd.uwo.ca>
 Date:   Wed Jan 25 17:40:26 2017 -0500
