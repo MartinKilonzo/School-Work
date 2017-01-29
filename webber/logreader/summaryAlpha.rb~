@@ -139,7 +139,11 @@ end
 class NewTimeLog 
   def initialize(config, known_tasks)
     #use of back quotes in Ruby: http://ruby-doc.org/core-2.4.0/Kernel.html#method-i-60
-    stdout = `git --no-pager log --pretty=oneline --grep "^time "`
+    if config.git_from_file then
+      stdout = IO.read("windowsCurrentLog")
+    else
+      stdout = `git --no-pager log --pretty=oneline --grep "^time "`
+    end
     # matches on lines where time is not in the first line, sigh!
     @time_log = TimeLog.new(config, stdout, known_tasks)
   end
@@ -186,10 +190,10 @@ class TimeLogReport
     if total > config.max_week_time then
        total = config.max_week_time
     end
-    puts "javascript practice time this week " + (total.to_s)
-    puts "ruby practice time this week " + "0"
-    puts "haskell practice time this week " + "0"
-    puts "mark for this week " + (((10.0 * total)/config.max_week_time).to_s) + " (out of 10)"
+    puts "javascript practice time for previous week " + (total.to_s)
+    puts "ruby practice time for previous week " + "0"
+    puts "haskell practice time for previous week " + "0"
+    puts "mark for previous week " + (((10.0 * total)/config.max_week_time).to_s) + " (out of 10)"
   end
   def printGeneral(config)
     config.putsq "----- Time Log Report"
@@ -206,8 +210,8 @@ class TimeLogReport
   end
 end
 
-class Config
-  attr_accessor :date, :report_type, :quiet, :error_out, :max_entry_time, :max_week_time
+class SummaryConfig
+  attr_accessor :date, :report_type, :quiet, :error_out, :max_entry_time, :max_week_time, :git_from_file
   def initialize(arg_list)
     if arg_list.include?("mark") then
       @report_type = :mark
@@ -228,6 +232,11 @@ class Config
       # http://www.rubyinside.com/what-rubys-double-pipe-or-equals-really-does-5488.html
       @quiet ||= false
     end
+    if arg_list.include?("gitfromfile") then
+      @git_from_file = true
+    else
+      @git_from_file = false
+    end
     @error_out = STDERR
     @max_entry_time = 60
     @max_week_time = 180
@@ -240,7 +249,7 @@ class Config
   end
 end
 
-config = Config.new(ARGV)
+config = SummaryConfig.new(ARGV)
 # http://alvinalexander.com/blog/post/ruby/how-read-command-line-arguments-args-script-program
 
 
