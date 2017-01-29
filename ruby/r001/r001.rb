@@ -1,11 +1,15 @@
 puts 'hello'
 
 File.open('gitlog.txt', 'w') do |fileStream|
-  log = `git log`
-  puts log.length
 
-  logLines = log.split(/commit (.){40}\n/)
+  logLines = `git log`.split(/commit [\w\d]{40}\s/)
+
   puts logLines.length
-  puts logLines[2]
-  fileStream.syswrite(log)
+
+  logLines.delete_if { |log| log.include? 'Author: Bob Webber <webber@csd.uwo.ca>' }
+
+  puts logLines.length
+  puts logLines
+  # logLines.each {|log| puts log}
+  logLines.each {|log| fileStream.syswrite(log)}
 end
