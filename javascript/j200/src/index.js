@@ -1,4 +1,4 @@
-const timerComponent = require('./scripts/timer.js');
+const timerComponent = require('./scripts/mespeak.js');
 
 
 $(document).ready(() => {

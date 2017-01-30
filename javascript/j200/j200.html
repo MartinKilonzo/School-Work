@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>MeSpeak</title>
+</head>
+
+<body>
+    <div id="app">
+        <button>Talk</button>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="mespeak/mespeak.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(document).ready(() => {
+            meSpeak.loadConfig("./mespeak/mespeak_config.json");
+            meSpeak.loadVoice('en-us.json');
+            meSpeak.speak('hello world');
+        });
+    </script>
+</body>
+
+</html>
