@@ -8,17 +8,17 @@ j200
 r001
 ----- Fetching list of already processed practice times
 -------- Already processed practice times 
-aceeef88a116ea15bed13a57dd6e8e6b5edd3a0f j002 65
-7140cd2f6e66909bcc9d5b7920e12079baebb421 j001 10
-912f3b0f042fadb8685c6c09092ceff32198f5f2 j001 50
-c9f2be2f61073f5cc58bed6c9f712b46e82d3a10 j001 5
-4092b11b87d7afb62f74ec3708bfba8995a8c3ab j100 10
-9e4cbdad860edb25ad991a60203b86464b267d9e j001 15
-bd08d5a2e7896072d463ad6cbebf5cad79b365b2 j100 15
-da4811decd5b411b735551e8a7865e290f8c4c9e j100 30
-010d4bfa60bfc091df9e01050123c014d6428d60 j100 15
 ----- Fetching current practice times
+WARNING: skipping this log entry because unknown task 25
+25dd65aa3f4b7400d6b47a958b67f18b25448d19 time 25 j200 Configured meSpeak
 -------- Current practice times 
+ef6ab992af4a17c091e0efe0807a4cb11512dcac j002 20
+7e719cca752f519225dfe805a13b4448c2f8771e j001 45
+206b525e884c3982a985f47f342698e69a804e12 r001 20
+9b7246920bfa49f9879ae2281aabf1e752192fad r001 5
+74dff315f84a8106f88103cf65b18ff2ffac0372 r001 15
+b2a6369ce2ea961c0daf044d820dabc6066b53a1 r001 10
+fbe2987d5055cb3865fc188c1b2f51dc39260044 r001 15
 551ab2fa1b1f90c9a1908e355552199b7b6f364b j200 70
 aceeef88a116ea15bed13a57dd6e8e6b5edd3a0f j002 65
 7140cd2f6e66909bcc9d5b7920e12079baebb421 j001 10
@@ -32,8 +32,15 @@ da4811decd5b411b735551e8a7865e290f8c4c9e j100 30
 ----- Summary Report
 WARNING: minutes reduced to 60 from 70
 551ab2fa1b1f90c9a1908e355552199b7b6f364b j200 70
+WARNING: minutes reduced to 60 from 65
+aceeef88a116ea15bed13a57dd6e8e6b5edd3a0f j002 65
 ----- Time Log Report
 ------- By Task
+total time spent on task j002 was 80
+total time spent on task j001 was 125
+total time spent on task r001 was 65
 total time spent on task j200 was 60
-total time on all tasks according to this log was 60
-the percentage of weekly required practice time spent so far is 33.333333333333336% (target is 100.0%)
+total time spent on task j100 was 70
+total time on all tasks according to this log was 400
+Note: time reported in excess of 180 minutes does not count toward practice
+the percentage of weekly required practice time spent so far is 100.0% (target is 100.0%)

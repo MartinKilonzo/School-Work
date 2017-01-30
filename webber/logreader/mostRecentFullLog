@@ -1,3 +1,70 @@
+commit ef6ab992af4a17c091e0efe0807a4cb11512dcac
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 29 23:34:46 2017 -0500
+
+    time j002 20 Added Incorrect tally and made the scoring system more robust
+
+commit 25dd65aa3f4b7400d6b47a958b67f18b25448d19
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 29 23:14:57 2017 -0500
+
+    time 25 j200 Configured meSpeak
+
+commit 898e91258dc9fde2ef365d3ffebf8cf5ef04536b
+Merge: 7e719cc 73b7ab8
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 29 22:44:18 2017 -0500
+
+    Merge branch 'master' of ssh://repo.gaul.csd.uwo.ca:7999/cs3342_w2017/rkilonzo
+
+commit 7e719cca752f519225dfe805a13b4448c2f8771e
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 29 22:44:03 2017 -0500
+
+    time j001 45 Finished making a functional timer with start/stop/reset/pause functionality
+
+commit 73b7ab877741e3b51fb1e8b63d4cfb67363df038
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sun Jan 29 18:28:42 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 206b525e884c3982a985f47f342698e69a804e12
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 29 17:30:25 2017 -0500
+
+    time r001 20 log can now be filtered by prject (or any other string) via the command line; Completed statge 5
+
+commit 9b7246920bfa49f9879ae2281aabf1e752192fad
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 29 17:06:21 2017 -0500
+
+    time r001 5 Logs populated in chronological order; Stage 3 complete
+
+commit 74dff315f84a8106f88103cf65b18ff2ffac0372
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 29 17:04:34 2017 -0500
+
+    time r001 15 Bob Webber commits are filtered from the log; log is written to file properly
+
+commit b2a6369ce2ea961c0daf044d820dabc6066b53a1
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 29 16:37:06 2017 -0500
+
+    time r001 10 Split log by commit
+
+commit fbe2987d5055cb3865fc188c1b2f51dc39260044
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 29 16:23:53 2017 -0500
+
+    time r001 15 File I/O working with git log
+
+commit 76f7a493b801ddf87fc2a07135b7d52c513d09e9
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 29 16:11:43 2017 -0500
+
+    Setting up the project
+
 commit 5a512f265295ad22c320470454322f5c542aa268
 Author: Bob Webber <webber@csd.uwo.ca>
 Date:   Sun Jan 29 15:31:31 2017 -0500

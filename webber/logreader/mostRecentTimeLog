@@ -1,3 +1,11 @@
+ef6ab992af4a17c091e0efe0807a4cb11512dcac time j002 20 Added Incorrect tally and made the scoring system more robust
+25dd65aa3f4b7400d6b47a958b67f18b25448d19 time 25 j200 Configured meSpeak
+7e719cca752f519225dfe805a13b4448c2f8771e time j001 45 Finished making a functional timer with start/stop/reset/pause functionality
+206b525e884c3982a985f47f342698e69a804e12 time r001 20 log can now be filtered by prject (or any other string) via the command line; Completed statge 5
+9b7246920bfa49f9879ae2281aabf1e752192fad time r001 5 Logs populated in chronological order; Stage 3 complete
+74dff315f84a8106f88103cf65b18ff2ffac0372 time r001 15 Bob Webber commits are filtered from the log; log is written to file properly
+b2a6369ce2ea961c0daf044d820dabc6066b53a1 time r001 10 Split log by commit
+fbe2987d5055cb3865fc188c1b2f51dc39260044 time r001 15 File I/O working with git log
 551ab2fa1b1f90c9a1908e355552199b7b6f364b time j200 70 Configured timer to work correctly
 aceeef88a116ea15bed13a57dd6e8e6b5edd3a0f time j002 65 Reached stage 5 of task
 7140cd2f6e66909bcc9d5b7920e12079baebb421 time j001 10 Timer keeps time state on pause
