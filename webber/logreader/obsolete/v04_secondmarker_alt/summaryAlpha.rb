@@ -223,7 +223,7 @@ class TimeLogReport
     puts "ruby practice time for previous week " + (ruby_total.to_s)
     puts "haskell practice time for previous week " + (haskell_total.to_s)
     OldMarks.new(config).report(javascript_total, ruby_total, haskell_total)
-    puts "mark for previous week " + (total.to_s) + " (out of 10)" if config.report_type == :mark
+    puts "mark for previous week " + (total.to_s) + " (out of 10)"
   end
   def printGeneral(config)
     config.putsq "----- Time Log Report"
@@ -237,7 +237,6 @@ class TimeLogReport
        config.putsq "Note: time reported in excess of 180 minutes does not count toward practice"
        total = config.max_week_time
     end
-    self.printMark(config)
     total_percent = config.to_f((100.0 * total)/180.0)
     puts "the percentage of weekly required practice time spent so far is " + (total_percent.to_s) + "% (target is 100.0%)"
   end
@@ -300,13 +299,13 @@ class SummaryConfig
       date_arg = arg_list.find { |value| /^date=/ =~ value }
       @date = date_arg.sub("date=","")
     else
-      @date = "unknown_date"
+      @date = "unknown"
     end
     if arg_list.any? { |value| /^oldmarks=/ =~ value } then
       oldmarks_arg = arg_list.find { |value| /^oldmarks=/ =~ value }
       @old_marks_file = oldmarks_arg.sub("oldmarks=","")
     else
-      @old_marks_file = "markssofar"
+      @old_marks_file = false
     end
     if arg_list.include?("quiet") then
       @quiet = true

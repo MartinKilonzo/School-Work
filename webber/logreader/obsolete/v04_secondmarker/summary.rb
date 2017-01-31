@@ -23,18 +23,13 @@ class KnownTasks
 end
 
 class TimeLogEntry
-#  # https://ruby-doc.org/core-2.4.0/Comparable.html
-#  include Comparable
-#  def <=>(other)
-#    @commit_id <=> other.commit_id
-#  end
-
-  def equal_ids(other)
-    @commit_id == other.commit_id
+  # https://ruby-doc.org/core-2.4.0/Comparable.html
+  include Comparable
+  def <=>(other)
+    @commit_id <=> other.commit_id
   end
 
   attr_reader :commit_id, :task_name, :minutes
-
 
   def initialize(config, entry_string, known_tasks)
     # 
@@ -103,13 +98,10 @@ class TimeLog
     end
   end
   def include?(entry)
-    @log.each do | log_entry |
-      return true if log_entry.equal_ids(entry)
-    end
-    return false
+    @log.include?(entry)
   end
   def remove(config, old_log)
-    log = @log.select do | entry |
+    log = @log.keep_if do | entry |
       ! old_log.include?(entry)
     end   
     TimeLog.new(config, log)
@@ -169,29 +161,19 @@ class TimeLogReport
   def initialize(time_log)
     @time_log = time_log
     @report = Hash.new
-    @total = 0.0
-    @javascript_total = 0.0
-    @ruby_total = 0.0
-    @haskell_total = 0.0
+    @total = 0
     # hash tables explained https://ruby-doc.org/core-2.2.0/Hash.html
   end
   def analyze()
     @time_log.each do | entry |
        task_name = entry.task_name
-       # http://stackoverflow.com/questions/5502761/why-is-division-in-ruby-returning-an-integer-instead-of-decimal-value
-       minutes = entry.minutes.to_f
+       minutes = entry.minutes
        if @report.has_key?(task_name) then
          @report[task_name] = @report[task_name] + minutes
        else
          @report[task_name] = minutes
        end
-       @total += minutes
-       # http://stackoverflow.com/questions/18463727/how-can-i-check-for-first-letters-in-string-in-ruby
-       # https://ruby-doc.org/core-2.2.0/String.html#method-i-start_with-3F
-       # http://stackoverflow.com/questions/4500504/does-it-matter-if-a-conditional-statement-comes-before-or-after-the-expression
-       @javascript_total += minutes if task_name.start_with?("j")
-       @ruby_total += minutes if task_name.start_with?("r")
-       @haskell_total += minutes if task_name.start_with?("h")
+       @total = @total + minutes
     end
     self
   end
@@ -205,25 +187,13 @@ class TimeLogReport
   def printMark(config)
     puts "On " + config.date + " marking for previous week"
     total = @total
-    javascript_total = @javascript_total
-    ruby_total = @ruby_total
-    haskell_total = @haskell_total
     if total > config.max_week_time then
-       javascript_total = javascript_total * config.max_week_time / total
-       ruby_total = ruby_total * config.max_week_time / total
-       haskell_total = haskell_total * config.max_week_time / total
        total = config.max_week_time
     end
-    # https://ruby-doc.org/core-2.4.0/Float.html#method-i-round
-    javascript_total = config.to_f(javascript_total)
-    ruby_total = config.to_f(ruby_total)
-    haskell_total = config.to_f(haskell_total)
-    total = config.to_f((10.0 * total)/config.max_week_time)
-    puts "javascript practice time for previous week " + (javascript_total.to_s)
-    puts "ruby practice time for previous week " + (ruby_total.to_s)
-    puts "haskell practice time for previous week " + (haskell_total.to_s)
-    OldMarks.new(config).report(javascript_total, ruby_total, haskell_total)
-    puts "mark for previous week " + (total.to_s) + " (out of 10)" if config.report_type == :mark
+    puts "javascript practice time for previous week " + (total.to_s)
+    puts "ruby practice time for previous week " + "0"
+    puts "haskell practice time for previous week " + "0"
+    puts "mark for previous week " + (((10.0 * total)/config.max_week_time).to_s) + " (out of 10)"
   end
   def printGeneral(config)
     config.putsq "----- Time Log Report"
@@ -232,62 +202,16 @@ class TimeLogReport
       puts "total time spent on task " + task + " was " + (minutes.to_s)
     end
     config.putsq "total time on all tasks according to this log was " + (@total.to_s)
-    total = @total
-    if total > config.max_week_time then
+    if @total > config.max_week_time then
        config.putsq "Note: time reported in excess of 180 minutes does not count toward practice"
-       total = config.max_week_time
+       @total = config.max_week_time
     end
-    self.printMark(config)
-    total_percent = config.to_f((100.0 * total)/180.0)
-    puts "the percentage of weekly required practice time spent so far is " + (total_percent.to_s) + "% (target is 100.0%)"
+    puts "the percentage of weekly required practice time spent so far is " + (((100.0 * @total)/180.0).to_s) + "% (target is 100.0%)"
   end
 end
 
-class OldMarks
-    # created to support a report of practice work on a per language basis 
-    # so far this semester, invoked:
-    #  OldMarks.new(config).report(javascript_total, ruby_total, haskell_total)
-    
-    def initialize(config)
-       @config = config
-       @skip_report = ! (config.old_marks_file)
-       return if @skip_report
-       old_marks_file = config.old_marks_file
-       old_marks_file_string = IO.read(old_marks_file)
-       @old_marks_file_contents = Array.new
-       old_marks_file_string.each_line do | line |
-         @old_marks_file_contents.push(line.delete("\n"))
-       end
-    end
-
-    def sum_up(language, contribution_this_week)
-       values = @old_marks_file_contents.map do | line |
-          words = line.split
-          # http://stackoverflow.com/questions/7156955/whats-the-difference-between-equal-eql-and
-          # http://stackoverflow.com/questions/1710369/most-concise-way-to-test-string-equality-not-object-equality-for-ruby-strings
-          if words[0] == language then
-             words[6].to_f
-          else
-             0.0
-          end
-       end
-       # http://stackoverflow.com/questions/1538789/how-to-sum-array-of-numbers-in-ruby
-       sum = values.inject(contribution_this_week, :+)
-       @config.to_f(sum)
-    end
-
-    def report(current_javascript_total, current_ruby_total, current_haskell_total)
-       return if @skip_report
-       puts "@@ hours of javascript to date = " + (sum_up("javascript", current_javascript_total).to_s)
-       puts "@@ hours of ruby to date = " + (sum_up("ruby", current_ruby_total).to_s)
-       puts "@@ hours of haskell to date = " + (sum_up("haskell", current_haskell_total).to_s)
-    end
-end
-
-
-
 class SummaryConfig
-  attr_accessor :date, :report_type, :max_entry_time, :max_week_time, :git_from_file, :old_marks_file
+  attr_accessor :date, :report_type, :quiet, :error_out, :max_entry_time, :max_week_time, :git_from_file
   def initialize(arg_list)
     if arg_list.include?("mark") then
       @report_type = :mark
@@ -300,13 +224,7 @@ class SummaryConfig
       date_arg = arg_list.find { |value| /^date=/ =~ value }
       @date = date_arg.sub("date=","")
     else
-      @date = "unknown_date"
-    end
-    if arg_list.any? { |value| /^oldmarks=/ =~ value } then
-      oldmarks_arg = arg_list.find { |value| /^oldmarks=/ =~ value }
-      @old_marks_file = oldmarks_arg.sub("oldmarks=","")
-    else
-      @old_marks_file = "markssofar"
+      @date = "unknown"
     end
     if arg_list.include?("quiet") then
       @quiet = true
@@ -320,12 +238,8 @@ class SummaryConfig
       @git_from_file = false
     end
     @error_out = STDERR
-    @max_entry_time = 60.0
-    @max_week_time = 180.0
-    @float_precision = 3
-  end
-  def to_f(value)
-    value.to_f.round(@float_precision)
+    @max_entry_time = 60
+    @max_week_time = 180
   end
   def putsq(message)
     puts message unless @quiet
@@ -337,6 +251,8 @@ end
 
 config = SummaryConfig.new(ARGV)
 # http://alvinalexander.com/blog/post/ruby/how-read-command-line-arguments-args-script-program
+
+
 
 config.putsq "----- Beginning to process log file"
 config.putsq "----- First read known task list"
@@ -352,3 +268,4 @@ config.putsq "-------- Current practice times "
 to_be_analyzed.print(config)
 config.putsq "----- Summary Report"
 to_be_analyzed.report(config, already_processed).print(config)
+
