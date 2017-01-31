@@ -23,13 +23,18 @@ class KnownTasks
 end
 
 class TimeLogEntry
-  # https://ruby-doc.org/core-2.4.0/Comparable.html
-  include Comparable
-  def <=>(other)
-    @commit_id <=> other.commit_id
+#  # https://ruby-doc.org/core-2.4.0/Comparable.html
+#  include Comparable
+#  def <=>(other)
+#    @commit_id <=> other.commit_id
+#  end
+
+  def equal_ids(other)
+    @commit_id == other.commit_id
   end
 
   attr_reader :commit_id, :task_name, :minutes
+
 
   def initialize(config, entry_string, known_tasks)
     # 
@@ -98,10 +103,13 @@ class TimeLog
     end
   end
   def include?(entry)
-    @log.include?(entry)
+    @log.each do | log_entry |
+      return true if log_entry.equal_ids(entry)
+    end
+    return false
   end
   def remove(config, old_log)
-    log = @log.keep_if do | entry |
+    log = @log.select do | entry |
       ! old_log.include?(entry)
     end   
     TimeLog.new(config, log)
@@ -343,4 +351,3 @@ config.putsq "-------- Current practice times "
 to_be_analyzed.print(config)
 config.putsq "----- Summary Report"
 to_be_analyzed.report(config, already_processed).print(config)
-
