@@ -374,6 +374,54 @@
         "note": "this is similar to NaN's usage in IEEE standard floating point arithmetic",
         "source": "SLSW8"
      },
+     {
+        "question": "When viewing programming languages as natural languages, the word ANSWER is used instead of `words'",
+        "answer": "tokens",
+        "note": "optional note",
+        "source": "ICD1"
+     },
+     {
+        "question": "The routine in a compiler that takes as input a sequence of characters outputs these characters grouped into meaningful units is called ANSWER",
+        "answer": ["a lexical analyzer", "a scanner", "a lexer"],
+        "note": "optional note",
+        "source": "ICD1"
+     },
+     {
+        "question": "The specifications for how to group characters into meaningful units are traditionally written as ANSWER",
+        "answer": "regular expressions",
+        "note": "optional note",
+        "source": "ICD1"
+     },
+     {
+        "question": "The specifications of how to group characters into meaningful basic units of a programming language are generlly implemented in code that has the abstract form of ANSWER",
+        "answer": ["a finite automata", "a finite state machine"],
+        "note": "optional note",
+        "source": "ICD1"
+     },
+     {
+        "question": "When viewed abstractly, a language is defined as a set of ANSWER",
+        "answer": "strings",
+        "note": "optional note",
+        "source": "ICD1"
+     },
+     {
+        "question": "The Greek letter epsilon, when talking about languages, is used to represent ANSWER",
+        "answer": "the empty string",
+        "note": "optional note",
+        "source": "ICD1"
+     },
+     {
+        "question": "In automatically generating the code that reads characters and outputs the part of a programming language that is analogous to its words, we start with a specification and then traditionally convert it into code in two stages.  In the first stage, we produce ANSWER ",
+        "answer": ["a nondeterministic finite automata", "a nondeterministic finite state machine"],
+        "note": "optional note",
+        "source": "ICD1"
+     },
+     {
+        "question": "In automatically generating the code that reads characters and outputs the part of a programming language that is analogous to its words, we start with a specification and then traditionally convert it into code in two stages.  The main problem that can arise in moving from the first stage to the second stage is ANSWER ",
+        "answer": "an exponential explosion in the number of states needed",
+        "note": "optional note",
+        "source": "ICD1"
+     },
      null
   ]
 }
