@@ -1,5 +1,5 @@
-$('#app').append('<button>+</button>').on('click', (event) => {
+$('#playlistAdd').on('click', (event) => {
   const addToPlaylistEvent = new Event('playlist');
-  addToPlaylistEvent.data = 'woooooooooooo';
+  addToPlaylistEvent.data = '';
   document.dispatchEvent(addToPlaylistEvent);
 });

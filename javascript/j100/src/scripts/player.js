@@ -1,4 +1,5 @@
 /* global YT */
+
 const iframe = require('https://www.youtube.com/iframe_api');
 
 let videoPlayer;
