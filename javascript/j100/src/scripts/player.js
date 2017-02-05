@@ -1,10 +1,11 @@
 /* global YT */
 const iframe = require('https://www.youtube.com/iframe_api');
 
-var videoPlayer, playlist;
+let videoPlayer;
+let playlist;
 
-window.addEventListener('playlist', (event) => {
-  console.log(event)
+document.addEventListener('playlist', (event) => {
+  console.log(event);
 });
 
 
@@ -13,8 +14,10 @@ function onYouTubeIframeAPIReady() {
     videoId: 'LaSRU5m_7og',
     playerVars: {
       color: 'white',
-      playlist: playlist,
+      playlist,
     },
     loopPlaylists: true,
   });
 }
+
+require('playlist.js');
