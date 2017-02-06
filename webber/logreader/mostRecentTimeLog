@@ -1,3 +1,8 @@
+e1a9313a3b93ff4ecb999d0aa3cdbcb3ab7e6b65 time j100 10 Added url restrictions and parsing to the inputted URL
+2449e231e8b17bc437849dc5dba45972ab318bc0 time j100 10 Added url restrictions and parsing to the inputted URL
+b5c256b0f709aed616d100487c45ffea7c06c73a time j100 20 Added playlist controls to the DOM
+c0669ee5ba24c50a493f95cec408646668cdfa30 time j100 37 Added appropriate event listeners and dispatchers for communication between elements
+7e53bee6ce66eee4a1b22dd0f3a51aeed085288b time h001 75 Completed file I/O in Haskell
 ef6ab992af4a17c091e0efe0807a4cb11512dcac time j002 20 Added Incorrect tally and made the scoring system more robust
 25dd65aa3f4b7400d6b47a958b67f18b25448d19 time 25 j200 Configured meSpeak
 7e719cca752f519225dfe805a13b4448c2f8771e time j001 45 Finished making a functional timer with start/stop/reset/pause functionality

@@ -1,3 +1,39 @@
+commit e1a9313a3b93ff4ecb999d0aa3cdbcb3ab7e6b65
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 5 14:21:57 2017 -0500
+
+    time j100 10 Added url restrictions and parsing to the inputted URL
+
+commit 2449e231e8b17bc437849dc5dba45972ab318bc0
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 5 14:19:07 2017 -0500
+
+    time j100 10 Added url restrictions and parsing to the inputted URL
+
+commit b5c256b0f709aed616d100487c45ffea7c06c73a
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 5 14:08:08 2017 -0500
+
+    time j100 20 Added playlist controls to the DOM
+
+commit c0669ee5ba24c50a493f95cec408646668cdfa30
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 5 13:55:21 2017 -0500
+
+    time j100 37 Added appropriate event listeners and dispatchers for communication between elements
+
+commit 7e53bee6ce66eee4a1b22dd0f3a51aeed085288b
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 5 13:17:23 2017 -0500
+
+    time h001 75 Completed file I/O in Haskell
+
+commit 2cfcf23a4dc4de7097749af11a80a5bc908736de
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sat Feb 4 18:16:43 2017 -0500
+
+    updating practice framework and running summary.rb
+
 commit b64212ed9114ae91ec6beb7587f9613bc966aeda
 Author: Bob Webber <webber@csd.uwo.ca>
 Date:   Thu Feb 2 19:00:04 2017 -0500
