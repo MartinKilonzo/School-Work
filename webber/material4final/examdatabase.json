@@ -422,6 +422,74 @@
         "note": "optional note",
         "source": "ICD1"
      },
+     {
+        "question": "Three concepts related to concurrency were discussed with regards to the language Io.  ANSWER was presented as a way to manage two execution streams that pass control back and forth between themselves.",
+        "answer": "coroutines",
+        "note": "optional note",
+        "source": "SLSW3"
+     },
+     {
+        "question": "Three concepts related to concurrency were discussed with regards to the language Io.  ANSWER was presented as a general mechanism for sending a message to an object that would cause that object to respond to the message as a separate process running asynchronously.",
+        "answer": "Actors",
+        "note": "optional note",
+        "source": "SLSW3"
+     },
+     {
+        "question": "Three concepts related to concurrency were discussed with regards to the language Io.  ANSWER was presented as a way to request that something be computed and then be able to continue computing until the result was needed.  If the result was available then things would proceed as expected.  If the result was not available, then a wait would be initiated until the result became available.",
+        "answer": "Futures",
+        "note": "optional note",
+        "source": "SLSW3"
+     },
+     {
+        "question": "Io is known for taking a ANSWER -based approach to object oriented programming",
+        "answer": "prototype",
+        "note": "optional note",
+        "source": "SLSW3"
+     },
+     {
+        "question": "In Io, the basic method for creating a new object is ANSWER",
+        "answer": "clone",
+        "note": "optional note",
+        "source": "SLSW3"
+     },
+     {
+        "question": "In Io, the type of an object is generally the nearest ancestor that ANSWER",
+        "answer": ["has a name that starts with a capital letter", 
+                   "has a slot for the method type"],
+        "note": "optional note",
+        "source": "SLSW3"
+     },
+     {
+        "question": "In Io, we create a singleton by redefining the method ANSWER",
+        "answer": "clone",
+        "note": "optional note",
+        "source": "SLSW3"
+     },
+     {
+        "question": "In Ruby, the evaluation of arguments to a message are handled by the object sending the message.  In Haskell, the runtime environment decides when and how much to evaluate an argument to a function.  In Io, the evaluation of the arguments to a message is made by ANSWER",
+        "answer": "the reciever of the message",
+        "note": "optional note",
+        "source": "SLSW3"
+     },
+     {
+        "question": "In Io, a message has three aspects that can be interrogated by the call method.  They are: the sender, the reciever, and ANSWER",
+        "answer": "the argument list",
+        "note": "optional note",
+        "source": "SLSW3"
+     },
+     {
+        "question": "Io allows programmers to play with its syntax, doing things like introducing a colon operator and redefining how curly braces are processed.  This makes it easy to use Io to create ANSWER",
+        "answer": "Domain Specific Languages",
+        "note": "optional note",
+        "source": "SLSW3"
+     },
+     {
+        "question": "As one would expect in an object oriented language, when a message is sent to an object, the first thing the system does is to look for a corresponding method in that object.  However, Io lets you change what happens next by redefining the method named ANSWER",
+        "answer": "forward",
+        "note": "optional note",
+        "source": "SLSW3"
+     },
+
      null
   ]
 }
