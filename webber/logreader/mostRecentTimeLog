@@ -1,3 +1,4 @@
+f35e3dbcbf8111dac9cd7de68eac4dadaf0d88af time r001 73 Filtered out non-task logs from the list
 e1a9313a3b93ff4ecb999d0aa3cdbcb3ab7e6b65 time j100 10 Added url restrictions and parsing to the inputted URL
 2449e231e8b17bc437849dc5dba45972ab318bc0 time j100 10 Added url restrictions and parsing to the inputted URL
 b5c256b0f709aed616d100487c45ffea7c06c73a time j100 20 Added playlist controls to the DOM

@@ -1,3 +1,22 @@
+commit d6d3f466e317c7877dcaa2dcb96729dfe3d6337c
+Merge: f35e3db a6aadb2
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 5 19:24:18 2017 -0500
+
+    Merge branch 'master' of ssh://repo.gaul.csd.uwo.ca:7999/cs3342_w2017/rkilonzo
+
+commit f35e3dbcbf8111dac9cd7de68eac4dadaf0d88af
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 5 19:23:53 2017 -0500
+
+    time r001 73 Filtered out non-task logs from the list
+
+commit a6aadb29a42d5ea930cb368c4988c7356b6d29e8
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sun Feb 5 16:48:59 2017 -0500
+
+    updating practice framework and running summary.rb
+
 commit e1a9313a3b93ff4ecb999d0aa3cdbcb3ab7e6b65
 Author: MartinKilonzo <martinkilonzo2@gmail.com>
 Date:   Sun Feb 5 14:21:57 2017 -0500
