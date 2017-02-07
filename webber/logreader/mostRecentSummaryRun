@@ -1,11 +1,14 @@
 ----- Beginning to process log file
 ----- First read known task list
 h001
+h010
 j001
 j002
+j010
 j100
 j200
 r001
+r010
 ----- Fetching list of already processed practice times
 WARNING: skipping this log entry because unknown task 25
 25dd65aa3f4b7400d6b47a958b67f18b25448d19 time 25 j200 Configured meSpeak

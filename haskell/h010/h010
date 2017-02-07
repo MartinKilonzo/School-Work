@@ -1,0 +1,97 @@
+The intent of this task is to build a scanner.  The scanner should read a
+file that is a program text and output a file that is a sequence of tokens.
+The idea of using file input and output is to make the different stages of
+the eventual compiler language independent (i.e., each stage can be implemented
+in a different language depending on which language you want to practice).
+
+See h001 for pointers on how to get started in Haskell on tasks like this.
+
+As with other tasks, this task is presented as a sequence of stages.  There
+are many notations that people use for the lexical structure of a program.
+The one I am using here is from the Haskell 98 report
+  https://www.haskell.org/onlinereport/syntax-iso.html
+Although the language I am defining is not Haskell, not having to reinvent 
+the definition of things like integers and floats is useful.
+
+Note that when we are processing a token, the longest expression that matches
+the token is the one taken, e.g., th12 is a four character variable name and
+not two tokens (th and 12).  On the other hand, 12th would be two tokens,
+12 and th.  Also, note that no provision is made for reporting errors in
+the following.  However, you may find reporting errors helpful in determining
+whether or not your code works.
+
+Stage 1: read in a sequence of integers separated by arbitrary amount of
+`whitespace' and output a file where each integer is on a separate line,
+preceeded by 'i ' (to indicate that it is an integer), but otherwise
+no other white space.  The order of the integers in the original file is
+the same as their order in the output file (this will hold generally for
+all tokens processed by the scanner -- similarly the output file will always
+have the format of a type indicator character, a space, and then the actual
+token). Looking at the syntax description, formally, I am talking about 
+processing:
+
+program	->	{lexeme | whitespace }
+lexeme	->	literal
+literal	->	integer
+whitespace ->	whitestuff {whitestuff}
+whitestuff ->	whitechar 
+whitechar ->	newline | vertab | space | tab 
+newline	->	return linefeed | return | linefeed | formfeed
+return	->	a carriage return
+linefeed ->	a line feed
+vertab	->	a vertical tab
+formfeed ->	a form feed
+space	->	a space
+digit	->	ascDigit 
+ascDigit ->	0 | 1 | ... | 9
+integer	->	decimal
+decimal	->	digit{digit}
+
+For example,
+   1 22      90
+   33  00001
+would generate the file
+i 1
+i 22
+i 90
+i 33
+i 00001
+
+Stage 2: Lets add in comments, which do not appear in the output file, so the
+lexical syntax expands to include
+whitestuff	->	whitechar | comment 
+comment	->	dashes {any} newline
+dashes	->	-- {-}
+any	->	graphic | space | tab
+graphic	->	small | large | symbol | digit | special | : | " | '
+small	->	ascSmall | _
+ascSmall	->	a | b | ... | z
+large	->	ascLarge 
+ascLarge	->	A | B | ... | Z
+symbol	->	ascSymbol | _ | : | " | '>
+ascSymbol	->	! | # | $ | % | & | * | + | . | / | < | = | > | ? | @
+                          | \ | ^ | | | - | ~
+
+Stage 3: Lets add floats the the possibilities.  They will appear in the
+output file, like integers, except instead of being preceeded by 'i ', they
+will be preceeded by 'f '.  This adds the following to the lexical syntax:
+
+literal	->	integer | float 
+float	->	decimal . decimal [exponent]
+                | decimal exponent
+exponent ->	(e | E) [+ | -] decimal
+
+
+Stage 4: Lets add in some special symbols.  They will appear in the output 
+file prefixed with 's ' to indicate special symbols.  Thuis adds the following
+to the lexical syntax:
+
+lexeme	->  literal | special
+special	->  ( | ) | , | ; | [ | ] | `| { | } | ascSymbol
+
+Stage 5: The last thing we need to add is variables, which will be prefixed in
+the output file by 'v '.
+
+lexeme	->  literal | special | variable
+variable -> letterish { letterish | digit }
+letterish -> small | large
