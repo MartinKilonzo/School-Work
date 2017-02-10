@@ -5,7 +5,7 @@ m = max(m, n)
 
 err = sum(C == T)/max(size(C, 1), size(T, 1))
 
-[a, b, c] = unique([C == T C T], 'rows', 'stable')
+[A, ib, ic] = unique([C == T C T], 'rows', 'stable')
 
 CONF = zeros(m)
-CONF(sub2ind([m, m], a(:,3), a(:,2))) = transpose(histcounts(c))
+CONF(sub2ind([m, m], A(:,3), A(:,2))) = transpose(histcounts(ic))
