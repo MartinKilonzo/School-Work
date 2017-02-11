@@ -3,7 +3,7 @@ function [err, CONF] = p2(C, T)
 [n, i] = max(T(:))
 m = max(m, n)
 
-err = sum(C == T)/max(size(C, 1), size(T, 1))
+err = sum(C ~= T)/max(size(C, 1), size(T, 1))
 
 [A, ib, ic] = unique([C == T C T], 'rows', 'stable')
 
