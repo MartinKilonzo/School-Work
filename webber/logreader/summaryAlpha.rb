@@ -315,10 +315,10 @@ class OldMarks
        sum_haskell_total = @config.to_f(sum_haskell_total)
        sum_discretionary_total = @config.to_f(sum_discretionary_total)
        puts "note: in each of following categories, can not exceed 450 minutes"
-       puts "@@ hours of javascript to date = " + (sum_javascript_total.to_s)
-       puts "@@ hours of ruby to date = " + (sum_ruby_total.to_s)
-       puts "@@ hours of haskell to date = " + (sum_haskell_total.to_s)
-#       puts "@@ hours of discretionary practice to date = " + (sum_haskell_total.to_s)
+       puts "@@ minutes of javascript to date = " + (sum_javascript_total.to_s)
+       puts "@@ minutes of ruby to date = " + (sum_ruby_total.to_s)
+       puts "@@ minutes of haskell to date = " + (sum_haskell_total.to_s)
+       puts "@@ minutes of discretionary practice to date = " + (sum_haskell_total.to_s)
     end
 end
 
