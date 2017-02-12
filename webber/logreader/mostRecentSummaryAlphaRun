@@ -71,6 +71,8 @@ On unknown_date marking for previous week
 javascript practice time for previous week 0.0
 ruby practice time for previous week 0.0
 haskell practice time for previous week 0.0
+discretionary practice time for previous week 0.0
+note: in each of following categories, can not exceed 450 minutes
 @@ hours of javascript to date = 368.776
 @@ hours of ruby to date = 116.401
 @@ hours of haskell to date = 54.822
