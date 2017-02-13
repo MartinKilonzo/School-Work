@@ -6,13 +6,18 @@ for iter = 1:iterNum
         X = X_train(iSample, :);
         Y = Y_train(iSample, :);
         Wx = sum(W .* X, 2);
+
+        iMax = find(Wx == max(Wx));
+        if iMax == Y
+            L = 0;
+        else
+            L = zeros(size(W, 1), size(W, 2));
+            L(Y, :) = X;
+            L(iMax, :) = -1 * X;
+        end
         
-        Yi = zeros(max(Y_train), 1);
-        Yi(Y) = 1;
-        sm = softmax(Wx);
-        W = W + alpha * (Yi - sm);
+        W = W + alpha * L;
         
-        loss = -log(sm(Y));
+        loss = Wx(iMax) - Wx(Y);
     end
 end
-loss
