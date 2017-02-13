@@ -4,22 +4,21 @@ class KnownTasks
    # https://mauricio.github.io/2014/08/03/quick-tips-for-doing-io-with-ruby.html
    # http://ruby-doc.org/core-2.0.0/IO.html
    @tasks = Array.new
-   input_string = IO.read(known_task_file_name)
-   input_string.each_line { | line | @tasks.push(line.chomp()) }
-#   IO.read(known_task_file_name).each_line do | line |
-#      @tasks.push(line.delete("\n"))
-#   end
+   IO.read(known_task_file_name).each_line do | line |
+      @tasks.push(line.delete("\n"))
+   end
    # each_line defined in https://ruby-doc.org/core-2.2.0/String.html
    # array stuff in https://ruby-doc.org/core-2.2.0/Array.html
    # also useful was http://stackoverflow.com/questions/17132262/removing-line-breaks-in-ruby
-   # https://ruby-doc.org/core-2.2.0/String.html for chomp
   end
   def known?(task_name)
     # http://stackoverflow.com/questions/1986386/check-if-a-value-exists-in-an-array-in-ruby
     @tasks.include?(task_name)
   end
   def print(config)
-    @tasks.each { | line | config.putsq line }
+    @tasks.each do | line |
+      config.putsq line
+    end
   end
 end
 
@@ -194,19 +193,16 @@ class TimeLogReport
        @ruby_total += minutes if task_name.start_with?("r")
        @haskell_total += minutes if task_name.start_with?("h")
     end
-    puts "@+@ javascript time for week found before rules applied " + (@javascript_total.to_s)
-    puts "@+@ ruby time for week found before rules applied " + (@ruby_total.to_s)
-    puts "@+@ haskell time for week found before rules applied " + (@haskell_total.to_s)
     self
   end
   def print(config)
     if config.report_type == :mark then
-      print_mark(config)
+      printMark(config)
     else
-      print_general(config)
+      printGeneral(config)
     end
   end
-  def print_mark(config)
+  def printMark(config)
     puts "On " + config.date + " marking for previous week"
     total = @total
     javascript_total = @javascript_total
@@ -218,29 +214,18 @@ class TimeLogReport
        haskell_total = haskell_total * config.max_week_time / total
        total = config.max_week_time
     end
-    old_marks = OldMarks.new(config)
-    puts "@+@ time from prior weeks on javascript " + (old_marks.sum_up("javascript").to_s)
-    puts "@+@ time from prior weeks on ruby " + (old_marks.sum_up("ruby").to_s)
-    puts "@+@ time from prior weeks on haskell " + (old_marks.sum_up("haskell").to_s)
-
-    # http://stackoverflow.com/questions/1961020/return-two-and-more-values-from-a-method
-    javascript_total, ruby_total, haskell_total, discretionary_total = old_marks.practice_limits(javascript_total, ruby_total, haskell_total)
-    total = javascript_total + ruby_total + haskell_total + discretionary_total
-    sum_javascript_total, sum_ruby_total, sum_haskell_total, sum_discretionary_total = old_marks.sum_practice(javascript_total, ruby_total, haskell_total, discretionary_total)
     # https://ruby-doc.org/core-2.4.0/Float.html#method-i-round
     javascript_total = config.to_f(javascript_total)
     ruby_total = config.to_f(ruby_total)
     haskell_total = config.to_f(haskell_total)
-    discretionary_total = config.to_f(discretionary_total)
-    mark = config.to_f((10.0 * total)/config.max_week_time)
+    total = config.to_f((10.0 * total)/config.max_week_time)
     puts "javascript practice time for previous week " + (javascript_total.to_s)
     puts "ruby practice time for previous week " + (ruby_total.to_s)
     puts "haskell practice time for previous week " + (haskell_total.to_s)
-    puts "discretionary practice time for previous week " + (discretionary_total.to_s)
-    old_marks.report(sum_javascript_total, sum_ruby_total, sum_haskell_total, sum_discretionary_total)
-    puts "mark for previous week " + (mark.to_s) + " (out of 10)" if config.report_type == :mark
+    OldMarks.new(config).report(javascript_total, ruby_total, haskell_total)
+    puts "mark for previous week " + (total.to_s) + " (out of 10)" if config.report_type == :mark
   end
-  def print_general(config)
+  def printGeneral(config)
     config.putsq "----- Time Log Report"
     config.putsq "------- By Task"
     @report.each do | task, minutes |
@@ -252,7 +237,7 @@ class TimeLogReport
        config.putsq "Note: time reported in excess of 180 minutes does not count toward practice"
        total = config.max_week_time
     end
-    self.print_mark(config)
+    self.printMark(config)
     total_percent = config.to_f((100.0 * total)/180.0)
     puts "the percentage of weekly required practice time spent so far is " + (total_percent.to_s) + "% (target is 100.0%)"
   end
@@ -260,7 +245,8 @@ end
 
 class OldMarks
     # created to support a report of practice work on a per language basis 
-    # so far this semester
+    # so far this semester, invoked:
+    #  OldMarks.new(config).report(javascript_total, ruby_total, haskell_total)
     
     def initialize(config)
        @config = config
@@ -270,11 +256,11 @@ class OldMarks
        old_marks_file_string = IO.read(old_marks_file)
        @old_marks_file_contents = Array.new
        old_marks_file_string.each_line do | line |
-         @old_marks_file_contents.push(line.chomp())
+         @old_marks_file_contents.push(line.delete("\n"))
        end
     end
 
-    def sum_up(language)
+    def sum_up(language, contribution_this_week)
        values = @old_marks_file_contents.map do | line |
           words = line.split
           # http://stackoverflow.com/questions/7156955/whats-the-difference-between-equal-eql-and
@@ -286,81 +272,22 @@ class OldMarks
           end
        end
        # http://stackoverflow.com/questions/1538789/how-to-sum-array-of-numbers-in-ruby
-       sum = values.inject(0.0, :+)
+       sum = values.inject(contribution_this_week, :+)
+       @config.to_f(sum)
     end
 
-    def discretionary_used()
-       mct = @config.max_category_time
-       javascript_total = sum_up("javascript")
-       ruby_total = sum_up("ruby")
-       haskell_total = sum_up("haskell")
-       discretionary = 0.0
-       discretionary += javascript_total - mct if javascript_total > mct
-       discretionary += ruby_total - mct if ruby_total > mct
-       discretionary += haskell_total - mct if haskell_total > mct
-       discretionary = mct if discretionary > mct
-       # puts "@+@ discretionary used "+ (discretionary.to_s)
-       return discretionary
-    end
-
-    def discretionary_limit_update(discretionary_limit, language_total, name)
-       # puts "@+@ discretionary_limit_update incoming " + name + " " + (discretionary_limit.to_s) + "," + (language_total.to_s)
-       mct = [@config.max_category_time - sum_up(name), 0.0].max
-       if language_total > mct then
-         if discretionary_limit >= (language_total - mct) then
-           discretionary_limit = discretionary_limit - (language_total - mct)
-           language_total = mct
-         else
-           @config.puterr("WARNING: discretionary limit exceeded, so no more practice time on " + name + " counts as practice time; check your weekly times to see if this has impacted them as excess time beyond discretionary limit does not count as practice time.")
-           discretionary_limit = 0.0
-           language_total = mct
-         end
-       end
-       # puts "@+@ discretionary_limit_update outgoing " + name + " " + (discretionary_limit.to_s) + "," + (language_total.to_s)
-       return discretionary_limit, language_total
-    end
-
-    def practice_limits(javascript_total, ruby_total, haskell_total)
-       # puts "@+@ practice_limits incoming " + (javascript_total.to_s) + "," + ( ruby_total.to_s) + "," + (haskell_total.to_s)
-       mct = @config.max_category_time
-       discretionary_limit = mct - discretionary_used()
-       discretionary_limit, javascript_total = discretionary_limit_update(discretionary_limit, javascript_total, "javascript")
-       discretionary_limit, ruby_total = discretionary_limit_update(discretionary_limit, ruby_total, "ruby")
-       discretionary_limit, haskell_total = discretionary_limit_update(discretionary_limit, haskell_total, "haskell")
-       # puts "@+@ practice_limits outgoing " + (javascript_total.to_s) + "," + ( ruby_total.to_s) + "," + (haskell_total.to_s)
-       discretionary_total = mct - (discretionary_limit + discretionary_used())
-       # puts "@+@ discretionary_total for previous week is " + (discretionary_total.to_s)
-       return javascript_total, ruby_total, haskell_total, discretionary_total
-    end
-
-    def sum_practice(javascript_total, ruby_total, haskell_total, discretionary_total)
-       sum_javascript_total = sum_up("javascript") + javascript_total
-       sum_ruby_total = sum_up("ruby") + ruby_total
-       sum_haskell_total = sum_up("haskell") + haskell_total
-       sum_discretionary_total = discretionary_total + discretionary_used()
-       return sum_javascript_total, sum_ruby_total, sum_haskell_total, sum_discretionary_total
-    end
-
-    def report(javascript_total, ruby_total, haskell_total, discretionary_total)
+    def report(current_javascript_total, current_ruby_total, current_haskell_total)
        return if @skip_report
-       mct = @config.max_category_time
-       # http://stackoverflow.com/questions/1359370/how-do-you-find-a-min-max-with-ruby
-       javascript_total = @config.to_f([javascript_total, mct].min)
-       ruby_total = @config.to_f([ruby_total, mct].min)
-       haskell_total = @config.to_f([haskell_total, mct].min)
-       discretionary_total = @config.to_f([discretionary_total, mct].min)
-       puts "note: in each of following categories, can not exceed " + (mct.to_s) + " minutes"
-       puts "@@ minutes of javascript to date = " + (javascript_total.to_s)
-       puts "@@ minutes of ruby to date = " + (ruby_total.to_s)
-       puts "@@ minutes of haskell to date = " + (haskell_total.to_s)
-       puts "@@ minutes of discretionary practice to date = " + (discretionary_total.to_s)
+       puts "@@ hours of javascript to date = " + (sum_up("javascript", current_javascript_total).to_s)
+       puts "@@ hours of ruby to date = " + (sum_up("ruby", current_ruby_total).to_s)
+       puts "@@ hours of haskell to date = " + (sum_up("haskell", current_haskell_total).to_s)
     end
 end
 
 
 
 class SummaryConfig
-  attr_accessor :date, :report_type, :max_entry_time, :max_week_time, :git_from_file, :old_marks_file, :max_category_time
+  attr_accessor :date, :report_type, :max_entry_time, :max_week_time, :git_from_file, :old_marks_file
   def initialize(arg_list)
     if arg_list.include?("mark") then
       @report_type = :mark
@@ -396,7 +323,6 @@ class SummaryConfig
     @max_entry_time = 60.0
     @max_week_time = 180.0
     @float_precision = 3
-    @max_category_time = 450.0
   end
   def to_f(value)
     value.to_f.round(@float_precision)
