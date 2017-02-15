@@ -489,7 +489,114 @@
         "note": "optional note",
         "source": "SLSW3"
      },
-
+     {
+        "question": "The central idea of context-free grammars is to define a language by productions.  These productions say that a nonterminal symbol can be replaced by ANSWER",
+        "answer": ["a sequence of terminals and nonterminals", "a sequence of symbols"]
+        "note": "first answer is clearer, but second answer is consistent with book usage of the term symbol",
+        "source": "ICD2"
+     },
+     {
+        "question": "The specific type of grammar that was the main focus of the portion of the Syntax Analysis chapter that was assigned was ANSWER",
+        "answer": "LL(1)",
+        "note": "optional note",
+        "source": "ICD2"
+     },
+     {
+        "question": "In a context-free grammar, the nonterminal that corresponds to a entire member of the language being defined is called ANSWER",
+        "answer": "a start symbol",
+        "note": "optional note",
+        "source": "ICD2"
+     },
+     {
+        "question": "Using the context-free grammar based on the two rules A -> b A and A -> b, ANSWER would be the derivation sequence for bbb",
+        "answer": "A => Ab => Abb => bbb",
+        "note": "optional note",
+        "source": "ICD2"
+     },
+     {
+        "question": "ANSWER is the regular expression that corresponds to the language defined by the context-free grammar with the three rules A -> A a, A -> A b, A -> a",
+        "answer": "a (a|b)*",
+        "note": "optional note",
+        "source": "ICD2"
+     },
+     {
+        "question": "ANSWER would be the derivation of ((1)) in the language defined by the context-free grammar consisting of the two rules E -> ( E ) and E -> 1.",
+        "answer": "E => (E) => ((E)) => ((1))",
+        "note": "optional note",
+        "source": "ICD2"
+     },
+     {
+        "question": "ANSWER are two derivations of the string cc that produce distinct syntax trees from the context-free grammar X -> X c Y , Y -> X  Y -> and X -> .",
+        "answer": "X => XcY => XcYcY => cYcY => ccY => cc and X => XcY => XcX => XcXcY => cXcY => ccY => cc",
+        "note": "optional note",
+        "source": "ICD2"
+     },
+     {
+        "question": "When a grammar can produce two distinct syntax trees for the same string, the grammar is said to be ANSWER",
+        "answer": "ambiguous",
+        "note": "optional note",
+        "source": "ICD2"
+     },
+     {
+        "question": "If I wanted to fix the grammar E -> E + E and E -> id, so that it would only produce one syntax that is left recursive, the new grammar would be ANSWER",
+        "answer": "E -> E + F and E -> F and F -> id",
+        "note": "the actual name of the nonterminals doesn't matter as long as they have this pattern of usage",
+        "source": "ICD2"
+     },
+     {
+        "question": "One aspect of the if then else end syntax of Ruby is that it avoids the ANSWER problem",
+        "answer": "dangling else",
+        "note": "optional note",
+        "source": "ICD2"
+     },
+     {
+        "question": "In the context-free grammar A -> B A , B -> A B, A -> B, A -> a, B -> b, and B ->  the value of Nullable(A) is ANSWER",
+        "answer": "true",
+        "note": "optional note",
+        "source": "ICD2"
+     },
+     {
+        "question": "In the context-free grammar A -> B A , B -> A B, A -> a, B -> b, B ->  the value of Nullable(A) is ANSWER",
+        "answer": "false",
+        "note": "optional note",
+        "source": "ICD2"
+     },
+     {
+        "question": "In the context-free grammar A -> B A , B -> A B, A -> B, A -> a, B -> b, and B ->  the value of FIRST(A) is ANSWER",
+        "answer": "{a,b}",
+        "note": "optional note",
+        "source": "ICD2"
+     },
+     {
+        "question": "In the context-free grammar A -> B A , B -> A B, A -> a, B -> b, B ->  the value of FIRST(A) is ANSWER",
+        "answer": "{a,b}",
+        "note": "optional note",
+        "source": "ICD2"
+     },
+     {
+        "question": "In the context-free grammar A -> B A , B -> A B, A -> B, A -> a, B -> b, and B ->  the value of FOLLOW(A) is ANSWER",
+        "answer": "{a,b}",
+        "note": "optional note",
+        "source": "ICD2"
+     },
+     {
+        "question": "In the context-free grammar A -> B A , B -> A B, A -> a, B -> b, B ->  the value of FOLLOW(A) is ANSWER",
+        "answer": "{b}",
+        "note": "optional note",
+        "source": "ICD2"
+     },
+     {
+        "question": "The context-free grammar A -> B A , B -> A B, A -> a, B -> b, B ->  is not LL(1) specifically because ANSWER",
+        "answer": "FIRST(BA) and FIRST(a) both include a, so we do not know which A rule to use",
+        "note": "optional note",
+        "source": "ICD2"
+     },
+     {
+        "question": "When you write a parser for a context-free grammar that satisfies the LL(1) criteria by representing each non-terminal by a function that chooses what functions to invoke by the LL(1) criteria, this sort of parser is called ANSWER",
+        "answer": "a recursive descent parser",
+        "note": "optional note",
+        "source": "ICD2"
+     },
      null
   ]
 }
