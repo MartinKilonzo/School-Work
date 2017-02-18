@@ -222,6 +222,7 @@ class TimeLogReport
     puts "@+@ time from prior weeks on javascript " + (old_marks.sum_up("javascript").to_s)
     puts "@+@ time from prior weeks on ruby " + (old_marks.sum_up("ruby").to_s)
     puts "@+@ time from prior weeks on haskell " + (old_marks.sum_up("haskell").to_s)
+    puts "@+@ time from prior weeks on discretionary " + (old_marks.sum_up("discretionary").to_s)
 
     # http://stackoverflow.com/questions/1961020/return-two-and-more-values-from-a-method
     javascript_total, ruby_total, haskell_total, discretionary_total = old_marks.practice_limits(javascript_total, ruby_total, haskell_total)
@@ -275,6 +276,9 @@ class OldMarks
     end
 
     def sum_up(language)
+       # in the previous marks result, sum up the times allotted to language
+       # in lines like
+       #    discretionary practice time for previous week 0.0
        values = @old_marks_file_contents.map do | line |
           words = line.split
           # http://stackoverflow.com/questions/7156955/whats-the-difference-between-equal-eql-and
@@ -294,7 +298,7 @@ class OldMarks
        javascript_total = sum_up("javascript")
        ruby_total = sum_up("ruby")
        haskell_total = sum_up("haskell")
-       discretionary = 0.0
+       discretionary = sum_up("discretionary")
        discretionary += javascript_total - mct if javascript_total > mct
        discretionary += ruby_total - mct if ruby_total > mct
        discretionary += haskell_total - mct if haskell_total > mct
