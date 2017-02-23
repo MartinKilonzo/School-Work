@@ -1,4 +1,5 @@
 Thumbs.db
 .DS_Store
-*/Labs/**/*.class
 *.java~
+*.asv
+*.log
