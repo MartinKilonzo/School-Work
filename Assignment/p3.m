@@ -7,5 +7,5 @@ for iTest = 1:size(X_test, 1)
 
     nearest = sortrows([dist Y_train], 1);
     
-    classes(end + 1) = mode(nearest(1:k, 2));
+    classes = [classes; mode(nearest(1:k, 2))];
 end

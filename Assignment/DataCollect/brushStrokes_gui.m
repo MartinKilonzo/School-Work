@@ -76,6 +76,7 @@ handles.radiusId = get(handles.popupmenuRadius,'Value');
 handles.radiusNames = get(handles.popupmenuRadius, 'String');
 
 handles.currMask = zeros(28);
+handles.myData = load('myData.mat');
 
 loadNewImage(hObject,handles);
 % Update handles structure
@@ -267,12 +268,17 @@ function pushbuttonSegment_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
  
-% img = handles.img;
+
 img = handles.scribbleImg;
 
-%figure; imagesc(img)
-label = recognize_digit(img);
+myData = load('myData.mat');
+handles.myData = myData;
 
+%myData = handles.myData;
+
+
+img = imresize(img,[16,16]);
+label = recognize_digit(img(:), myData);
 
 set(handles.edit_label,'String', num2str(label));
 

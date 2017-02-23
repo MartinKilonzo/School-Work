@@ -32,7 +32,7 @@ X_new = [4 5; 1 3]
 %      4     5
 %      1     3
 
-C = classifyKnn(X,Y,X_new,1)
+C = p3(X,Y,X_new,1)
 
 % 
 % C =
