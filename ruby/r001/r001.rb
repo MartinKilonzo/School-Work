@@ -1,3 +1,5 @@
+require 'launchy'
+
 class String
   def stringInject(baseString, iInsertion, insertionString)
     stringStart = self[0..iInsertion]
@@ -57,8 +59,6 @@ File.open('gitlog.txt', 'w') do |fileStream|
   #TODO: Sort the list by task
 
   File.open("index.html", 'w') do |htmlFileStream|
-    puts HTML_BASE
-    puts HTML_APP
     puts HTML_BASE.index(HTML_APP)
     iInsertion = HTML_BASE.index(HTML_APP) + HTML_APP.length
     htmlFileStream.write(HTML_BASE.stringInject(HTML_BASE, iInsertion, logListToHTML(logList)))
@@ -68,5 +68,7 @@ File.open('gitlog.txt', 'w') do |fileStream|
   # Output the modified log in chronological ascending order
   logList.reverse!.each {|log| fileStream.syswrite(log)}
   puts logList
+
+  Launchy.open('./index.html')
 
 end
