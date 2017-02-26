@@ -1,4 +1,6 @@
 /* globals examdatabase */
+const Action = require('./Action.js');
+const ActionStack = require('./ActionStack.js');
 
 $(document).ready(() => {
   let questionIndex;
