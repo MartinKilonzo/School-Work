@@ -14,21 +14,40 @@ HTML_APP = "    <div id=\"app\"></div>\n"
 
 # TODO: Format HTML list into a table
 # TODO: repalce newline chars in logListTOHTML with <br>
-# TODO: Load HTML_BASE from file
+# TODO: make the page interactive by adding js --> freetime?
+
+
+def strToTableData(dataList)
+  puts dataList
+  ret = "<tr>\n"
+  dataList.each { |entry| ret += "<td>\n" + entry + "\n<td>\n" }
+  ret += "</td>\n"
+end
 
 
 
 def logListToHTML(logList)
-  html = "<ul>\n"
+  html = "<table style=\"left:10vw; width:80vw\">\n"
+  html += "<tr>\n<th>Date</th>\n<th>Author</th>\n<th>Task</th>\n<th>Time</th>\n<th>Message</th>\n</tr>"
 
   logList.each do |log|
     # Clean up each log HTML
-    listItem = "<li>\n" + "<p>\n" + log + "</p>\n" + "</li>\n"
+    author = log[/Author: \w*/, 1]
+    puts author
+    date = log[/\w{3} \w{3} \d{2} \d{2}:\d{2}:\d{2} \d{4}/, 1]
+    puts date
+    task = log[/time [jrh]\d{4}/, 1][0..-1]
+    puts task
+    time = log[/time [jrh]\d{4} \d*/, 1][10..-1]
+    puts time
+    message = log[/time [jrh]\d{4} \d* .*/, 1][time.length..-1]
+    puts message
+    listItem = strToTableData([date, author, task, time, message])
     listItem.gsub! "\n\n", "\n"
     html += listItem
   end
 
-  html += "</ul>\n"
+  html += "</table>\n"
 
   return html
 end
