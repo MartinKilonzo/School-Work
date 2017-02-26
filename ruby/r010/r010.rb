@@ -1,16 +1,24 @@
-def parseNumber(str)
-  return str.split(/(\s)+/)
+def clean(line)
+  # Remove and split at all spaces that are not surrounding a variable,
+  strList = line.split(/(?<!=)\b\s+\b(?!=)/)
+  return strList
 end
 
 File.readlines('nums.txt').each do |line|
-  numList = parseNumber(line)
-  numList.delete_if { |strNum| !strNum.match(/\d/) }
-  numList.map! do |strNum|
-    if strNum.match('\.')
-      'f ' + strNum
-    else
-      'i ' + strNum
+  strList = clean(line)
+
+  strList.map! do |str|
+    if str.match('\.\d+')
+      'f ' + str
+    elsif str.match('[(),;\[\]|{}]')
+      's ' + str
+    elsif str.match('=')
+      'v ' + str
+    elsif str.match('\d+')
+      'i ' + str
     end
   end
-  puts numList
+  # Remove all nilClass
+  strList.compact!
+  puts strList
 end
