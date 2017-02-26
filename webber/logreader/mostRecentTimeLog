@@ -1,3 +1,9 @@
+d387d8f692fec18ce2114c420b489a61fc31afeb time j003 50 Designed and scaffolded Action and ActionStack classes for undo/redo functions
+c2d5b97cae124ed337dde8c116456cdeff7da340 time j003 25 Added: restart button
+b3821597df4e8f5867714fb9ff53ee5a646d35ee time r010 85 Added: symbols and variable filtering
+ef66cae55678c423f8ba08544e944a99b3758d34 time r001 75 Imported html base from file, fixed bugs (fixing malformatted commit); Added: opens log as html in default browser (fixing malformed commit); converting the unordered list to table
+2e94377ce335150d5d1980f6e28519e11c5daa16 time 17 r001 Added: html file opens in default browser window
+eb9cc3b07ae12fa4c79a1f56e039a0daae2d1a36 time 30 r001 Imported html base from file, fixed bugs
 bf55cba65ac5bc5ea9f4b26f45b952d122d8b979 time j010 20 Completed stages 1 and 2 (fixing rejected commit)
 ec30ba7c34895fe6119f79f4a6628fedc0ccf9f6 time j010 15 Completed stage 4
 8e1aaad43308c46236e8b24681abb393afaad550 time 20 j010 Completed Stages 1, 3
