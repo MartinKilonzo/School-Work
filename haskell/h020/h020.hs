@@ -17,3 +17,13 @@ factor = float_constant
 term = factor
 
 expr = term
+
+
+
+program -> fundecls ';' expr
+fundecls ->
+
+readExpr :: String -> String
+readExpr input = case parse symbol "lisp" input of
+    Left err -> "No match: " ++ show err
+    Right val -> "Found value"
