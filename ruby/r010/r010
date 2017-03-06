@@ -8,7 +8,7 @@ As with other tasks, this task is presented as a sequence of stages.  There
 are many notations that people use for the lexical structure of a program.
 The one I am using here is from the Haskell 98 report
   https://www.haskell.org/onlinereport/syntax-iso.html
-Although the language I am defining is not Haskell, not having to reinvent 
+Although the language I am defining is not Haskell, not having to reinvent
 the definition of things like integers and floats is useful.
 
 Note that when we are processing a token, the longest expression that matches
@@ -25,22 +25,22 @@ no other white space.  The order of the integers in the original file is
 the same as their order in the output file (this will hold generally for
 all tokens processed by the scanner -- similarly the output file will always
 have the format of a type indicator character, a space, and then the actual
-token). Looking at the syntax description, formally, I am talking about 
+token). Looking at the syntax description, formally, I am talking about
 processing:
 
 program	->	{lexeme | whitespace }
 lexeme	->	literal
 literal	->	integer
 whitespace ->	whitestuff {whitestuff}
-whitestuff ->	whitechar 
-whitechar ->	newline | vertab | space | tab 
+whitestuff ->	whitechar
+whitechar ->	newline | vertab | space | tab
 newline	->	return linefeed | return | linefeed | formfeed
 return	->	a carriage return
 linefeed ->	a line feed
 vertab	->	a vertical tab
 formfeed ->	a form feed
 space	->	a space
-digit	->	ascDigit 
+digit	->	ascDigit
 ascDigit ->	0 | 1 | ... | 9
 integer	->	decimal
 decimal	->	digit{digit}
@@ -57,30 +57,30 @@ i 00001
 
 Stage 2: Lets add in comments, which do not appear in the output file, so the
 lexical syntax expands to include
-whitestuff	->	whitechar | comment 
+whitestuff	->	whitechar | comment
 comment	->	dashes {any} newline
 dashes	->	-- {-}
 any	->	graphic | space | tab
 graphic	->	small | large | symbol | digit | special | : | " | '
 small	->	ascSmall | _
 ascSmall	->	a | b | ... | z
-large	->	ascLarge 
+large	->	ascLarge
 ascLarge	->	A | B | ... | Z
 symbol	->	ascSymbol | _ | : | " | '>
 ascSymbol	->	! | # | $ | % | & | * | + | . | / | < | = | > | ? | @
-                          | \ | ^ | | | - | ~
+                          | \ | ^ | r| | - | ~
 
 Stage 3: Lets add floats the the possibilities.  They will appear in the
 output file, like integers, except instead of being preceeded by 'i ', they
 will be preceeded by 'f '.  This adds the following to the lexical syntax:
 
-literal	->	integer | float 
+literal	->	integer | float
 float	->	decimal . decimal [exponent]
                 | decimal exponent
 exponent ->	(e | E) [+ | -] decimal
 
 
-Stage 4: Lets add in some special symbols.  They will appear in the output 
+Stage 4: Lets add in some special symbols.  They will appear in the output
 file prefixed with 's ' to indicate special symbols.  Thuis adds the following
 to the lexical syntax:
 

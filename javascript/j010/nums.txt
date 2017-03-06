@@ -3,7 +3,20 @@
 34   5 23  2
 235 2 52 35 2 52 5 2  25
 44.22
+1 22      90
+hello =344
+hello= 33f3f
+hello=howAre
+hello    = howAre345
+33  00001
+34   5 23  2
+235 2 52 35 2 52 5 2  25
+44.22
 ,.,%%
 %
+hello = 344
+hello = 33f3f
+hello = howAre
+hello = howAre345
 ^&
 ;;
