@@ -56,7 +56,7 @@ end
 
 def isTask(log)
   line = log.split("\n    ")[-1]
-  return !line.nil? ? (line[0..3].include? 'time') : false
+  return !line.nil? ? (line[0..3].include? 'time [hjr]\d+') : false
 end
 
 File.open('gitlog.txt', 'w') do |fileStream|
