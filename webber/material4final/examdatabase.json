@@ -47,7 +47,7 @@
         "question": "In discussing object oriented languages, being able to handle objects of related types is called ANSWER",
         "answer": "polymorphism",
         "note": "polymorphism has a different usage in the object oriented programming community than in the functional programming community",
-        "source": "SLSW2# is chapter number"
+        "source": "SLSW2"
      },
      {
         "question": "The application that caused a significant increase in the popularity of Ruby was a web framework called ANSWER",
@@ -119,7 +119,7 @@
         "question": "With respect to the value returned by the Ruby expression :hi.object_id == :hi.object_id, you can say it ANSWER",
         "answer": "will always be true",
         "note": "optional note",
-        "source": "SLSW2# where # is chapter number"
+        "source": "SLSW2"
      },
      {
         "question": "To execute a code block in Ruby that is passed to a method but doesn't appear on its parameter list, you use the keyword ANSWER",
@@ -596,6 +596,180 @@
         "answer": "a recursive descent parser",
         "note": "optional note",
         "source": "ICD2"
+     },
+     {
+        "question": "Programming languages that view programming as describing a step-by-step process to do something are called ANSWER languages",
+        "answer": "imperative",
+        "note": "optional note",
+        "source": "SLSW4"
+     },
+     {
+        "question": "Programming languages that view programming as describing characteristics of the problem domain and characteristics of the solution and leaving it to the language processor to find a solution are called ANSWER languages",
+        "answer": "declarative",
+        "note": "optional note",
+        "source": "SLSW4"
+     },
+     {
+        "question": "Programming languages that view programming as describing a step-by-step process to do something are called ANSWER languages",
+        "answer": "imperative",
+        "note": "optional note",
+        "source": "SLSW4"
+     },
+     {
+        "question": "In Prolog, the most natural way to express the fact that a lion is a cat is ANSWER",
+        "answer": ["cat(lion).", "is_a(lion, cat)."],
+        "note": "optional note",
+        "source": "SLSW4"
+     },
+     {
+        "question": "In Prolog, the most natural way to express the query what animals are cats is ANSWER",
+        "answer": ["cat(What).", "cats(What).", "is_a(What, cat).", "are(What, cats)."],
+        "note": "optional note",
+        "source": "SLSW4"
+     },
+     {
+        "question": "In Prolog, the most natural way to express the rule that I am an ancestor of you if I am a parent of you is ANSWER",
+        "answer": "ancestor(I, You) :- parent(I, You).",
+        "note": "optional note",
+        "source": "SLSW4"
+     },
+     {
+        "question": "In Prolog, the most natural way to express the rule that I am an ancestor of you if I am a parent of an ancestor of you is ANSWER",
+        "answer": "ancestor(I, You) :- parent(I, Ancestor), ancestor(Ancestor, You). ",
+        "note": "optional note",
+        "source": "SLSW4"
+     },
+     {
+        "question": "In Prolog, the expression hi(X, 4) = hi(3, Y) causes X to have the value ANSWER",
+        "answer": "3",
+        "note": "optional note",
+        "source": "SLSW4"
+     },
+     {
+        "question": "In Prolog, the expression hi(X, 4) = hi(3, Y) causes Y to have the value ANSWER",
+        "answer": "4",
+        "note": "optional note",
+        "source": "SLSW4"
+     },
+     {
+        "question": "In Prolog, the expression hi(X, 4) = hi(3, X) causes X to have the value ANSWER",
+        "answer": ["X will not be bound and the expression will fail", "X will be bound"],
+        "note": "optional note",
+        "source": "SLSW4"
+     },
+     {
+        "question": "In Prolog, the expression [1, 2, 3] = [X | Y] causes X to have the value ANSWER",
+        "answer": "1",
+        "note": "optional note",
+        "source": "SLSW4"
+     },
+     {
+        "question": "In Prolog, the expression [1, 2, 3] = [X | Y] causes Y to have the value ANSWER",
+        "answer": "[2, 3]",
+        "note": "optional note",
+        "source": "SLSW4"
+     },
+     {
+        "question": "In Prolog, the expression X = [[1,2] | [3,4]] causes X to have the value ANSWER",
+        "answer": "[[1, 2], 3, 4]",
+        "note": "optional note",
+        "source": "SLSW4"
+     },
+     {
+        "question": "In Prolog, the expression X = 1 + 2 causes X to have the value ANSWER",
+        "answer": "1+2",
+        "note": "optional note",
+        "source": "SLSW4"
+     },
+     {
+        "question": "In Prolog, the expression 2 = 1 + X causes X to have the value ANSWER",
+        "answer": ["X remains unbound","X remains unbound and the expression fails"],
+        "note": "optional note",
+        "source": "SLSW4"
+     },
+     {
+        "question": "In Prolog, the expression that would cause an unbound variable X to take on the sum of the values of a bound variable Y and a bound variable Z is ANSWER",
+        "answer": "X is Y + Z",
+        "note": "optional note",
+        "source": "SLSW4"
+     },
+     {
+        "question": "Each named object will have ANSWER, where the name is defined as a synonym for the object.",
+        "answer": "a declaration",
+        "note": "optional note",
+        "source": "ICD3"
+     },
+     {
+        "question": "The technical term for connecting a name with an object is called ANSWER.",
+        "answer": "binding",
+        "note": "optional note",
+        "source": "ICD3"
+     },
+     {
+        "question": "The portion of the program where the name is visible is called its ANSWER",
+        "answer": "scope",
+        "note": "optional note",
+        "source": "ICD3"
+     },
+     {
+        "question": "When the structure of the syntax tree is used to determine which object corresponds to a name, this is called ANSWER.",
+        "answer": ["static scoping","lexical scoping"],
+        "note": "optional note",
+        "source": "ICD3"
+     },
+     {
+        "question": "A compiler typically keeps track of which names are associated with which objects by using ANSWER",
+        "answer": ["a symbol table", "an environment"],
+        "note": "optional note",
+        "source": "ICD3"
+     },
+     {
+        "question": "ANSWER data structures have the property that no operation on the structure will destroy or modify it.",
+        "answer": ["persistent", "functional"],
+        "note": "optional note",
+        "source": "ICD3"
+     },
+     {
+        "question": "ANSWER data structures have the property that there are operations on the structure can destroy or modify it.",
+        "answer": ["imperative", "destructively updated"],
+        "note": "optional note",
+        "source": "ICD3"
+     },
+     {
+        "question": "Since a compiler may have to look up what object is associated with a name many times, it is typical to use ANSWER to avoid linear search times.",
+        "answer": "hash tables",
+        "note": "optional note",
+        "source": "ICD3"
+     },
+     {
+        "question": "In the example interpreter for evaluating expressions, in the row labelled id, we have the code: v = lookup(vtable, getname(id)) ; if v = unbound then error() else v.  It says getname(id) instead of id, because ANSWER",
+        "answer": "id indicates a token with a type and value field",
+        "note": "optional note",
+        "source": "ICD4"
+     },
+     {
+        "question": "In the example interpreter for evaluating expressions, in the row labelled id, we have the code: v = lookup(vtable, getname(id)) ; if v = unbound then error() else v.  The value of v would be unbound in the situation that ANSWER",
+        "answer": ["getname(id) was not declared","getname(id) was not bound"],
+        "note": "optional note",
+        "source": "ICD4"
+     },
+     {
+        "question": "In the example interpreter for evaluating expressions, in the row labelled id(Exps), we have the code: args = EvalExps(Exps,vtable,ftable).  We pass vtable to EvalExps to handle ANSWER",
+        "answer": "expressions that contain identifiers",
+        "note": "optional note",
+        "source": "ICD4"
+     },
+     {
+        "question": "In the example interpreter for evaluating expressions, in the row labelled id(Exps), we have the code: args = EvalExps(Exps,vtable,ftable).  We pass ftable to EvalExps to handle ANSWER",
+        "answer": "expressions that contain function usages",
+        "note": "optional note",
+        "source": "ICD4"
+     },
+     {
+        "question": "In the example interpreter for evaluating expressions, in the row labelled let id = Exp1 in Exp2, we have the code: v1 = EvalExp(Exp1, vtable, ftable); vtableP = bind(vtable, getname(id), v1), EvalExp(Exp2, vtableP, ftable).  The bind function changes vtable into vtableP by ANSWER",
+        "answer": "inserting the association of getname(id) with the value v1 into the table",
+        "note": "optional note",
+        "source": "ICD4"
      },
      null
   ]
