@@ -1,4 +1,9 @@
+require 'date'
 require 'launchy'
+
+
+
+
 
 class String
   def stringInject(baseString, iInsertion, insertionString)
@@ -32,19 +37,11 @@ def logListToHTML(logList)
 
   logList.each do |log|
     # Clean up each log HTML
-    author = log[/Author: \w*/, 1]
-    puts author
-    date = log[/\w{3} \w{3} \d{2} \d{2}:\d{2}:\d{2} \d{4}/, 1]
-    puts date
-    task = log[/time [jrh]\d{4}/, 1][0..-1]
-    puts task
-    time = log[/time [jrh]\d{4} \d*/, 1][10..-1]
-    puts time
-    message = log[/time [jrh]\d{4} \d* .*/, 1][time.length..-1]
-    puts message
-    listItem = strToTableData([date, author, task, time, message])
-    listItem.gsub! "\n\n", "\n"
-    html += listItem
+    task = log[:message][/(?<=time\s)[jhr]\d{3}/]
+    time = log[:message][/(?<=time\s[jhr]\d{3}\s)\d+/]
+    message = log[:message][/(?<=time\s[jhr]\d{3}\s\d{2}).*/]
+
+    html += "<tr><td>#{log[:date].strftime("%a %b %d, %Y at %I:%M:%S %p")}</td><td>#{log[:author]}</td><td>#{task}</td><td>#{time}</td><td>#{message}</td></tr>"
   end
 
   html += "</table>\n"
@@ -54,18 +51,42 @@ end
 
 
 
-def isTask(log)
-  line = log.split("\n    ")[-1]
-  return !line.nil? ? (line[0..3].include? 'time [hjr]\d+') : false
+def getGitLog()
+  ret = []
+  tempList = `git log`.split(/\n(?=commit)/)
+  tempList.each do |log|
+    log.gsub!("\n\n, \n")
+    log.gsub!(/\n\n\s{4}|\n\n/, "\n")
+    logComponents = log.split("\n")
+    i = 0
+    practiceLog = Hash.new
+    practiceLog[:commit] = logComponents[i][/[\w]{40}/]
+    if logComponents[i + 1].match(/(?<=Merge:\s).*/)
+      i = 1
+      practiceLog[:merge] = logComponents[i][/(?<=Merge:\s).*/]
+    end
+    practiceLog[:author] = logComponents[i + 1][/(?<=Author:\s).*/]
+    # TODO: add a new field for merge
+    practiceLog[:date] = DateTime.parse(logComponents[i + 2][/(?<=Date:\s{3}).*/])
+    practiceLog[:message] = logComponents[i + 3..-1].join(" ")
+    ret.push(practiceLog)
+  end
+  return ret
+end
+
+
+
+def isPracticeLog(log)
+return log[:message].match(/time [jhr]\d{3}/)
 end
 
 File.open('gitlog.txt', 'w') do |fileStream|
 
   # Get the git log and split it by commit (removing the commit line identifier)
-  logList = `git log`.split(/commit [\w\d]{40}\s/)
+  logList = getGitLog()
 
   # Remove all commits by Bob Webber
-  logList.delete_if { |log| log.include? 'Author: Bob Webber <webber@csd.uwo.ca>' }
+  logList.delete_if { |log| log[:author].include? 'Author: Bob Webber <webber@csd.uwo.ca>' }
 
   # If an argument has been specified, use that as a project filter for the logs
   if ARGV[0] != nil
@@ -73,9 +94,12 @@ File.open('gitlog.txt', 'w') do |fileStream|
   end
 
   # Remove all non-tasks
-  logList.delete_if { |log| !isTask(log) }
+  logList.delete_if { |log| !isPracticeLog(log) }
 
   #TODO: Sort the list by task
+  logList.sort_by! { |log| log[:date] }
+  logList.sort_by! { |log| log[:message] }
+
 
   File.open("index.html", 'w') do |htmlFileStream|
     puts HTML_BASE.index(HTML_APP)
@@ -86,7 +110,7 @@ File.open('gitlog.txt', 'w') do |fileStream|
 
   # Output the modified log in chronological ascending order
   logList.reverse!.each {|log| fileStream.syswrite(log)}
-  puts logList
+  # puts logList
 
   Launchy.open('./index.html')
 
