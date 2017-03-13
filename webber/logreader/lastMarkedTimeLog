@@ -1,3 +1,8 @@
+303fdd78908da8f208be1df9e9d7942c9ac1fece time r001 15 Added styles to the HTML and improved formatting
+caf6966e007340c0c7a46b381e1a48d82304b615 time h002 65 Started stage 1
+d696b87722951387bbb0e631da7cf51cec8620f0 time r001 15 hyperlinked author email to their name in the HTML table field.
+8d47ee65bf397a4a120c4fe3bbe23f75e067e086 time r001 40 Modified logs to be parsed into dictionaries (Hash Object); newly parsed dicts are split appropriately to populate HTML table containing task history
+1c7b437a547f53c928a66a9db77ca3a2ff60bf86 time r002 75 Set up task for stage 1, nearly completed stage 1
 4e3442b4b4351c93ce6c24235344c084a16af7d3 time j010 65 Added symbols and floats; completed stage 7
 2e8a0b4bd6dbbd4c0e6625355da2924a7de87f95 time h020 25 Attempted Stages 1 and 2
 373c790435c1c4eda28d8730866d178538183f5d time h020 45 Structured and began h020
