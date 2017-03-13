@@ -37,11 +37,13 @@ def logListToHTML(logList)
 
   logList.each do |log|
     # Clean up each log HTML
+    a = log[:author].split(" <")
+    author = "<a href=\"mailto:#{a[-1][/.*(?=>)/]}\">#{a[0]}</a>"
     task = log[:message][/(?<=time\s)[jhr]\d{3}/]
     time = log[:message][/(?<=time\s[jhr]\d{3}\s)\d+/]
     message = log[:message][/(?<=time\s[jhr]\d{3}\s\d{2}).*/]
 
-    html += "<tr><td>#{log[:date].strftime("%a %b %d, %Y at %I:%M:%S %p")}</td><td>#{log[:author]}</td><td>#{task}</td><td>#{time}</td><td>#{message}</td></tr>"
+    html += "<tr><td>#{log[:date].strftime("%a %b %d, %Y at %I:%M:%S %p")}</td><td>#{author}</td><td>#{task}</td><td>#{time}</td><td>#{message}</td></tr>"
   end
 
   html += "</table>\n"
