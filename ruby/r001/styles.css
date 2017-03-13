@@ -1,0 +1,19 @@
+tr {
+  color: white;
+}
+td {
+  min-width: 75px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.j {
+  background-color: rgba(240, 219, 79, 0.8);
+}
+
+.r {
+  background-color: rgba(217, 20, 4, 0.8);
+}
+
+.h {
+  background-color: rgba(101, 101, 85, 0.8);
+}
