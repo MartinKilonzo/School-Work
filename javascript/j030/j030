@@ -1,0 +1,146 @@
+The intent of this task is to build an interpreter in JavaScript for
+the output from the parser of r020, h020, or j020.  The interpreter
+should read the file produced by the parser that contains a parse tree
+and compute the value of the corresponding program and then output the
+computed value.
+
+The stages of this task will follow the stages of the 020 tasks, in that as
+each new piece of grammar was added to the parser, the is a corresponding
+task for interpreting a program valid under that grammar.  Thus it is not
+necessary to complete the parser task in order to undertake the interpreter
+task, although the further you got with the parser, the further into the
+interpreter you can go.  It would also be plausible to flip back and forth,
+doing a stage of the parser and then the corresponding stages of the 
+interpreter and then moving the parser forward another stage, and so on.
+
+Note: this task only takes us through interpreting the grammar up to stage
+6.  A later task will continue on with the grammar.
+
+Stage 1.1: Write the interpreter that for the input program
+   ; 3
+outputs 3
+
+Stage 1.2: Write the interpreter that for the input program
+   ; 4.02
+outputs 4.02 (or something real close, like 4.019999)
+
+Stage 2.1: Write the interpreter that for the input program
+   ; 3 + 4
+outputs 7
+
+Stage 2.2: Write the interpreter that for the input program
+   ; 3 + 4 + 5
+outputs 12
+
+Stage 2.3: Write the interpreter that for the input program
+   ; 3 - 4
+outputs -1
+
+Stage 2.4: Write the interpreter that for the input program
+   ; 3 - 4 - 5
+outputs -6
+
+Stage 2.5: Write the interpreter that for the input program
+   ; 3 - 4 + 5 - 6 - 7 - 1
+outputs -10
+
+Stage 2.6: Write the interpreter that for the input program
+   ; 3 - 4 + 5 - 6 - 7 - 1
+outputs -10
+
+Stage 2.7: Write the interpreter that for the input program
+   ; 3.2 + 4.1 - 6.1 - 8.3 - 4.0 + 20
+outputs 8.9 (or something real close to that)
+
+Stage 2.8: Write the interpreter that for the input program
+   ; 3.2 + 4.7 - 6 - 8.1 - 4.1 + 20.5
+outputs 10.2 (or something real close to that)
+
+Stage 3.1: Write the interpreter that for the input program
+   ; ( 1 )
+outputs 1
+
+Stage 3.2: Write the interpreter that for the input program
+   ; ( ( 3 ) )
+outputs 3
+
+Stage 3.3: Write the interpreter that for the input program
+   ; ( ( ( 5.7 ) ) )
+outputs 5.7  (or something real close to that)
+
+Stage 3.4: Write the interpreter that for the input program
+   ; 3.2 + 4.7 - (6 - 8.1 - 4.1) + 20.5
+outputs 34.6 (or something real close to that)
+
+Stage 4.1: Write the interpreter that for the input program
+   ; x
+outputs something along the line that x is undeclared.
+
+Stage 5.1:  Write the interpreter that for the input program
+   ; ( 3 + 4 ) * 5
+outputs 35
+
+Stage 5.2:  Write the interpreter that for the input program
+   ; ( 3 + 4 ) % 5
+outputs 2
+
+Stage 5.3:  Write the interpreter that for the input program
+   ; ( 3 + 4 ) / 5
+outputs 1
+
+Stage 5.4:  Write the interpreter that for the input program
+   ; ( 3.2 + 4.3 ) * 5.4
+outputs 40.5 (or something real close to that)
+
+Stage 5.5:  Write the interpreter that for the input program
+   ; ( 3.2 + 4.3 ) % 5.4
+outputs 2.0999999999999996 (or something real close to that)
+
+Stage 5.6:  Write the interpreter that for the input program
+   ; ( 3.2 + 4.3 ) / 5.4
+outputs 1.3888888888888888 (or something real close to that)
+
+Stage 5.7:  Write the interpreter that for the input program
+  ; 2 * 3 + 5 % 2 - 7 / 2
+outputs 4
+
+Stage 6.1:  Write the interpreter that for the input program
+  ; ? 3 = 4 { 3 + 2 ; 4 * 3 }
+outputs 12
+
+Stage 6.2:  Write the interpreter that for the input program
+  ; ? 5 = 5 { 3 + 4 ; 4 * 3 }
+outputs 7
+
+Stage 6.3:  Write the interpreter that for the input program
+  ; ? 3 < 4 { 3 + 2 ; 4 * 3 }
+outputs 5
+
+Stage 6.4:  Write the interpreter that for the input program
+  ; ? 4 < 3 { 3 + 2 ; 4 * 3 }
+outputs 12
+
+Stage 6.5:  Write the interpreter that for the input program
+  ; ? 3 > 4 { 3 + 2 ; 4 * 3 }
+outputs 12
+
+Stage 6.6:  Write the interpreter that for the input program
+  ; ? 4 > 3 { 3 + 2 ; 4 * 3 }
+outputs 5
+
+Stage 6.7:  Write the interpreter that for the input program
+  ; ? ( 4 = 3 ) = ( 4 = 3 ) { 3 + 2 ; 4 * 3 }
+outputs 5
+
+Stage 6.8:  Write the interpreter that for the input program
+  ; ? ( 4 = 4 ) = ( 4 = 3 ) { 3 + 2 ; 4 * 3 }
+outputs 12
+
+Stage 6.9:  Write the interpreter that for the input program
+  ; ?  ? 3 = 4 { 3 ; 4 } = 4 { 3 + 2 ; 4 * 3 }
+outputs 5
+
+Stage 6.10:  Write the interpreter that for the input program
+  ; ?  ? 3 = 3 { 3 ; 4 } = 4 { 3 + 2 ; 4 * 3 }
+outputs 12
+
