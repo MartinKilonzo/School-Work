@@ -1,13 +1,15 @@
 function outIm = applyFilter(im,F)
   % filter = flip(flip(F, 1), 2);
-  filter = F;
+  filter = F
   outIm = [];
-  k = floor(size(filter) / 2);
-  image = padarray(im, k, 0);
-  for iRow = 1 + k:size(image, 1) - k
+  [u, v] = size(filter);
+  u = floor(u / 2);
+  v = floor(v / 2);
+  image = padarray(im, [u, v], 0);
+  for iRow = 1 + u:size(image, 1) - u
       row = [];
-    for iCol = 1 + k:size(image, 2) - k
-      grid = image(iRow - k:iRow + k, iCol - k:iCol + k);
+    for iCol = 1 + v:size(image, 2) - v
+      grid = image(iRow - u:iRow + u, iCol - v:iCol + v);
       pixel = sum(sum(grid .* filter));
       row = [row pixel];
     end
