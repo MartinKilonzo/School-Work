@@ -10,7 +10,7 @@ function [M,P] = seamV_DP(E)
         e = min(size(row, 2), iCol + 1);
         r = row(s:e);
         m = find(r==min(r)) + s - 1;
-        p = [p m];
+        p = [p m(1)];
       end
       P = [P; p];
       M = [M; M(iRow, p) + E(iRow + 1, :)];
