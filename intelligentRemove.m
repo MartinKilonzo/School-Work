@@ -1,4 +1,4 @@
-function [totalCost,imOut] = intelligentResize(imInput,v,h,W,mask,maskWeight)
+function [totalCost,imOut] = intelligentRemove(imInput,v,h,W,mask,maskWeight)
   F = [-1, 0, 1];
   imOut = cat(3,imInput,mask);
   totalCost = 0;
@@ -10,7 +10,7 @@ function [totalCost,imOut] = intelligentResize(imInput,v,h,W,mask,maskWeight)
   while h > 0 || v > 0
     %  Horizntontal actions take precendece over vertical
     if h > 0
-      E = computeEng(imOut, F, W, maskWeight);
+      E = computeREng(imOut, F, W, maskWeight);
       if reducingHeight
         [seam, imOut, cost] = reduceHeight(imOut, E);
         totalCost = totalCost + cost;
@@ -21,7 +21,7 @@ function [totalCost,imOut] = intelligentResize(imInput,v,h,W,mask,maskWeight)
       h = h - 1;
     end
     if v > 0
-      E = computeEng(imOut, F, W, maskWeight);
+      E = computeREng(imOut, F, W, maskWeight);
       if reducingWidth
         [seam, imOut, cost] = reduceWidth(imOut, E);
         totalCost = totalCost + cost;
