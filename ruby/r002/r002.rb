@@ -2,8 +2,6 @@ require "date"
 
 
 
-
-
 def getGitLog()
   ret = []
   tempList = `git log`.split(/\n(?=commit)/)
@@ -29,6 +27,24 @@ end
 
 
 
+def getTimeDiff(log)
+  timeElapsed = (DateTime.now - log).to_i
+
+  timeElapsed /= 1000
+
+  secondsElapsed = timeElapsed % 60
+  timeElapsed -= secondsElapsed
+  timeElapsed /= 60
+
+  minutesElapsed = timeElapsed % 60
+  timeElapsed -= minutesElapsed
+  hoursElapsed /= 60
+
+  return "#{hoursElapsed} hours #{minutesElapsed} minutes #{seconds} seconds"
+end
+
+
+
 def isPracticeLog(log)
   return log[:message].match(/time [jhr]\d{3}/)
 end
@@ -41,4 +57,6 @@ logList.delete_if { |log| !isPracticeLog(log) }
 
 logList.sort_by! { |log| log[:date] }
 
-puts logList[-1][:date].strftime("%a %b %d, %Y at %I:%M:%S %p")
+lastLog = logList[-1][:date].strftime("%a %b %d, %Y at %I:%M:%S %p")
+
+puts "Last log was #{getTimeDiff(logList[-1][:date])} ago, at #{lastLog}"
