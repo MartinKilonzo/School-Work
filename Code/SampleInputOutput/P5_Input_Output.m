@@ -183,6 +183,7 @@ im = double(im);
 lambda = 50;
 numClusters = 50;
 inftyCost = 1000;
+
 [segm,e2]  = segmentGC(im,scribblesSquare,lambda,numClusters,inftyCost);
 e2
 
