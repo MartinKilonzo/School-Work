@@ -13,11 +13,11 @@ class String
   end
 end
 
+
+
 HTML_BASE = File.read('base.html')
 HTML_APP = "    <div id=\"app\"></div>\n"
 
-# TODO: Format HTML list into a table
-# TODO: repalce newline chars in logListTOHTML with <br>
 # TODO: make the page interactive by adding js --> freetime?
 
 
@@ -40,7 +40,7 @@ def logListToHTML(logList)
     author = "<a href=\"mailto:#{a[-1][/.*(?=>)/]}\">#{a[0]}</a>"
     task = log[:message][/(?<=time\s)[jhr]\d{3}/]
     time = log[:message][/(?<=time\s[jhr]\d{3}\s)\d+/]
-    message = log[:message][/(?<=time\s[jhr]\d{3}\s\d{2}).*/]
+    message = log[:message][/(?<=time\s[jhr]\d{3}\s\d{2}).*/] || log[:message][/(?<=time\s[jhr]\d{3}\s\d{1}).*/]
 
     html += "<tr class=\"#{task[0]}\"><td>#{log[:date].strftime("%a %b %d, %Y at %I:%M:%S %p")}</td><td>#{author}</td><td>#{task}</td><td>#{time}</td><td>#{message}</td></tr>"
   end
@@ -99,7 +99,7 @@ File.open('gitlog.txt', 'w') do |fileStream|
 
   #TODO: Sort the list by task
   logList.sort_by! { |log| log[:date] }
-  # logList.sort_by! { |log| log[:message] }
+  logList.reverse!
 
 
   File.open("index.html", 'w') do |htmlFileStream|
@@ -110,7 +110,7 @@ File.open('gitlog.txt', 'w') do |fileStream|
 
 
   # Output the modified log in chronological ascending order
-  logList.reverse!.each {|log| fileStream.syswrite(log)}
+  logList.each {|log| fileStream.syswrite(log)}
   # puts logList
 
   # Launchy.open('./index.html')
