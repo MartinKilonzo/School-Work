@@ -1,0 +1,125 @@
+The intent of this task is to build an interpreter in Ruby for the
+output from the parser of r020, h020, or j020.  This particular task is
+a continuation of r030 (having parts of the interpreter itself in different
+languages would be difficult without going to a parallel processing model).
+The interpreter should read the file produced by the parser that contains a 
+parse tree and compute the value of the corresponding program and then 
+output the computed value.
+
+The stages of this task will follow the stages of the 020 tasks, in that as
+each new piece of grammar was added to the parser, the is a corresponding
+task for interpreting a program valid under that grammar.  Thus it is not
+necessary to complete the parser task in order to undertake the interpreter
+task, although the further you got with the parser, the further into the
+interpreter you can go.  It would also be plausible to flip back and forth,
+doing a stage of the parser and then the corresponding stages of the 
+interpreter and then moving the parser forward another stage, and so on.
+
+Note: this task begins with interpreting the grammar at stage 7. It turns out
+there were two stage 8s in the 020 tasks, so this task refers to the first one
+as stage 8a and the second as stage 8b.  The final stage is then stage 9.
+
+Stage 7.1: Write the interpreter that for the input program
+   ; ? 1 = 1 | 1 = 2 { 3 ; 4 }
+should output 3
+
+Stage 7.2: Write the interpreter that for the input program
+   ; ? 3 = 2 | 1 = 2 { 3 ; 4 }
+should output 4
+
+Stage 7.3: Write the interpreter that for the input program
+   ; ? ~ 3 = 2 | 1 = 2 { 3 ; 4 }
+should output 3
+
+Stage 7.4: Write the interpreter that for the input program
+   ; ? 3 = 2 | 2 = 2 { 3 ; 4 }
+should output 3
+
+Stage 7.5: Write the interpreter that for the input program
+   ; ? 1 = 1 & 2 = 2 | 1 = 2 { 3 ; 4 }
+should output 3
+
+Stage 7.6: Write the interpreter that for the input program
+   ; ? 3 = 2 & 4 = 2 | 1 = 2 { 3 ; 4 }
+should output 4
+
+Stage 7.7: Write the interpreter that for the input program
+   ; ? ~ 3 = 2 & 5 =5 | 1 = 2 { 3 ; 4 }
+should output 3
+
+Stage 7.8: Write the interpreter that for the input program
+   ; ? 3 = 2 & 2 = 2 { 3 ; 4 }
+should output 4
+
+Stage 8a.1: Write the interpreter that for the input program
+   @ f { 3 } ; #f + 2
+should output 5 (note: # indicates that the following identifier starts a 
+function call and not a typical variable)
+
+Stage 8a.2: Write the interpreter that for the input program
+   @ f { \ x  3 } ; #f(7) + 2
+should output 5
+
+Stage 8a.3: Write the interpreter that for the input program
+   @ f { \ x  3 + x } ; #f(7) + 2
+should output 12
+
+Stage 8a.4: Write the interpreter that for the input program
+   @ f { \ x  ? x = 0 { 1 ; x * #f(x - 1)}} ; #f(5)
+should output 120
+
+Stage 8a.5: Write the interpreter that for the input program
+   @ f { \ x \y  ? x = 0 { y ; #f(x - 1, x * y)}} ; #f(5,1)
+should output 120
+
+Stage 8a.6: Write the interpreter that for the input program
+   @ f { \ x  ? x < 2 { 1 ; #f(x-2) + #f(x - 1)}} ; #f(5)
+should output 8
+
+Stage 8a.7: Write the interpreter that for the input program
+   @ f { \ x \y  ? x < 2 { 1 ; #y(#f(x-2),#f(x - 1))}} @g { \x \y x+y}; #f(5,g)
+should output 8
+
+Stage 8a.8: Write the interpreter that for the input program
+   @ f { \ x \y  ? x + y}} @g { \x \y x*y} 
+   @ite {\b \t \e ? b = 1 { #t(x,y) ; #e(x,y) }}; #ite(0,f,g,2,3)
+should output 6
+
+Stage 8a.9: Write the interpreter that for the input program
+   @ f { \ x \y  ? x + y}} @g { \x \y x*y} 
+   @ite {\b \t \e ? b = 1 { #t(x,y) ; #e(x,y) }}; #ite(1,f,g,2,3)
+should output 5
+
+
+Stage 8b1: ; [ 4, 2, 3]
+should output [4, 2, 3]
+
+Stage 8b2: ; [ 4, 2, 3] / 1
+should output 4 (head of list operator special meaning of /1)
+
+Stage 8b3: ; [ 4, 2, 3] % 1
+should output [2, 3] (rest of list operator special meaning of %1 on a list)
+
+Stage 8b4: ; [ 4, 2, 3] + [3, 6]
+should output [4, 2, 3, 3, 6] (list append operator special meaning of + on lists)
+
+Stage 8b5: @f { \x ? x = [] { 0 ; 1 + #f(x%1) } ; #f([4,2,7])
+should output 3
+
+Stage 9.1: @f { {\x \y y + x}} @g { \f \x \y #f(x)} ; #g(f(),2,3)
+should output 5
+
+Stage 9.2: @f { \x {\y y + x}} @g { \f \x #f(x)} ; #g(f(2),3)
+should output 5
+
+Stage 9.3: Extend grammar so that something like
+      {\x x + 2}(3)
+can be written.  You don't want to allow 3(4) to be written or other obviously
+wrong things like that.
+
+Stage 9.4: Now, {\x x + 2}(3)
+should output 5
+
+Stage 9.5 And {\x {\y x + y}}(2)(3)
+should also output 5
+
