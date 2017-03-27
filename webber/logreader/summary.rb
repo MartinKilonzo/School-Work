@@ -410,6 +410,7 @@ class SummaryConfig
   end
   def puterr(message)
     @error_out.puts message
+    puts ">>Problem occurred while processing this stage of file>> " + message
   end
 end
 
