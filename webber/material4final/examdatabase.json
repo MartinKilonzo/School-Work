@@ -771,6 +771,188 @@
         "note": "optional note",
         "source": "ICD4"
      },
-     null
+     {
+        "question": "Scala was designed to connect two programming paradigms, which were ANSWER",
+        "answer": "object-oriented and functional",
+        "note": "optional note",
+        "source": "SLSW5"
+     },
+     {
+        "question": "Another design goal for Scala was to have its programs easily interoperate with those written in ANSWER",
+        "answer": "Java",
+        "note": "optional note",
+        "source": "SLSW5"
+     },
+     {
+        "question": "Scala is ANSWER typed",
+        "answer": "statically",
+        "note": "optional note",
+        "source": "SLSW5"
+     },
+     {
+        "question": "Scala uses few type declarations because its compiler does ANSWER",
+        "answer": "type inferencing",
+        "note": "optional note",
+        "source": "SLSW5"
+     },
+     {
+        "question": "The main concurrency method used in Scala is ANSWER",
+        "answer": "actors",
+        "note": "optional note",
+        "source": "SLSW5"
+     },
+     {
+        "question": "In Scala, to indicate that a variable is immutable, you introduce it with the ANSWER keyword",
+        "answer": "val",
+        "note": "optional note",
+        "source": "SLSW5"
+     },
+     {
+        "question": "In Scala, to indicate that a variable is mutable, you introduce it with the ANSWER keyword",
+        "answer": "var",
+        "note": "optional note",
+        "source": "SLSW5"
+     },
+     {
+        "question": "In Scala, if I want to redefine a method that is defined in my parent class, I indicate this by using the keyword ANSWER",
+        "answer": "override",
+        "note": "optional note",
+        "source": "SLSW5"
+     },
+     {
+        "question": "The Scala feature closest to a Ruby mixin is the ANSWER",
+        "answer": "trait",
+        "note": "optional note",
+        "source": "SLSW5"
+     },
+     {
+        "question": "In Scala, the type that every type is a subtype of is calleed ANSWER",
+        "answer": "Any",
+        "note": "optional note",
+        "source": "SLSW5"
+     },
+     {
+        "question": "In Scala, the type that is a subtype of every type is called ANSWER",
+        "answer": "Nothing",
+        "note": "optional note",
+        "source": "SLSW5"
+     },
+     {
+        "question": "Many programming languages represent internal constants for types like strings, floats, and integers.  Scala has the unusual distinction of having an internal constant representation for the type ANSWER, which is normally viewed as a format external to a program.",
+        "answer": "XML",
+        "note": "optional note",
+        "source": "SLSW5"
+     },
+     {
+        "question": "The ! in Scala is us used to ANSWER",
+        "answer": "send a message to an actor",
+        "note": "optional note",
+        "source": "SLSW5"
+     },
+     {
+        "question": "In the chapter on Scala, we get the following interesting quote: ANSWER is the most important thing you can do to improve code design for concurrency",
+        "answer": "Immutability",
+        "note": "optional note",
+        "source": "SLSW5"
+     },
+     {
+        "question": "In Erlang, the main approach to concurrency is ANSWER",
+        "answer": "actors",
+        "note": "optional note",
+        "source": "SLSW6"
+     },
+     {
+        "question": "In the Erlang community, ANSWER code refers to replacing pieces of your application without stopping your application",
+        "answer": "hot-swapping",
+        "note": "optional note",
+        "source": "SLSW6"
+     },
+     {
+        "question": "An unusual built-in constant construct in Erlang lets us write <<4:3,1:3>> to represent the value ANSWER",
+        "answer": ["!","octal 41", "decimal 33", "hexidecimal 21"],
+        "note": "optional note",
+        "source": "SLSW6"
+     },
+     {
+        "question": "Many syntax features of Erlang, such as ending statements with a period, reflect the influence of the programming language ANSWER",
+        "answer": "Prolog",
+        "note": "optional note",
+        "source": "SLSW6"
+     },
+     {
+        "question": "In Erlang, you can link two processes together.  Then when one dies, it sends ANSWER to its twin",
+        "answer": "an exit signal",
+        "note": "optional note",
+        "source": "SLSW6"
+     },
+     {
+        "question": "The main programming paradigm in Erlang is ANSWER programming",
+        "answer": "functional",
+        "note": "optional note",
+        "source": "SLSW6"
+     },
+     {
+        "question": "In Ruby, you would group methods into a class, in Erlang, you group functions into ANSWER",
+        "answer": "a module",
+        "note": "optional note",
+        "source": "SLSW6"
+     },
+     {
+        "question": "The idea that when a process has an error, it is up to a monitoring process to determine what to do about the problem is referred to by the motto ANSWER in Erlang",
+        "answer": "Let It Crash",
+        "note": "optional note",
+        "source": "SLSW6"
+     },
+     {
+        "question": "Unlike most Lisp systems, Clojure doesn't use its own custom virtual machine.  It was originally designed to compile to code that would run on the ANSWER",
+        "answer": ["JVM", "Java Virtual Machine"],
+        "note": "optional note",
+        "source": "SLSW7"
+     },
+     {
+        "question": "The main programming paradigm for Clojure is ANSWER programming",
+        "answer": "functional",
+        "note": "optional note",
+        "source": "SLSW7"
+     },
+     {
+        "question": "The loop and recur constructs are in Clojure to guide ANSWER",
+        "answer": "tail recursion optimization",
+        "note": "optional note",
+        "source": "SLSW7"
+     },
+     {
+        "question": "In Clojure, the value of (repeat 1) is ANSWER",
+        "answer": ["an infinite sequence of 1s","a lazy infinite sequence of 1s"],
+        "note": "optional note",
+        "source": "SLSW7"
+     },
+     {
+        "question": "In Clojure, (take 3 (iterate (fn [x] (* 2 x)) 2)) produces ANSWER",
+        "answer": "(4 8 16)",
+        "note": "optional note",
+        "source": "SLSW7"
+     },
+     {
+        "question": "The main Clojure approach to concurrency is called ANSWER",
+        "answer": ["Software Transactional Memory","STM"],
+        "note": "optional note",
+        "source": "SLSW7"
+     },
+     {
+        "question": "In Clojure, ANSWER is a concurrency construct that allows an asynchronous return before computation is complete",
+        "answer": "a future",
+        "note": "optional note",
+        "source": "SLSW7"
+     },
+     {
+        "question": "In Clojure, you cannot change a reference outside of ANSWER",
+        "answer": "a transaction",
+        "note": "optional note",
+        "source": "SLSW7"
+     },
+
+
+    null
   ]
 }
