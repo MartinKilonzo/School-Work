@@ -1,39 +1,36 @@
-'use strict';
-
 const fs = require('fs');
 
 
-const SYMBOLS = ['+', '-', '/', '*'];
-
-
 const evaluate = (value1, action, value2) => {
+  const a = parseInt(value1, 10);
+  const b = parseInt(value2, 10);
   switch (action) {
-    case '+': return value1 + value2;
-      break;
-    case '-': return value1 - value2;
-      break;
-    case '/': return value1 / value2;
-      break;
-    case '*': return value1 * value2;
-      break;
-    default: return null;
+    case '+':
+      return a + b;
+    case '-':
+      return a - b;
+    case '/':
+      return a / b;
+    case '*':
+      return a * b;
+    default:
+      return null;
   }
 };
 
 const interpretLine = (line) => {
   const tokens = [];
-  line.split(/\b\s+\b/).forEach((token) => { // Apparently javascript doesnt support negative lookbehinds (?<!=)
-    tokens.push(token);
+  line.split(/\s+/).forEach((token) => {
+    if (typeof token !== 'undefined' && token.length > 0) {
+      tokens.push(token);
+    }
   });
 
   let hold;
   let action = -1;
   tokens.forEach((token) => {
     if (token.match(/\d/)) {
-      if (typeof hold !== 'undefined') {
-        console.log('Parsing Error');
-        return null;
-      } else if (action === -1) {
+      if (action === -1) {
         hold = token;
       } else {
         hold = evaluate(hold, action, token);
@@ -41,7 +38,6 @@ const interpretLine = (line) => {
       }
     } else if (token.match(/[+-/*]/)) {
       if (typeof hold === 'undefined') {
-        console.log('Parsing Error');
         return null;
       }
       action = token;
@@ -54,7 +50,6 @@ const interpretLine = (line) => {
 fs.readFile('./input.txt', 'utf8', (err, data) => {
   if (err) throw err;
 
-  const tokens = [];
   data.split(/[\n\r]+/).forEach((line) => {
     console.log(interpretLine(line));
   });
