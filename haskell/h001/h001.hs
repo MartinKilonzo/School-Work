@@ -1,4 +1,5 @@
 import System.Process
+import Data.List.Split
 
 getGitLog = do
   gitLog <- readProcess "git" ["log"] ""
@@ -11,6 +12,6 @@ saveToFile gitLog = do
 
 main = do
   putStrLn "Getting Git Log..."
-  gitLog <- getGitLog
+  gitLog <- splitOn "commit" getGitLog
   saveToFile gitLog
   putStrLn gitLog
