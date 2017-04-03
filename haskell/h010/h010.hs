@@ -1,13 +1,13 @@
--- numString = "   1 22      90    33  00001"
---
--- eraseSpace = map (\c -> if c == ' ' then ''; else c)
---
--- splitWhen :: (Char -> Bool) -> String -> [String]
---     wordsWhen c s = case dropWhile c s of
---                         '' -> []
---                         s' -> w : splitWhen c s''
---                               where (w, s'') = break c s'
---
+numString = "   1 22      90    33  00001"
+
+eraseSpace = map (\c -> if c == ' ' then ''; else c)
+
+splitWhen :: (Char -> Bool) -> String -> [String]
+  splitWhen c s = case dropWhile c s of
+    '' -> []
+    s' -> w : splitWhen c s''
+      where (w, s'') = break c s'
+
 
 symbol :: Parser Char
 symbol = oneOf "!#$%&|*+-/:<=>?@^_~"
@@ -19,5 +19,5 @@ readExpr input = case parse symbol "lisp" input of
 
 main :: IO ()
 main = do
-         (expr:_) <- getArgs
-         putStrLn (readExpr expr)
+  (expr:_) <- getArgs
+  putStrLn (readExpr expr)
