@@ -1,5 +1,5 @@
 import System.Process
-import Data.List.Split
+-- import Data.List.Split
 
 getGitLog = do
   gitLog <- readProcess "git" ["log"] ""
@@ -7,11 +7,18 @@ getGitLog = do
 
 
 saveToFile gitLog = do
-  writeFile "log.txt" gitLog
+  writeFile "log1.txt" gitLog
+
+
+splitWhen :: (Char -> Bool) -> String -> [String]
+splitWhen p s = case dropWhile p s of
+  "" -> []
+  s' -> w : splitWhen p s''
+    where (w, s'') = break p s'
 
 
 main = do
   putStrLn "Getting Git Log..."
-  gitLog <- splitOn "commit" getGitLog
+  gitLog <- getGitLog
   saveToFile gitLog
-  putStrLn gitLog
+  print $ splitWhen (=='\n') gitLog
