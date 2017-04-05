@@ -13,10 +13,27 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Deps">
+      <UniqueIdentifier>{b92917b4-106b-4ac7-bd0f-8f40a5c83761}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="P2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Ngrams\fileRead.cpp">
+      <Filter>Source Files\Deps</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Ngrams\fileRead.h">
+      <Filter>Source Files\Deps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Ngrams\utilsToStudents.h">
+      <Filter>Source Files\Deps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Ngrams\VectorHash.h">
+      <Filter>Source Files\Deps</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
