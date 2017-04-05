@@ -13,32 +13,27 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Deps">
+      <UniqueIdentifier>{f28f7d4f-855d-4bfb-8be5-db988274e0ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="P1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\NgramsToStudents\Ngrams\fileRead.cpp">
-      <Filter>Header Files</Filter>
+    <ClCompile Include="..\..\Ngrams\fileRead.cpp">
+      <Filter>Source Files\Deps</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\NgramsToStudents\Ngrams\fileRead.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\..\Ngrams\VectorHash.h">
+      <Filter>Source Files\Deps</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\NgramsToStudents\Ngrams\utilsToStudents.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\..\Ngrams\fileRead.h">
+      <Filter>Source Files\Deps</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\NgramsToStudents\Ngrams\VectorHash.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\..\Ngrams\utilsToStudents.h">
+      <Filter>Source Files\Deps</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\NgramsToStudents\Ngrams\Ngrams.vcxproj">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="..\..\NgramsToStudents\Ngrams\Ngrams.vcxproj.user">
-      <Filter>Header Files</Filter>
-    </None>
   </ItemGroup>
 </Project>

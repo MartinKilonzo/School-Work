@@ -78,17 +78,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\NgramsToStudents\Ngrams\fileRead.cpp" />
+    <ClCompile Include="..\..\Ngrams\fileRead.cpp" />
     <ClCompile Include="P1.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\NgramsToStudents\Ngrams\fileRead.h" />
-    <ClInclude Include="..\..\NgramsToStudents\Ngrams\utilsToStudents.h" />
-    <ClInclude Include="..\..\NgramsToStudents\Ngrams\VectorHash.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\NgramsToStudents\Ngrams\Ngrams.vcxproj" />
-    <None Include="..\..\NgramsToStudents\Ngrams\Ngrams.vcxproj.user" />
+    <ClInclude Include="..\..\Ngrams\fileRead.h" />
+    <ClInclude Include="..\..\Ngrams\utilsToStudents.h" />
+    <ClInclude Include="..\..\Ngrams\VectorHash.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

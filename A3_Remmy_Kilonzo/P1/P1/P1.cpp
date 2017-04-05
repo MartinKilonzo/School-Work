@@ -6,8 +6,8 @@
 #include <unordered_map>
 using namespace std;
 
-#include "../../NgramsToStudents/Ngrams/fileRead.h"
-#include "../../NgramsToStudents/Ngrams/VectorHash.h"
+#include "../../Ngrams/fileRead.h"
+#include "../../Ngrams/VectorHash.h"
 
 
 
