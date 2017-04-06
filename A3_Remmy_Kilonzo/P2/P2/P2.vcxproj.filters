@@ -24,6 +24,9 @@
     <ClCompile Include="..\..\Ngrams\fileRead.cpp">
       <Filter>Source Files\Deps</Filter>
     </ClCompile>
+    <ClCompile Include="P22.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Ngrams\fileRead.h">

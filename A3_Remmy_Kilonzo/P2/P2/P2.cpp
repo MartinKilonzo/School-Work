@@ -2,7 +2,6 @@
 
 #include <stdlib.h>
 #include <iostream>
-#include <algorithm>
 #include <unordered_map>
 using namespace std;
 
@@ -13,19 +12,15 @@ using namespace std;
 
 int main(int argc, char const *argv[]) {
   // If there are not enough args, return -1
-  // if (argc < 5)
-  //   return -1;
-	//
-  // // Otherwise, collect the function parameters
-  // string fileName1 = argv[1];
-  // string fileName2 = argv[2];
-  // int n = atoi(argv[3]);
-  // bool isCommonNGrams = (bool) atoi(argv[4]);
+  if (argc < 5)
+    return -1;
 
-  string fileName1 = "../../../InputOutput/p2_a.txt";
-  string fileName2 = "../../../InputOutput/p2_b.txt";
-  unsigned int n = atoi("5");
-  bool isCommonNGrams = (bool) atoi("0");
+  // Otherwise, collect the function parameters
+  string fileName1 = argv[1];
+  string fileName2 = argv[2];
+  int n = atoi(argv[3]);
+  bool isCommonNGrams = (bool) atoi(argv[4]);
+
 
   // Capture all tokens
   vector<string> tokens1;
@@ -48,26 +43,27 @@ int main(int argc, char const *argv[]) {
     for (auto itr = tokens1.begin(); itr != tokens1.end() - n; itr++) {
       vector<string> nGram(n);
 
-      for(auto jtr = itr; jtr != itr + n + 1; jtr++) {
+      for(auto jtr = itr; jtr != itr + n; jtr++) {
         nGram.push_back(*jtr);
       }
 
-      if (database1.count(nGram) == 0 ) {
+      if (database1.count(nGram) == 0) {
         database1[nGram] = 1;
       } else{
         database1[nGram] = database1[nGram] + 1;
       }
     }
 
-    for (auto itr = tokens2.begin(); itr != tokens2.end() - n; itr++) {
+		int numGrams2 = 0;
+    for (auto itr = tokens2.begin(); itr != tokens2.end() - n; itr++, numGrams2++) {
       vector<string> nGram(n);
 
-      for(auto jtr = itr; jtr != itr + n + 1; jtr++) {
+      for(auto jtr = itr; jtr != itr + n; jtr++) {
         nGram.push_back(*jtr);
       }
 
-			// Record only the relevant nGrams
-      if ((database1.count(nGram) == 0) == isCommonNGrams) {
+			// Record only the N_Grams present in the first text file
+      if ((database1.count(nGram) != 0)) {
         if (database2.count(nGram) == 0) {
           database2[nGram] = 1;
         } else {
@@ -76,12 +72,17 @@ int main(int argc, char const *argv[]) {
       }
     }
 
-		for (auto &itdb : database2) {
-			for (auto &itng : itdb.first)
-				std::cout << itng;
-			std::cout << ", " << itdb.second <<  '\n';
+		if (isCommonNGrams) {
+			for (auto &itdb : database2) {
+				for (auto &itng : itdb.first)
+					std::cout << itng << " ";
+				std::cout << '\n';
+			}
+			std::cout << (1 - database2.size() / float(numGrams2)) * 100 << '\n';
+		} else {
+			std::cout << (database2.size() / float(numGrams2)) * 100 << '\n';
 		}
-		std::cout << database1.size() << " " << database2.size() << " "<< '\n';
+		// std::cout << database1.size() << " " << database2.size() << " "<< '\n';
   }
 
   return 0;
