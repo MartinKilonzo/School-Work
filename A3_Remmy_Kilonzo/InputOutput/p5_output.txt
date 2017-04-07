@@ -1,0 +1,34 @@
+INPUT:
+
+p5 p4_textModel.txt p4_sentence_a.txt 3 3
+
+OUTPUT:
+
+-9.7659
+
+///////////////////////////////////////
+
+
+INPUT:
+
+p5 p4_textModel.txt p4_sentence_b.txt 3 3
+
+OUTPUT:
+
+ LogProb: -10.0885
+
+
+///////////////////////////////////////
+
+p5 p4_textModel.txt p4_sentence_a.txt 2 2
+OUTPUT:
+
+ -7.06891
+
+///////////////////////////////////////
+
+p4 p4_textModel.txt p4_sentence_b.txt 2 2
+
+OUTPUT:
+
+-7.47438

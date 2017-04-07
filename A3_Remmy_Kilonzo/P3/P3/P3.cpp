@@ -79,9 +79,9 @@ int main(int argc, char const *argv[]) {
       if (N < n) {
         aDatabase.clear();
         bDatabase.clear();
-        for (auto itr = tokens.begin(); itr != tokens.end() - (N + 1); itr++) {
+        for (auto itr = tokens.begin(); itr != tokens.end() - (N + 1) + 1; itr++) {
           vector<string> nGram;
-
+          std::cout << nGram.size() << ' ' << n << '\n';
           for (auto jtr = itr; jtr != itr + (N + 1); jtr++)
             nGram.push_back(*jtr);
 
@@ -92,9 +92,9 @@ int main(int argc, char const *argv[]) {
           }
         }
 
-        for (auto itr = tokens.begin(); itr != tokens.end() - N; itr++) {
+        for (auto itr = tokens.begin(); itr != tokens.end() - N + 1; itr++) {
           vector<string> nGram;
-
+          std::cout << nGram.size() << ' ' << n << '\n';
           for (auto jtr = itr; jtr != itr + N; jtr++)
             nGram.push_back(*jtr);
 
