@@ -12,19 +12,32 @@ using namespace std;
 
 
 
-int countNGrams(unordered_map<vector<string>, int> database) {
-  int count = 0;
-  for (auto &itr : database)
-    count += itr.second;
-  return count;
+unordered_map<vector<string>, int> hashCorpus (vector<string> tokens, int n) {
+  unordered_map<vector<string>, int> corpus;
+  for (auto itr = tokens.begin(); itr != tokens.end() - (n - 1); itr++) {
+    vector<string> nGram;
+
+    for (auto jtr = itr; jtr != itr + n; jtr++)
+      nGram.push_back(*jtr);
+
+    if (corpus.count(nGram) == 0) {
+      corpus[nGram] = 1;
+    } else{
+      corpus[nGram] = corpus[nGram] + 1;
+    }
+  }
+
+  return corpus;
 }
 
 
 
 int main(int argc, char const *argv[]) {
   // If there are not enough args, return -1
-  if (argc < 3)
+  if (argc < 3) {
+    std::cerr << "Usage: P3.exe <corpus> <n>" << '\n';
     return -1;
+  }
 
   // Otherwise, collect the function parameters
   string fileName = argv[1];
@@ -32,120 +45,81 @@ int main(int argc, char const *argv[]) {
   srand(time(NULL));
 
 
+
   // Capture all tokens
   vector<string> tokens;
   read_tokens(fileName, tokens, true);
 
   if (tokens.size() < n) {
-    cout << "\nInput file '" << fileName << "' is too small to create any nGrams of size " << n;
+    cerr << "\nInput file '" << fileName << "' is too small to create any nGrams of size " << n;
     return -1;
   }
 
+  unordered_map <string, int> dictionary;
 
-  unordered_map <string, int> database;
-
-  for (auto &itr : tokens) {
-    if (database.count(itr) == 0) {
-      database[itr] = 1;
-    } else{
-      database[itr] = database[itr] + 1;
-    }
+  for (auto &word : tokens) {
+    if (dictionary.count(word) == 0)
+      dictionary[word] = 1;
+    else
+      dictionary[word] += 1;
   }
 
-  vector<string> phrase;
+  vector<string> phrase = {""};
 
-  if (n == 1) {
-    vector<string> words(database.size());
-    vector<double> probs(database.size());
+  int m = 1;
+  bool reCorpus = true;
+  double N = tokens.size();
+  unordered_map<vector<string>, int> corpusA;
+  unordered_map<vector<string>, int> corpusB;
+  vector<double> probs;
+  vector<string> vocabulary;
 
-    for (auto &itr : database) {
-      words.push_back(itr.first);
-      probs.push_back(float(itr.second) / tokens.size());
-    }
-
-    while (phrase.size() == 0 || phrase.back().compare(EOS) != 0)
-      phrase.push_back(words[drawIndex(probs)]);
-  }
-
-  else if (n > 1) {
-    phrase.push_back(EOS);
-    int in = 0;
-    unordered_map <vector<string>, int> aDatabase;
-    unordered_map <vector<string>, int> bDatabase;
-    do {
-      int N = phrase.size();
-      if (N < n) {
-        aDatabase.clear();
-        bDatabase.clear();
-        for (auto itr = tokens.begin(); itr != tokens.end() - (N + 1) + 1; itr++) {
-          vector<string> nGram;
-          std::cout << nGram.size() << ' ' << n << '\n';
-          for (auto jtr = itr; jtr != itr + (N + 1); jtr++)
-            nGram.push_back(*jtr);
-
-          if (aDatabase.count(nGram) == 0) {
-            aDatabase[nGram] = 1;
-          } else{
-            aDatabase[nGram] = aDatabase[nGram] + 1;
-          }
-        }
-
-        for (auto itr = tokens.begin(); itr != tokens.end() - N + 1; itr++) {
-          vector<string> nGram;
-          std::cout << nGram.size() << ' ' << n << '\n';
-          for (auto jtr = itr; jtr != itr + N; jtr++)
-            nGram.push_back(*jtr);
-
-          if (bDatabase.count(nGram) == 0) {
-            bDatabase[nGram] = 1;
-          } else{
-            bDatabase[nGram] = bDatabase[nGram] + 1;
-          }
+  while (phrase.back() != EOS) {
+    if (n == 1) {
+      if (reCorpus) {
+        probs.clear();
+        vocabulary.clear();
+        for (auto &itr : dictionary) {
+          probs.push_back(itr.second / N);
+          vocabulary.push_back(itr.first);
         }
       }
+      phrase.push_back(vocabulary[drawIndex(probs)]);
+    }
+    else if (n > 1) {
+      if (reCorpus) {
+        corpusA = hashCorpus(tokens, max(m, 2));
+        corpusB = hashCorpus(tokens, max(m - 1, 1));
+      }
 
-
-      vector<string> words(database.size());
-      vector<double> probs(database.size());
-
+      probs.clear();
+      vocabulary.clear();
 
       vector<string> nGram;
-      for (int i = in; i < phrase.size(); i++)
-        nGram.push_back(phrase[i]);
-
-
-      float aCount = 1 / (pow(database.size(), (phrase.size() - in)) + aDatabase.size());
-      float bCount = 1 / (pow(database.size(), (phrase.size() - in) - 1) + bDatabase.size());
-
-      if (bDatabase.count(nGram) != 0)
-        bCount += bDatabase[nGram];
-
-      for (auto &itr : database) {
-        nGram.push_back(itr.first);
-
-        if (aDatabase.count(nGram) != 0)
-          aCount += aDatabase[nGram];
-
-        nGram.pop_back();
-        words.push_back(itr.first);
-        probs.push_back(aCount / bCount);
+      if (m == 1)
+        nGram.push_back(EOS);
+      else {
+        for (auto jtr = phrase.end() - (m - 1); jtr != phrase.end(); jtr++)
+          nGram.push_back(*jtr);
       }
 
-      // Normalize
-      float sum = 0;
-      for (auto &itr : probs)
-        sum += itr;
+      double probsB = corpusB[nGram];
 
-      for (int i = 0; i < probs.size(); i++)
-        probs[i] = probs[i] / sum;
+      for (auto &itr : dictionary) {
+        nGram.push_back(itr.first);
+        vocabulary.push_back(itr.first);
+        probs.push_back(corpusA[nGram] / probsB);
+        nGram.pop_back();
+      }
+      phrase.push_back(vocabulary[drawIndex(probs)]);
+    }
 
-      string t = words[drawIndex(probs)];
-      phrase.push_back(t);
-
-      if (phrase.size() > n)
-        in++;
-
-    } while(phrase.back().compare(EOS) != 0);
+    if (m < n) {
+      m++;
+      reCorpus = true;
+    } else {
+      reCorpus = false;
+    }
   }
 
   for (auto &itr : phrase)
