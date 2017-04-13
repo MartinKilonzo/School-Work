@@ -56,6 +56,7 @@ int main(int argc, char const *argv[]) {
   double delta = stod(argv[4]);
 
 
+
   // Capture all tokens
   vector<string> corpusTokens;
   vector<string> sentenceTokens;
@@ -148,8 +149,13 @@ int main(int argc, char const *argv[]) {
 
   double probability = 0;
 
-  for (auto &prob : probs)
+  for (auto &prob : probs) {
+    if (prob == 0 && delta == 0) {
+      probability = -DBL_MAX;;
+      break;
+    }
     probability += log(prob);
+  }
 
   std::cout << probability << '\n';
 

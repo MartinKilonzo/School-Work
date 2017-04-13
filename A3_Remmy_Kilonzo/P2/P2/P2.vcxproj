@@ -80,7 +80,6 @@
   <ItemGroup>
     <ClCompile Include="..\..\Ngrams\fileRead.cpp" />
     <ClCompile Include="P2.cpp" />
-    <ClCompile Include="P22.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Ngrams\fileRead.h" />

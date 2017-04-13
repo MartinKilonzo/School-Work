@@ -10,79 +10,71 @@ using namespace std;
 
 
 
+unordered_map<vector<string>, int> hashCorpus (vector<string> tokens, int n) {
+  unordered_map<vector<string>, int> corpus;
+  for (auto itr = tokens.begin(); itr != tokens.end() - (n - 1); itr++) {
+    vector<string> nGram;
+
+    for (auto jtr = itr; jtr != itr + n; jtr++)
+      nGram.push_back(*jtr);
+
+    if (corpus.count(nGram) == 0) {
+      corpus[nGram] = 1;
+    } else{
+      corpus[nGram] = corpus[nGram] + 1;
+    }
+  }
+
+  return corpus;
+}
+
+
+
 int main(int argc, char const *argv[]) {
   // If there are not enough args, return -1
   if (argc < 5)
     return -1;
 
   // Otherwise, collect the function parameters
-  string fileName1 = argv[1];
-  string fileName2 = argv[2];
-  int n = atoi(argv[3]);
+  string fileNameA = argv[1];
+  string fileNameB = argv[2];
+  int n = stoi(argv[3]);
   bool isCommonNGrams = (bool) atoi(argv[4]);
 
 
   // Capture all tokens
-  vector<string> tokens1;
-  vector<string> tokens2;
-  read_tokens(fileName1, tokens1, false);
-  read_tokens(fileName2, tokens2, false);
+  vector<string> tokensA;
+  vector<string> tokensB;
+  read_tokens(fileNameA, tokensA, false);
+  read_tokens(fileNameB, tokensB, false);
 
-  if (tokens1.size() < n) {
-    cout << "\nInput file '" << fileName1 << "' is too small to create any nGrams of size " << n;
+  if (tokensA.size() < n) {
+    cerr << "\nInput file '" << fileNameA << "' is too small to create any nGrams of size " << n;
     return -1;
-  } else if (tokens2.size() < n) {
-    cout << "\nInput file '" << fileName2 << "' is too small to create any nGrams of size " << n;
+  } else if (tokensB.size() < n) {
+    cerr << "\nInput file '" << fileNameB << "' is too small to create any nGrams of size " << n;
     return -1;
-  } else {
+  } else if (n > 0) {
+    unordered_map <vector<string>, int> corpusA = hashCorpus(tokensA, n);
+    unordered_map <vector<string>, int> corpusB = hashCorpus(tokensB, n);
 
-    unordered_map <vector<string>, int> database1;
-    unordered_map <vector<string>, int> database2;
+    vector <vector<string>> sameWords;
 
-
-    for (auto itr = tokens1.begin(); itr != tokens1.end() - n; itr++) {
-      vector<string> nGram(n);
-
-      for(auto jtr = itr; jtr != itr + n; jtr++) {
-        nGram.push_back(*jtr);
-      }
-
-      if (database1.count(nGram) == 0) {
-        database1[nGram] = 1;
-      } else{
-        database1[nGram] = database1[nGram] + 1;
-      }
-    }
-
-		int numGrams2 = 0;
-    for (auto itr = tokens2.begin(); itr != tokens2.end() - n; itr++, numGrams2++) {
-      vector<string> nGram(n);
-
-      for(auto jtr = itr; jtr != itr + n; jtr++) {
-        nGram.push_back(*jtr);
-      }
-
-			// Record only the N_Grams present in the first text file
-      if ((database1.count(nGram) != 0)) {
-        if (database2.count(nGram) == 0) {
-          database2[nGram] = 1;
-        } else {
-          database2[nGram] = database2[nGram] + 1;
-        }
-      }
+    for (auto &itr : corpusB) {
+      if (corpusA.count(itr.first) > 0)
+        sameWords.push_back(itr.first);
     }
 
 		if (isCommonNGrams) {
-			for (auto &itdb : database2) {
-				for (auto &itng : itdb.first)
-					std::cout << itng << " ";
+			for (auto &itr : sameWords) {
+				for (auto &jtr : itr)
+					std::cout << jtr << " ";
 				std::cout << '\n';
 			}
-			std::cout << (1 - database2.size() / float(numGrams2)) * 100 << '\n';
+			std::cout << (1 - sameWords.size() / float(corpusB.size())) * 100 << '\n';
 		} else {
-			std::cout << (database2.size() / float(numGrams2)) * 100 << '\n';
+			std::cout << (sameWords.size() / float(corpusB.size())) * 100 << '\n';
 		}
-		// std::cout << database1.size() << " " << database2.size() << " "<< '\n';
   }
 
   return 0;
