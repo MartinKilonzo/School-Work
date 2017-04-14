@@ -6,3 +6,10 @@
 *.opensdf
 *.sdf
 *.*suo
+*.pdb
+*.exe
+*.obj
+*.gch
+*.sln
+Release/
+Debug/
