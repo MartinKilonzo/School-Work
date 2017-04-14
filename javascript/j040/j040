@@ -1,0 +1,83 @@
+The intent of this task is to build an transpiler/compiler in JavaScript for the
+output from the parser of r020, h020, or j020.  
+
+The stages of this task are the same as those of the 030/031 tasks.  The
+difference is in how the inputs become the output.  Rather than being
+interpreted directly, for this task, some other programming language must
+be output whose execution will produce the same results on a given input
+as the interpreter was supposed to.
+
+There are a number of decisions you will need to make about how you will
+approach this task.
+
+One decision that would need to be made is what the target language is to
+be.  For this course, JavaScript, Ruby, and Haskell are all plausible.
+Given the required background, C would also be a reasonable target.  Since
+the stages are specified with regard to inputs and outputs after execution,
+pretty much any programming language that you are comfortable with is a
+reasonable target language.  Some languages will have more impact on how
+other decisions would be made than others.
+
+Another decision, is how you want to handle types.  The source language
+supports different types (ints, floats, perhaps booleans, and functions of
+various type signatures).  One approach would be to have some sort of type
+field associated with values as they are passed around during execution of
+the target language.  Another approach would be to use a target language
+that automatically handles the types for you (such as JavaScript or Ruby).
+A third approach, would be to infer the relevant types (in a manner similar
+to Haskell).  Since the list type gives us arbitrarily large objects with
+arbitrary combinations of types, there is a limit to how far type inference
+can take us here.  There are also questions such as are all functions objects
+of the same type, or do they have different type signatures, as in Haskell.
+
+Another decision is how detailed you intend to break down expressions.  A
+traditional compiler normally targets assembly language, and so expressions
+like 3 + x + y turn into sequences like
+t1 = 3 + x
+t2 = t1 + y
+whereas a transpiler into Ruby or JavaScript could easily just translate
+the expression into 3 + x + y and expect the Ruby/JavaScript interpreter
+to handle the order of calculation.
+
+Similarly, conditional expressions with a traditional assembly target would
+break down into various branch statements (conditional and unconditional)
+like ? x > y { 3 ; 4 } becomes
+3: if x > y then goto 4 else goto 6
+4: t1 = 3
+5: goto 7
+6: t1 = 4
+7: output t1
+However, neither JavaScript nor Ruby nor Haskell supports gotos naturally
+(although each language has libraries for such finite state machine
+computational structures).  One approach is to view the program as a 
+large while loop around a case statement on a variable called PC, making
+the above code something like:
+PC = 3;
+while (1) {
+case PC:
+switch 3: if x > y then PC = 4 else PC= 6; break;
+switch 4: t1 = 3; PC = 5; break;
+switch 5: PC = y; break
+switch 6: t1 = 4; PC = 7; break;
+switch 7: output t1
+}
+
+The matter with conditional expressions becomes even more pronounced when
+we consider handling functions (both named and anonymous).  Again, the
+behavior is close enough to JavaScript or Ruby to permit using JavaScript
+or Ruby functions to represent the functions of the source language.
+However, the chapter on how to compile functions in the ICD textbook is
+aimed at the traditional assembly language target.  There you want a 
+branch statements handled similarly to the while-case structure discussed
+in the previous considerations.  Additionally, ICD wants to explicitly 
+maintain a stack (either assembly style as an array of uniform type or
+as a stack of varying dynamic objects representing different stack frames
+on the heap).  Handling closures is particularly challenging for the
+assembly style target implementations.
+
+Also, there is the question of how to handle the list objects.  One could
+translate directly into the built-in list objects of JavaScript or Ruby.
+In the assembly style target, one would probably want to maintain a
+separate heap area with some sort of garbage collection mechanism.
+Of course, reclaiming unused memory isn't necessary for any of the
+examples in the 031 tasks.

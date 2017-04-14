@@ -1,0 +1,24 @@
+#!/bin/bash
+# if test idea from http://unix.stackexchange.com/questions/146942/how-can-i-test-if-a-variable-is-empty-or-contains-only-spaces
+start=`cat ~/.3342base`
+username=`cat ~/.3342me`
+if [[ $start = *[!\ ]* ]]; then
+  echo "using start path" $start " followed by 3342"
+else
+  echo "start consists of spaces only, aborting"
+  exit 1;
+fi
+if [[ $username = *[!\ ]* ]]; then
+  echo "using username " $username
+else
+  echo "username consists of spaces only, aborting"
+  exit 1;
+fi
+# got idea to set the editor from http://stackoverflow.com/questions/2596805/how-do-i-make-git-use-the-editor-of-my-choice-for-commits
+git config --global core.editor "/usr/bin/emacs"
+git config --global push.default simple
+
+cd ${start}/3342/${username}
+git pull
+
+

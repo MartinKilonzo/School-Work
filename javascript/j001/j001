@@ -1,0 +1,80 @@
+The task j001 has been designed to let you take information provided in
+the wiki entries:
+CS50 2016 - Week 10 - JavaScript https://wiki.gaul.csd.uwo.ca/display/CS33422017/CS50+2016+-+Week+10+-+JavaScript
+JavaScript (CS50 shorts) https://wiki.gaul.csd.uwo.ca/pages/viewpage.action?pageId=9208203
+DOM (CS50 short) https://wiki.gaul.csd.uwo.ca/pages/viewpage.action?pageId=9208205
+and, with a bit of help from https://www.google.ca/ , build a useful web
+application.
+
+The problem that I am interested in addressing is how to keep track of time
+while doing your practice.  Scattered among the above wikis are references
+to most of the pieces you need to create a web page that does timing for
+you.  Rather than breaking this up into a bunch of tasks, I am going to break
+this task up into a bunch of stages.  I would encourage you to work through
+the stages in order for best practicing results.  Also this will allow you to
+check frequently along the way to make sure that things are working as they
+are supposed to.
+
+Stage 1: You want to create a web page that prints the current date on it when
+it loads.  While this can be done with a write or with an alert, it will be
+most useful to set up an area on the html page (j001.html) where the date is
+to be printed and then write some javascript to cause that area to be filled
+in with the date once the page is ready for processing.
+
+Stage 2: You want to modify j001.html so that on the page, there is also a
+button, and when you press the button, the current date is put in a separate
+portion of the web page.  If you press the button twice, the old date should 
+disappear and the new date should replace it.
+
+Stage 3: You want to modify j001.html, so that there is a third display area
+on it, where the amount of time that has passed since the page was loaded
+is printed.  You should set this up as a window event like the blink example
+from the wiki.  It is good enough to update every 10 seconds 
+(10000 milliseconds).
+
+Stage 4: You want to modify j001.html so that there is a reset and pause button
+on the timer introduced in Stage 3.  Reset causes the amount of time that has
+passed to be set to 0.  Pause stops the progress of the timer and also changes
+the name of the button to resume.  Pressing resume causes the timer to proceed.
+
+Stage 5: You want to modify the timer so that it has a background color.
+The color should be light green as long the timer is less than 30 minutes.
+From 30 minutes to 50 minutes the background color of the timer should become
+light orange.  After 50 minutes, the background color should
+change to red.  
+
+Stage 6: You want to modify the timer so that it stops at 60 minutes and
+puts an extra message on the page reminding you that it is time to put a
+commit message in your practice log (using git commit) for the time spent
+so far.
+
+Stage 7: You want to modify j001.html again to include a secondary timer.
+This secondary timer is for when you are searching the web for an answer
+you are looking for.  There should be a `start searching' button on the 
+secondary timer.  When the start button is hit, the main timer should pause, the
+secondary timer should start, and the button name should change to 
+`done searching'.  The secondary timer should stop when `done searching'
+is pressed or when 15 minutes has passed, whichever comes first.  When
+the done button is pressed, the time on the secondary timer should be
+added to the original timer, which should then resume (be sure and properly
+handle the case of the search time throwing the primary time over 60 minutes).
+
+Stage 8: One question that arises is does the timer drift (for example, if
+a web page you are loading ties down the system, can more than 10 seconds
+pass before you update the timer).  The way to check this is to remember
+the date each time the timer is updated.  If more than 11 seconds has passed
+since the last date remembered, then instead of incrementing the timer by
+10 seconds, you should increment it by the number of seconds that have
+actually passed.  For good measure, you should also print a warning message
+on the web page so that you know that this is a problem.  You may need to
+adjust this from 11 to 12 seconds or so depending on the time sampling rate of
+the browser.
+
+Well, that covers the design of a simple web page for timing practice in cs3342.
+One question is: does it actually help?  If you try to use it, you may notice
+things that would make it more useful.  If you do, let me know.  Depending on
+their complexity, new tasks based on your design suggestions may appear.
+Enjoy.
+
+[Questions or suggestions relating to this task should be posted as
+comments on the blog page that announced its creation.]

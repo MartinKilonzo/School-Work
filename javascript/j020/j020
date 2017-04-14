@@ -1,0 +1,248 @@
+The intent of this task is to build a parser for the output from the scanner
+of r010, h010, or j010.  The parser should read the file produced by the
+scanner that contains a sequence of tokens.
+
+As mentioned in j010, this sort of task is better suited to nodejs than to
+JavaScript running in a browser.
+
+Our language is going to look much like that presented in the examples
+in the Introduction to Compiler Design textbook.
+
+Stage 1:  We will start with the grammar
+  program -> fundecls ';' expr
+  fundecls ->
+  expr -> term
+  term -> factor
+  factor -> integer_constant
+  factor -> float_constant
+The syntax tree will be output in prefix traversal order.  The nonterminal
+that is the left hand side (lhs) of the rule represented by a node is used 
+as the node name to be output first.  Then a [ is output to indicate the 
+start of the right hand side (rhs) that will include the children of this
+node in the order they appear in the rhs of the rule.  Then the children
+are listed in order.  Finally a ] is output to indicate the end of the
+list of children for that node.  Terminal symbols in the grammar are
+represented in the same format as they were in the scanner.  The nonterminals,
+the square brackets, and the terminal symbol in scanner format are each
+printed one to a line.  
+
+So, for example, if the scanner read
+s ;
+i 23
+then the parser would output
+program
+[
+fundecls
+[
+]
+s ; 
+expr
+[
+term
+[
+factor
+[
+integer_constant
+[
+i 23
+]
+]
+]
+]
+]
+
+Be sure and also check for handling the program
+
+s ;
+f 23.0
+
+Stage 2:  We will expand the grammar by adding addition operations to
+  program -> fundecls ';' expr
+  fundecls ->
+  expr -> term ( add_op ) *
+  add_op -> '+'
+  add_op -> '-'
+  term -> factor
+  factor -> integer_constant
+  factor -> float_constant
+Note that when programming a recursive descent compiler, usually the
+syntactic * operator (zero or more copies) is handled by a looping
+construct rather than creating new nonterminals.  In a functional 
+programming style, creating some sort of tail recursion is the usual
+approach.
+
+Stage 3:  We will expand the grammar by adding parenthesis in expressions to
+  program -> fundecls ';' expr
+  fundecls ->
+  expr -> term ( add_op ) *
+  add_op -> '+'
+  add_op -> '-'
+  term -> factor
+  factor -> integer_constant
+  factor -> float_constant
+  factor -> '(' expr ')'
+
+Stage 4:  We will expand the grammar by adding variables to
+  program -> fundecls ';' expr
+  fundecls ->
+  expr -> term ( add_op ) *
+  add_op -> '+'
+  add_op -> '-'
+  term -> factor
+  factor -> integer_constant
+  factor -> float_constant
+  factor -> '(' expr ')'
+  factor -> variable
+where variables are the scanner objects that start with v
+
+
+Stage 5:  We will expand the grammar by adding in multiplcation operations to
+  program -> fundecls ';' expr
+  fundecls ->
+  expr -> term ( add_op ) *
+  add_op -> '+'
+  add_op -> '-'
+  term -> factor ( mult_op ) *
+  mult_op -> '%'
+  mult_op -> '*'
+  mult_op -> '/'
+  factor -> integer_constant
+  factor -> float_constant
+  factor -> '(' expr ')'
+  factor -> variable
+
+Stage 6:  We will expand the grammar by adding a conditional expression to
+  program -> fundecls ';' expr
+  fundecls ->
+  expr -> term ( add_op ) *
+  add_op -> '+'
+  add_op -> '-'
+  term -> factor ( mult_op ) *
+  mult_op -> '%'
+  mult_op -> '*'
+  mult_op -> '/'
+  factor -> integer_constant
+  factor -> float_constant
+  factor -> '(' expr ')'
+  factor -> variable
+  factor -> '?' bexpr '{' expr ';' expr '}'
+  bexpr -> bterm
+  bterm -> compare
+  compare -> expr '=' expr
+  compare -> expr '<' expr
+  compare -> expr '>' expr
+  compare -> '(' bexpr ')'
+
+
+Stage 7:  We will expand the grammar by expanding the notation of boolean 
+operations to
+  program -> fundecls ';' expr
+  fundecls ->
+  expr -> term ( add_op ) *
+  add_op -> '+'
+  add_op -> '-'
+  term -> factor ( mult_op ) *
+  mult_op -> '%'
+  mult_op -> '*'
+  mult_op -> '/'
+  factor -> integer_constant
+  factor -> float_constant
+  factor -> '(' expr ')'
+  factor -> variable
+  factor -> '?' bexpr '{' expr ';' expr '}'
+  bexpr -> bterm ( '|' bterm ) *
+  bterm -> compare ( '&' bterm ) *
+  compare -> expr '=' expr
+  compare -> expr '<' expr
+  compare -> expr '>' expr
+  compare -> '~' compare
+  compare -> '(' bexpr ')'
+
+Stage 8:  We will expand the grammar by including function declarations as
+well as a notation for a function to be invoked to
+  program -> fundecls ';' expr
+  fundecls -> ( fundecl ) *
+  fundecl -> '@' variable anon_function
+  anon_function -> '{' variables expr '}'
+  variables -> ( '\' variable ) *
+  expr -> term ( add_op ) *
+  add_op -> '+'
+  add_op -> '-'
+  term -> factor ( mult_op ) *
+  mult_op -> '%'
+  mult_op -> '*'
+  mult_op -> '/'
+  factor -> integer_constant
+  factor -> float_constant
+  factor -> '(' expr ')'
+  factor -> variable
+  factor -> '?' bexpr '{' expr ';' expr '}'
+  factor -> '#' variable ( '(' exprs ')' ) ?
+  exprs -> expr ( ',' expr ) *
+  bexpr -> bterm ( '|' bterm ) *
+  bexpr -> '~' bexpr
+  bterm -> compare ( '&' bterm ) *
+  compare -> expr '=' expr
+  compare -> expr '<' expr
+  compare -> expr '>' expr
+  compare -> '(' bexpr ')'
+
+Stage 8:  We will expand the grammar by introducing list constants 
+  program -> fundecls ';' expr
+  fundecls -> ( fundecl ) *
+  fundecl -> '@' variable anon_function
+  anon_function -> '{' variables expr '}'
+  variables -> ( '\' variable ) *
+  expr -> term ( add_op ) *
+  add_op -> '+'
+  add_op -> '-'
+  term -> factor ( mult_op ) *
+  mult_op -> '%'
+  mult_op -> '*'
+  mult_op -> '/'
+  factor -> integer_constant
+  factor -> float_constant
+  factor -> '(' expr ')'
+  factor -> variable
+  factor -> '?' bexpr '{' expr ';' expr '}'
+  factor -> '#' variable '(' exprs ? ')' 
+  factor -> '['  exprs ? ']'
+  exprs -> expr ( ',' expr ) *
+  bexpr -> bterm ( '|' bterm ) *
+  bexpr -> '~' bexpr
+  bterm -> compare ( '&' bterm ) *
+  compare -> expr '=' expr
+  compare -> expr '<' expr
+  compare -> expr '>' expr
+  compare -> '(' bexpr ')'
+
+Stage 9:  We will expand the grammar by introducing function constants
+  program -> fundecls ';' expr
+  fundecls -> ( fundecl ) *
+  fundecl -> '@' variable anon_function
+  anon_function -> '{' variables expr '}'
+  variables -> ( '\' variable ) *
+  expr -> term ( add_op ) *
+  add_op -> '+'
+  add_op -> '-'
+  term -> factor ( mult_op ) *
+  mult_op -> '%'
+  mult_op -> '*'
+  mult_op -> '/'
+  factor -> integer_constant
+  factor -> float_constant
+  factor -> '(' expr ')'
+  factor -> variable
+  factor -> '?' bexpr '{' expr ';' expr '}'
+  factor -> '#' variable '(' exprs ? ')' 
+  factor -> '['  exprs ? ']'
+  factor -> anon_function
+  exprs -> expr ( ',' expr ) *
+  bexpr -> bterm ( '|' bterm ) *
+  bexpr -> '~' bexpr
+  bterm -> compare ( '&' bterm ) *
+  compare -> expr '=' expr
+  compare -> expr '<' expr
+  compare -> expr '>' expr
+  compare -> '(' bexpr ')'
+

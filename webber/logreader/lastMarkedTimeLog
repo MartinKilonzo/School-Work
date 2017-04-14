@@ -1,0 +1,54 @@
+ff6c820949202847ffbf02dfcf7bb9e2e7f0c09f time j020 60 Completed Stage 1 (Fixing rejected commit)
+3c8e9893cadc000bc8b9cd277e212a755119f6dc time j031 70 Completing Stage 1 & 2
+d7c33a84b5baa9dac68fcfc090056b8d567be6ed time 60 j020 Completed Stage 1
+d872be21fc1d92e872db5971d1e1bc285ee6524e time r020 70 Completed stage 9
+7c0c540de4730f305802d45695e80200020ce4fc time j030 70 Created the interpreter's basic functions (Stage 1-2)
+5a187a15b6eb5b5be2ffcd500c7def535edccf45 time r002 60 completed stage 2
+303fdd78908da8f208be1df9e9d7942c9ac1fece time r001 15 Added styles to the HTML and improved formatting
+caf6966e007340c0c7a46b381e1a48d82304b615 time h002 65 Started stage 1
+d696b87722951387bbb0e631da7cf51cec8620f0 time r001 15 hyperlinked author email to their name in the HTML table field.
+8d47ee65bf397a4a120c4fe3bbe23f75e067e086 time r001 40 Modified logs to be parsed into dictionaries (Hash Object); newly parsed dicts are split appropriately to populate HTML table containing task history
+1c7b437a547f53c928a66a9db77ca3a2ff60bf86 time r002 75 Set up task for stage 1, nearly completed stage 1
+4e3442b4b4351c93ce6c24235344c084a16af7d3 time j010 65 Added symbols and floats; completed stage 7
+2e8a0b4bd6dbbd4c0e6625355da2924a7de87f95 time h020 25 Attempted Stages 1 and 2
+373c790435c1c4eda28d8730866d178538183f5d time h020 45 Structured and began h020
+16d309f7254b49e0916a25847cf7918634bc2a47 time h010 65 Making progress through Stages 1-3
+d387d8f692fec18ce2114c420b489a61fc31afeb time j003 50 Designed and scaffolded Action and ActionStack classes for undo/redo functions
+c2d5b97cae124ed337dde8c116456cdeff7da340 time j003 25 Added: restart button
+b3821597df4e8f5867714fb9ff53ee5a646d35ee time r010 85 Added: symbols and variable filtering
+ef66cae55678c423f8ba08544e944a99b3758d34 time r001 75 Imported html base from file, fixed bugs (fixing malformatted commit); Added: opens log as html in default browser (fixing malformed commit); converting the unordered list to table
+2e94377ce335150d5d1980f6e28519e11c5daa16 time 17 r001 Added: html file opens in default browser window
+eb9cc3b07ae12fa4c79a1f56e039a0daae2d1a36 time 30 r001 Imported html base from file, fixed bugs
+bf55cba65ac5bc5ea9f4b26f45b952d122d8b979 time j010 20 Completed stages 1 and 2 (fixing rejected commit)
+ec30ba7c34895fe6119f79f4a6628fedc0ccf9f6 time j010 15 Completed stage 4
+8e1aaad43308c46236e8b24681abb393afaad550 time 20 j010 Completed Stages 1, 3
+f125d5414ed2690adf462b66fe02b25b2409411e time h010 30 Attempted stage 1
+5f0958472e96d4a50dc96b17fac23e4e1c03415d time r001 65 Completed 6, 7
+5962f574f60f1966f2db07b0191d93208487cb66 time r010 6 Completed stage3
+482a6180f1ad26ec9580faf6aaaa3edce606cc3b time r010 5 Completed stage 1: added i to each line
+5fd8cf040ab53e58f3361fd42a41d7ef1ff22273 time r010 5 Completed stage 1: added i to each line
+1733954c2b5477f7c6089657c60ae04cef403e3e time r010 50 Completed stage 1
+f35e3dbcbf8111dac9cd7de68eac4dadaf0d88af time r001 73 Filtered out non-task logs from the list
+e1a9313a3b93ff4ecb999d0aa3cdbcb3ab7e6b65 time j100 10 Added url restrictions and parsing to the inputted URL
+2449e231e8b17bc437849dc5dba45972ab318bc0 time j100 10 Added url restrictions and parsing to the inputted URL
+b5c256b0f709aed616d100487c45ffea7c06c73a time j100 20 Added playlist controls to the DOM
+c0669ee5ba24c50a493f95cec408646668cdfa30 time j100 37 Added appropriate event listeners and dispatchers for communication between elements
+7e53bee6ce66eee4a1b22dd0f3a51aeed085288b time h001 75 Completed file I/O in Haskell
+ef6ab992af4a17c091e0efe0807a4cb11512dcac time j002 20 Added Incorrect tally and made the scoring system more robust
+25dd65aa3f4b7400d6b47a958b67f18b25448d19 time 25 j200 Configured meSpeak
+7e719cca752f519225dfe805a13b4448c2f8771e time j001 45 Finished making a functional timer with start/stop/reset/pause functionality
+206b525e884c3982a985f47f342698e69a804e12 time r001 20 log can now be filtered by prject (or any other string) via the command line; Completed statge 5
+9b7246920bfa49f9879ae2281aabf1e752192fad time r001 5 Logs populated in chronological order; Stage 3 complete
+74dff315f84a8106f88103cf65b18ff2ffac0372 time r001 15 Bob Webber commits are filtered from the log; log is written to file properly
+b2a6369ce2ea961c0daf044d820dabc6066b53a1 time r001 10 Split log by commit
+fbe2987d5055cb3865fc188c1b2f51dc39260044 time r001 15 File I/O working with git log
+551ab2fa1b1f90c9a1908e355552199b7b6f364b time j200 70 Configured timer to work correctly
+aceeef88a116ea15bed13a57dd6e8e6b5edd3a0f time j002 65 Reached stage 5 of task
+7140cd2f6e66909bcc9d5b7920e12079baebb421 time j001 10 Timer keeps time state on pause
+912f3b0f042fadb8685c6c09092ceff32198f5f2 time j001 50 Created a timer
+c9f2be2f61073f5cc58bed6c9f712b46e82d3a10 time j001 5 Added timer component
+4092b11b87d7afb62f74ec3708bfba8995a8c3ab time j100 10 added addition buttons
+9e4cbdad860edb25ad991a60203b86464b267d9e time j001 15 Scaffolded the project structure
+bd08d5a2e7896072d463ad6cbebf5cad79b365b2 time j100 15 Added a playlist button to edit the playlist
+da4811decd5b411b735551e8a7865e290f8c4c9e time j100 30 Added a dev server to the repo; video playlist now loops
+010d4bfa60bfc091df9e01050123c014d6428d60 time j100 15 Added video player which plays a queue of videos.

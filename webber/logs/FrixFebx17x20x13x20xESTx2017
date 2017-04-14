@@ -1,0 +1,617 @@
+commit a3d1ada49d2128a11b9774d2d4273cec78e9f2ce
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Fri Feb 17 20:01:58 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 660b5e30a21fa7588c94918e1b9e25a68a645896
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Wed Feb 15 18:50:46 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 2f31aefd5dff144e36eda9adfbe68d15cde7f141
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Mon Feb 13 18:37:22 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 851b28a95c6a7f3115c5c8cb48c4256d8a1f9adb
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Mon Feb 13 17:34:26 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit f4a8aca5c41961a76cbe6bbd72bafc4290fb0502
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Mon Feb 13 17:15:48 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit bf55cba65ac5bc5ea9f4b26f45b952d122d8b979
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 12 19:55:29 2017 -0500
+
+    time j010 20 Completed stages 1 and 2 (fixing rejected commit)
+
+commit 85f07a21f127a7a849223af9f206e86575bc2c3a
+Merge: ec30ba7 b3b0226
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 12 19:51:13 2017 -0500
+
+    Merge branch 'master' of ssh://repo.gaul.csd.uwo.ca:7999/cs3342_w2017/rkilonzo
+
+commit ec30ba7c34895fe6119f79f4a6628fedc0ccf9f6
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 12 19:50:54 2017 -0500
+
+    time j010 15 Completed stage 4
+
+commit 8e1aaad43308c46236e8b24681abb393afaad550
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 12 19:35:45 2017 -0500
+
+    time 20 j010 Completed Stages 1, 3
+
+commit b3b02268781c8ef22d67435a847baefb1951719f
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sun Feb 12 19:33:54 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit f125d5414ed2690adf462b66fe02b25b2409411e
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 12 19:12:20 2017 -0500
+
+    time h010 30 Attempted stage 1
+
+commit 5f0958472e96d4a50dc96b17fac23e4e1c03415d
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 12 18:37:37 2017 -0500
+
+    time r001 65 Completed 6, 7
+
+commit 5962f574f60f1966f2db07b0191d93208487cb66
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 12 17:31:29 2017 -0500
+
+    time r010 6 Completed stage3
+
+commit 482a6180f1ad26ec9580faf6aaaa3edce606cc3b
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 12 17:27:05 2017 -0500
+
+    time r010 5 Completed stage 1: added i to each line
+
+commit 5fd8cf040ab53e58f3361fd42a41d7ef1ff22273
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 12 17:26:06 2017 -0500
+
+    time r010 5 Completed stage 1: added i to each line
+
+commit 1733954c2b5477f7c6089657c60ae04cef403e3e
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 12 17:20:36 2017 -0500
+
+    time r010 50 Completed stage 1
+
+commit 20c6a3469132785adf970ab987152181c2360376
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sun Feb 12 15:16:05 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 82e81953b3e47e615e78bdaf5651b9953f1be409
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sat Feb 11 20:09:56 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 96924123fdd510dead0c742174a8ae55554e70d5
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Fri Feb 10 19:35:00 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit fb19979cd0c47014e8ea2502e7b3a67f31c64dc8
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Thu Feb 9 17:55:23 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit e60ddf1d588ecb0c27ebf23b9946c187f9b26769
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Thu Feb 9 17:41:29 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit b9971b78883873a2685ddabce75d72ff4e1485f1
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Thu Feb 9 17:21:21 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 2523ea6b56f0affb09f14eb7f9a3db23d9398d66
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Tue Feb 7 15:59:11 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 693658ae88650703bf2d807cf91b854fffdb3796
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Mon Feb 6 18:57:32 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit b3050529ec1b1c590b74c11bbde2800de6cc5f71
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Mon Feb 6 15:37:33 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 3064259a2d7bf7a05604d668c6a870afbd78131b
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sun Feb 5 22:15:53 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit d6d3f466e317c7877dcaa2dcb96729dfe3d6337c
+Merge: f35e3db a6aadb2
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 5 19:24:18 2017 -0500
+
+    Merge branch 'master' of ssh://repo.gaul.csd.uwo.ca:7999/cs3342_w2017/rkilonzo
+
+commit f35e3dbcbf8111dac9cd7de68eac4dadaf0d88af
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 5 19:23:53 2017 -0500
+
+    time r001 73 Filtered out non-task logs from the list
+
+commit a6aadb29a42d5ea930cb368c4988c7356b6d29e8
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sun Feb 5 16:48:59 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit e1a9313a3b93ff4ecb999d0aa3cdbcb3ab7e6b65
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 5 14:21:57 2017 -0500
+
+    time j100 10 Added url restrictions and parsing to the inputted URL
+
+commit 2449e231e8b17bc437849dc5dba45972ab318bc0
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 5 14:19:07 2017 -0500
+
+    time j100 10 Added url restrictions and parsing to the inputted URL
+
+commit b5c256b0f709aed616d100487c45ffea7c06c73a
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 5 14:08:08 2017 -0500
+
+    time j100 20 Added playlist controls to the DOM
+
+commit c0669ee5ba24c50a493f95cec408646668cdfa30
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 5 13:55:21 2017 -0500
+
+    time j100 37 Added appropriate event listeners and dispatchers for communication between elements
+
+commit 7e53bee6ce66eee4a1b22dd0f3a51aeed085288b
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Feb 5 13:17:23 2017 -0500
+
+    time h001 75 Completed file I/O in Haskell
+
+commit 2cfcf23a4dc4de7097749af11a80a5bc908736de
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sat Feb 4 18:16:43 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit b64212ed9114ae91ec6beb7587f9613bc966aeda
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Thu Feb 2 19:00:04 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 47dadde8d741fecdecd4edadbe0b7fd4a1b304d6
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Wed Feb 1 14:15:22 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit fd67b7c8b5a7feb258edb73947b7c1f992984661
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Tue Jan 31 18:30:37 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 1c4e35f1aeb361802bd7d718a0a4a6bf2281ff1b
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Mon Jan 30 19:16:53 2017 -0500
+
+    marking for past week completed, see webber/evaluations/markssofar for result
+
+commit a388e969897b9e44f253f76299959cc2ef773de6
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Mon Jan 30 16:36:49 2017 -0500
+
+    marking for past week completed, see webber/evaluations/markssofar for result
+
+commit 036e90d53f14b09e9af6f49acf79142c6046acf6
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Mon Jan 30 15:23:33 2017 -0500
+
+    marking for past week completed, see webber/evaluations/markssofar for result
+
+commit ef6ab992af4a17c091e0efe0807a4cb11512dcac
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 29 23:34:46 2017 -0500
+
+    time j002 20 Added Incorrect tally and made the scoring system more robust
+
+commit 25dd65aa3f4b7400d6b47a958b67f18b25448d19
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 29 23:14:57 2017 -0500
+
+    time 25 j200 Configured meSpeak
+
+commit 898e91258dc9fde2ef365d3ffebf8cf5ef04536b
+Merge: 7e719cc 73b7ab8
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 29 22:44:18 2017 -0500
+
+    Merge branch 'master' of ssh://repo.gaul.csd.uwo.ca:7999/cs3342_w2017/rkilonzo
+
+commit 7e719cca752f519225dfe805a13b4448c2f8771e
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 29 22:44:03 2017 -0500
+
+    time j001 45 Finished making a functional timer with start/stop/reset/pause functionality
+
+commit 73b7ab877741e3b51fb1e8b63d4cfb67363df038
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sun Jan 29 18:28:42 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 206b525e884c3982a985f47f342698e69a804e12
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 29 17:30:25 2017 -0500
+
+    time r001 20 log can now be filtered by prject (or any other string) via the command line; Completed statge 5
+
+commit 9b7246920bfa49f9879ae2281aabf1e752192fad
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 29 17:06:21 2017 -0500
+
+    time r001 5 Logs populated in chronological order; Stage 3 complete
+
+commit 74dff315f84a8106f88103cf65b18ff2ffac0372
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 29 17:04:34 2017 -0500
+
+    time r001 15 Bob Webber commits are filtered from the log; log is written to file properly
+
+commit b2a6369ce2ea961c0daf044d820dabc6066b53a1
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 29 16:37:06 2017 -0500
+
+    time r001 10 Split log by commit
+
+commit fbe2987d5055cb3865fc188c1b2f51dc39260044
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 29 16:23:53 2017 -0500
+
+    time r001 15 File I/O working with git log
+
+commit 76f7a493b801ddf87fc2a07135b7d52c513d09e9
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 29 16:11:43 2017 -0500
+
+    Setting up the project
+
+commit 5a512f265295ad22c320470454322f5c542aa268
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sun Jan 29 15:31:31 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit b3a1b1ef6d5a05bded453a776a3e8444c2eba884
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sat Jan 28 16:27:26 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 551ab2fa1b1f90c9a1908e355552199b7b6f364b
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sat Jan 28 15:20:16 2017 -0500
+
+    time j200 70 Configured timer to work correctly
+
+commit 8e47b9864992322d537715e1fb389641c85bfd2b
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sat Jan 28 14:06:05 2017 -0500
+
+    Initial commit
+
+commit d7f24ee7b25a707d6c033931cdc91d10e450f2ed
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Thu Jan 26 18:13:34 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 94d222f8c9ec4a33251ea7a8106623d90ea16b9c
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Wed Jan 25 17:40:26 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit d2f55cc08c17a17ac613d3eacaee10079bdf0f0f
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Tue Jan 24 15:57:01 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 2395b4768bb294f8e3a93dc0921c430d45a9ff78
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Mon Jan 23 23:15:54 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit c3e1f16048758d1a9fb331ae9dbb5966d7734f4e
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Mon Jan 23 17:27:59 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 04aaf889cd9ee874a6190799ca6728d835373a14
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Mon Jan 23 14:12:58 2017 -0500
+
+    marking for past week completed, see webber/evaluations/markssofar for result
+
+commit aceeef88a116ea15bed13a57dd6e8e6b5edd3a0f
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 22 22:51:00 2017 -0500
+
+    time j002 65 Reached stage 5 of task
+
+commit 3a1a6906b7fb46dcae3cf3b89975f9a787fc2591
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sun Jan 22 21:47:56 2017 -0500
+
+    Scaffolded project
+
+commit a6301af2fdaab5c4713aeb43d27a63b50384a8ba
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sun Jan 22 21:21:08 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit c4e67c33ce26f69a78434b073cdf50de3586e64e
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sun Jan 22 16:55:07 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 1cb1f7bf5b5cd1b85372cd91cfdc2123bd5ca7a0
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sun Jan 22 15:19:45 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit a7f7714d2c402adb308612f6b18f8a381ebc627f
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sat Jan 21 19:39:31 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit ac49daf3edfe67714c6bfd94fdd53b5ad853791d
+Merge: 7140cd2 053d4ad
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sat Jan 21 19:18:34 2017 -0500
+
+    Merge branch 'master' of ssh://repo.gaul.csd.uwo.ca:7999/cs3342_w2017/rkilonzo
+
+commit 7140cd2f6e66909bcc9d5b7920e12079baebb421
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sat Jan 21 19:18:11 2017 -0500
+
+    time j001 10 Timer keeps time state on pause
+
+commit 912f3b0f042fadb8685c6c09092ceff32198f5f2
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sat Jan 21 19:04:09 2017 -0500
+
+    time j001 50 Created a timer
+
+commit c9f2be2f61073f5cc58bed6c9f712b46e82d3a10
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sat Jan 21 18:03:19 2017 -0500
+
+    time j001 5 Added timer component
+
+commit 4092b11b87d7afb62f74ec3708bfba8995a8c3ab
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sat Jan 21 18:02:34 2017 -0500
+
+    time j100 10 added addition buttons
+
+commit 9e4cbdad860edb25ad991a60203b86464b267d9e
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Sat Jan 21 17:59:40 2017 -0500
+
+    time j001 15 Scaffolded the project structure
+
+commit 053d4adbd950e13b9013973c1c1171d57234bb5b
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sat Jan 21 17:59:45 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 9aab7225c03594e6292d6198bdbbfdfdcaf593ef
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sat Jan 21 16:01:57 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 8fef13b3728bc39233e603c7da0fdb366a29601c
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sat Jan 21 15:55:40 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 6a78c9fd495c3e536a69fe065c2d2e7b1117517b
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sat Jan 21 15:20:35 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 79f59860e72f0e40c4d44b27b0d285e1812ca2e9
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sat Jan 21 15:02:20 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit eb84a8a235f897399075361147ca75c10f7bc758
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Fri Jan 20 19:08:19 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit f073db7cc304f12d487f60b21c600fc7775c85d3
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Fri Jan 20 14:30:22 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit df390220d0cc54b3eb584cb1ce8215ec85e1bf93
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Thu Jan 19 16:13:57 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit a53756e807072871f6d3d38ce1f3beafb6488296
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Thu Jan 19 15:11:52 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit b2d98808c75b92136f08f48bbb3ce2b038ae935e
+Merge: bd08d5a b75489c
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Thu Jan 19 00:08:02 2017 -0500
+
+    Merge branch 'master' of ssh://repo.gaul.csd.uwo.ca:7999/cs3342_w2017/rkilonzo
+
+commit bd08d5a2e7896072d463ad6cbebf5cad79b365b2
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Thu Jan 19 00:06:53 2017 -0500
+
+    time j100 15 Added a playlist button to edit the playlist
+
+commit b75489c1cb39349b0353990d0e8d52d043ea3124
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Wed Jan 18 23:00:03 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit de162ad0752642b28de39d40bb12a30da6ccfc6e
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Wed Jan 18 18:03:54 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit da4811decd5b411b735551e8a7865e290f8c4c9e
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Wed Jan 18 16:52:44 2017 -0500
+
+    time j100 30 Added a dev server to the repo; video playlist now loops
+
+commit ff9b00efbbaded1fe0994b49c37f0639ff942200
+Merge: 010d4bf 0346d29
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Wed Jan 18 15:43:42 2017 -0500
+
+    Merge branch 'master' of ssh://repo.gaul.csd.uwo.ca:7999/cs3342_w2017/rkilonzo
+
+commit 010d4bfa60bfc091df9e01050123c014d6428d60
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Wed Jan 18 15:43:11 2017 -0500
+
+    time j100 15 Added video player which plays a queue of videos.
+
+commit 0346d29b5b24d104e5eb34766323da49e634d2df
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Wed Jan 18 12:55:48 2017 -0500
+
+    updating practice framework and running summary.rb
+
+commit 9af3f086bd6aa3cf0f25fe99ccb2f640e4031da3
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Tue Jan 17 21:12:30 2017 -0500
+
+    updating practice framework
+
+commit fec321dd09ffc0ffbc2cc9e1cc16754ee62b4ff3
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Mon Jan 16 17:55:02 2017 -0500
+
+    updating practice framework
+
+commit 226604aaea257d07b6fd124e4e891a34eda799c8
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sat Jan 14 19:50:41 2017 -0500
+
+    updating practice framework
+
+commit 3d4fd19622c1d1322bd6b8b27510735c4be45c90
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Sat Jan 14 19:14:31 2017 -0500
+
+    updating practice framework
+
+commit 9a331e671e058aad188ff850c8099a74eead35a1
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Fri Jan 13 16:25:21 2017 -0500
+
+    updating practice framework
+
+commit 4638c2f2e94e4673f8a8e45cb9c9fce2548cd613
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Thu Jan 12 22:38:09 2017 -0500
+
+    Reconfigured project structure to include styles; included styles; correctly imports iframe.
+
+commit b3aa401c06e6608d4e6fdce57b67a51f57e3016b
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Thu Jan 12 21:44:30 2017 -0500
+
+    Scaffolded project structure.
+
+commit af6dc70256bc43dee1277a96fba448fb6a47acff
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Thu Jan 12 17:22:51 2017 -0500
+
+    Initial commit; setting up the repository.
+
+commit 46ec4dd48f8acd872e2e4b4678e53e06c8581b1d
+Author: MartinKilonzo <martinkilonzo2@gmail.com>
+Date:   Thu Jan 12 11:53:59 2017 -0500
+
+    Deleted unnecessary files
+
+commit 5599eecf94d5d00ffd65ce3fd8e824f267f6b2ca
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Wed Jan 11 22:51:04 2017 -0500
+
+    updating practice framework
+
+commit f2fbddc1f3603125e325639e747c8e7e5e0df409
+Author: Bob Webber <webber@csd.uwo.ca>
+Date:   Tue Jan 10 18:37:36 2017 -0500
+
+    updating practice framework

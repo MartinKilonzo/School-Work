@@ -1,0 +1,122 @@
+Both Ruby and Haskell are general purpose programming languages that can
+be used in a wide variety of situations easily, although they represent
+significantly different approaches to how one manages the decomposition of
+a programming problem.  In this case, I have essentially copied r001 (the
+first Ruby task) into h001 with some minor adjustments.  Doing one of them
+does not require you to have done the other.  Doing both is fine as it gives
+you a chance to feel the difference of the two languages.  If I was going to
+do both, I would start with the Ruby one which is closer to the style most
+students are familiar with.
+
+The basic git log is rather cluttered and a nuisance to read.  What is
+needed, obviously, is a program to read the log and clean it up so
+that it reads like a report on the practice you have been doing.
+
+Stage 1: The first thing to do is to make sure you can bring the data
+into the program (h001.hs) and output it to a file.  You have a few
+decisions to make about what the interface looks like.  Since you are
+going to be the primary user (even if only as tester) you should figure
+out which way works for you.  The first issue is how you are going to get
+the information from git log.  One way is the run the command as
+the current version of summary.rb does (not using the options that summary.rb
+uses though, as you want the whole log).  To see how this is done in Haskell,
+look at 
+http://stackoverflow.com/questions/6073474/reading-input-from-a-system-command-in-haskell ,
+which shows us that it is pretty straightforward and that when we go to the
+documentation 
+https://downloads.haskell.org/~ghc/8.0.1/docs/html/libraries/process-1.4.2.0/System-Process.html
+we can skip to the part about readProcess and ignore the more complicated
+bits of functionality, at least for now.
+
+An alternative is have the h001.hs read the log information from standard 
+output (in which case you would invoke it as git log | runhaskell h001.hs).  
+This would probably be based on information provided in the wiki entry
+https://wiki.gaul.csd.uwo.ca/display/CS33422017/Writing+a+Read+Print+Loop+in+Haskell
+
+A third option is to have a standard file that you preload with the contents 
+of the output of git log.  Here, you might want to look at
+http://stackoverflow.com/questions/7867723/haskell-file-reading
+
+A fourth option is that you do the third option, but with the file name 
+specified on the  command line.  Simliarly for output, you need to decide 
+if you are just going to send it to standard output, send it to a standard 
+file, or send it to a file whose name is supplied on the command line.  
+https://lotz84.github.io/haskellbyexample/ex/command-line-arguments
+
+Once you have decided, program it and make sure it works.
+
+Stage 2: From here on, it is all about string manipulation.  The big
+thing to remember is that, in Haskell, a string is really a list of 
+characters.  Therefore, many things you just do the way you would do 
+with a list.  Other resources that might help are:
+  https://lotz84.github.io/haskellbyexample/ex/string-functions
+  https://wiki.haskell.org/Cookbook/Lists_and_strings
+
+If you look at the log, you will see it has a standard format
+of a line starting with commit, another line starting with Author: and
+a line starting with Date: .  You will also notice that your log is filled
+with messages whose author is Bob Webber.  These are automatically generated
+by the software I use to manage the repository and provide no useful 
+information to someone who is interesting in reading information related
+to their practice work.  So, you probably want to repackage the git log
+you have in memory so that it is separated by message and then remove all
+the messages with author Bob Webber.  Again check to see that this works.
+
+Stage 3: Now that you have a smaller log to look at, you want to present 
+the commit messages so that the first message that is printed is the 
+oldest in the commit log (i.e., so at the end of the output is the most
+recent message).
+
+Stage 4: Then you want to reorganize them by task.  Don't worry about valid
+task names (summary.rb is already making sure you do that right).  Just look
+through each message for the first occurance of a task letter (h, j, or r)
+followed by 3 digits.  By default we assume that that is the task the message
+is about.  Output the tasks in order, first by their associated task name and
+for a given task, oldest first (as in Stage 3).
+
+Stage 5: There should be an option to look at the report of just one task
+rather than a big report of all the tasks.  The simplest usage pattern would
+be to have the task to be reported on provided as an option on the command
+line (like summary.rb has quiet as a command line option).
+
+Stage 6: At the start of each message being output should be a line that starts
+with the Date: associated with and followed by the number that comes after the
+commit code for that commit message.  There is no need to print the Author name
+each time (unless you really want to).
+
+Stage 7: Some of the commit messages may be misclassified.  For example,
+perhaps j004 was used by mistake when j001 was meant.  Or perhaps the
+message mentioned both j004 and j001, but j004 came first and message
+was really about j001.  Or perhaps the message was about j001, but j001
+was never mentioned in the message.  Thus we will create a new message
+format called a reportas message.  It would have the form of
+    reportas j001 5900a30ae4c19ab42206abcde786583125e45cb8
+and would override the program's classification of the message with the id
+5900a30ae4c19ab42206abcde786583125e45cb8 so that it would appear in the
+report where it should appear if it had been classifed as j001.  Note that
+a future version of summary.rb may adopt this convention as well.  You want
+to make sure that you can change things so that a message
+    reportas j001 5900a30ae4c19ab42206abcde786583125e45cb8
+can be undone with a later message starting
+    reportas j002 5900a30ae4c19ab42206abcde786583125e45cb8
+
+Stage 8: And, of course some messages will be designated to be reported
+that are just clutter in the report.  We should be able to specify these
+with unreport messages like
+    unreport 5900a30ae4c19ab42206abcde786583125e45cb8
+A later unreport message should be able to override a reportas message and
+similarly a later reportas message should be able to override an unreport
+message.
+
+Stage 9: Time to make the report pretty.  You want to output the report
+with suitable html around it so that it is pleasing to read.  Personally,
+I would go like something like a list of tasks  with the task name mentioned
+at the top of the list and nested underneath each task name would be a list
+of the different task entries.  The value for a task entry would be a line
+with the date of the entry and the commit id for the entry, followed by a
+list of the blank line separated sections of the message body.  But if you
+have different ideas about how to best format a report that is intended for
+you to read, then you should certainly go with your ideas on the matter.
+Be sure and load the resulting output into a web browser so you can make
+sure it looks like you think it should.
+

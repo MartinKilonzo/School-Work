@@ -1,0 +1,46 @@
+I was looking for a good Eliza program to base a project on and I found
+     http://www.masswerk.at/eliza/
+This shows an html page with a picture of a VT100 terminal (I used to use 
+these), but the thing I like best is when you type at it, it talks.  If you
+look at the source of the web page, you find out that they are using a
+JavaScript library called meSpeak.js .  
+
+When you go to http://www.masswerk.at/mespeak/ , you find that there
+is a zip file that you can download that contains the package.  The
+downloaded package contains an __MACOSX directory and they claim it
+also works on Safari (as well as Chrome and Firefox), but I haven't
+tested that.
+
+When you unzip the file, in the mespeak directory you will find some
+files in html format using the program.  When I tried to view them in
+my browser, they didn't seem to work.  When I launched 
+   ruby -run -e httpd . -p 5000
+(see https://wiki.gaul.csd.uwo.ca/display/CS33422017/A+Web+Server+in+20+Lines+of+Ruby)
+in the directory and pointed my browser at localhost:5000 , it launched
+the index.html page which worked just fine.  At the top it gives you an
+area where you can type a sentence and it will be spoken back to you.
+Unfortunately, index.html is 809 lines long.
+
+Ultimately, what this is about is fixing j001 so it speaks.
+
+Stage 1: Start removing stuff from index.html .  What you want to do is 
+shrink the index.html file so that the only thing it does is say
+"this should be easy"  using meSpeak.js .  This should be called j200.html
+and should live the the j200 directory .
+
+Stage 2: Change this reduced version so that it says "this should be easy"
+only when you press a button (named talk) that causes it to say it.
+
+Stage 3: Now add the functionality to the j001.html alarm clock into j200.html
+(i.e., j200.html now looks like j001.html but with a talk button).
+
+Stage 4: Now update j200.html so that every 5 minutes that passes on the main
+timer the script says how many minutes have passed.
+
+Stage 5: Now update j200.html so when it is within 15 minutes of the end of
+the 60 minute session limit it says how many minutes have passed and how many
+minutes there are to go (still at 5 minute intervals).
+
+
+note: while I would be interested in hearing about other libraries for this,
+this particular task is about using the meSpeak.js library referenced above.

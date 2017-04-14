@@ -1,0 +1,15 @@
+{
+  "name": "j002",
+  "version": "1.0.0",
+  "description": "",
+  "main": "j002.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.6",
+    "gulp": "^3.9.1"
+  }
+}

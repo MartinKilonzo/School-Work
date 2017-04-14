@@ -1,0 +1,68 @@
+In j001, a design was put forward for a web page that could be used to time
+your practice.  This has had limited success.  If we think of the pattern of
+logging the time spent on something, then working on something else, and then
+logging the time spent on that new thing, a review of the logs shows that 
+often the amount of time logged is more than the amount of time that has 
+actually passed (for example, 60 minutes logged forty minutes after the last 
+time log).  While there are many possible ways this could happen, one way it
+could happen is the people simply lose track of the time they have spent.
+
+The idea behind this task is to design a simple tool that directly addresses
+this phenomena.  As noted in the comment https://wiki.gaul.csd.uwo.ca/display/CS33422017/Ruby%3A+Practice+Related+Questions+and+Comments?focusedCommentId=9210348#comment-9210348
+there are various options available to simplify the reading of a git log by
+a program.
+
+In the case of Haskell, there are some interesting libraries that can help
+with this, see:
+   http://hackage.haskell.org/package/time-1.8.0.1/docs/Data-Time.html
+   https://two-wrongs.com/haskell-time-library-tutorial
+   http://tab.snarc.org/posts/haskell/2011-12-16-date-in-haskell.html
+
+Stage 1: Write a program that extracts from the git log the time stamp of the
+most recent commit that began with the keyword time and reports this time
+stamp to the user.
+
+Stage 2: Write a program that gets the current time and the time stamp from
+the most recent commit that began with the keyword time, and puts them in
+objects of the same type, and computes the difference (i.e., how many minutes
+have passed since the last time commit til the present) and reports this
+value to the user.
+
+Stage 3: Of course, this doesn't help for people who are doing a good job
+of practicing, but only helps people who are cramming their practice into
+a time period (doubtless the last minute), confusing practice with final 
+exam studying.  To help other users, we need to put in the commit log a
+marker so that they can record when they started a task.  Just having the
+keyword start at the beginning of the first line of a message would could
+be used to do that as git will automatically timestamp the commit.  At this
+stage, you want to enhance the Stage 2 program so that it looks for the most
+recent commit that is either a previous time message or a start message and
+the outputs the number of minutes that have passed til now.
+
+Stage 4: For people who would like to give such a message more use,
+the rest of the message could indicate what you intended to get
+accomplished in the period about to be started.  You could even
+include an estimate of the amount of time (less than 60 minutes) that
+you think you will need to get done what you plan on doing.  Marking
+such estimates is a key part of Agile programming
+    https://www.atlassian.com/agile/estimation
+    https://en.wikipedia.org/wiki/Software_development_effort_estimation
+    https://en.wikipedia.org/wiki/Planning_poker
+For this stage, we will give commits with the start keyword a second parameter
+that is the estimate in minutes of how long you think this should take.
+On the time keyword messages, this estimate would be a fourth parameter (so
+that it would not interfer with the marking program that requires the first
+three parameters ('time' task minutes) to have a specific format.
+When you run the program, it should now not only report the time that passed,
+but also how it compares to the estimated time for this undertaking, as a
+percentage.
+
+Stage 5:  Of course some things take longer than expected.  Something you 
+thought would take 10 minutes could take hours and so the estimate could
+exist across many practice sessions.  Or you could be estimating something
+that you initially expect to take many practice sessions.  Thus in addition 
+to searching for the most recent start or time, you can do a second search 
+for the most recent estimate and add up the time logged since that estimate
+as well as the time that has passed in the current session to see how close
+you are to the estimate (in percentage) as well as how much time has passed
+in the current session.

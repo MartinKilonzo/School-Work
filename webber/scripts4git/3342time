@@ -1,0 +1,19 @@
+#!/bin/bash
+# if test idea from http://unix.stackexchange.com/questions/146942/how-can-i-test-if-a-variable-is-empty-or-contains-only-spaces
+start=`cat ~/.3342base`
+username=`cat ~/.3342me`
+if [[ $start = *[!\ ]* ]]; then
+  echo "using start path" $start " followed by 3342"
+else
+  echo "start consists of spaces only, aborting"
+  exit 1;
+fi
+if [[ $username = *[!\ ]* ]]; then
+  echo "using username " $username
+else
+  echo "username consists of spaces only, aborting"
+  exit 1;
+fi
+cd ${start}/3342/${username}
+git --no-pager log --oneline --grep "^time "
+

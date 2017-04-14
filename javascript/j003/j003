@@ -1,0 +1,39 @@
+The task j002 was aimed at seeing how one can work with JSON data in JavaScript.
+The task j003 is to extend your work on j002 to make it a bit more user 
+friendly.  The extensions are based on feedback from the class.
+
+Stage 0: copy j002/j002.html into j003/j003.html and j002/j002.js into
+j003/j003.js (as well as any other files you may be including to get
+j002.html to work).
+
+Stage 1: in stage 5 of j002, we have the user indicating whether a
+question's answer was right or wrong.  a count of how many right and
+wrong answers is then used in stage 7.  the problem comes when someone
+marks the question twice (perhaps by accident), either hitting
+`correct' twice or hitting `correct' and then hitting `wrong'.  the
+first stage is to address the accidental double hit (perhaps bumping
+the counter twice) by implementing a rule that once a question is
+marked, it can't be remarked.
+
+Stage 2: of course there are times when the question was marked wrong
+and that mark needs to be corrected.  this means you would like to
+have an `undo' button that allows you to return to the `premarked'
+state on the current question, from which you can then mark it
+appropriately (hopefully).
+
+Thinking about undo, leads one to wonder about the user history in
+general and how a user of this code might want to interact with their
+history.
+
+Stage 3: Once you have told the user how many wrong answers they had,
+they might want to look at the questions that were getting wrong.  So
+it would be nice to have a button that could produce on the html page
+such a report.
+
+Stage 4: It would also be nice to have a button that could clear the report.
+
+Stage 5: Although this is more html/css stuff than javascript, it
+would be nice if the report was scrollable rather than just dumped on
+the page.  Perhaps the link 
+   http://stackoverflow.com/questions/18953011/how-to-make-a-div-vertically-scrollable
+would be helpful in figuring out how to do it.
