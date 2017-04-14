@@ -5,39 +5,33 @@
 #include <unordered_map>
 using namespace std;
 
+#include "addDelta.h"
+#include "utils.h"
 #include "../../Ngrams/fileRead.h"
 #include "../../Ngrams/VectorHash.h"
 #include "../../Ngrams/utilsToStudents.h"
 
+typedef vector<string> Tokens;
+typedef unordered_map <Tokens, int> Corpus;
 
 
-unordered_map<vector<string>, int> hashCorpus (vector<string> tokens, int n) {
-  unordered_map<vector<string>, int> corpus;
-  for (auto itr = tokens.begin(); itr != tokens.end() - (n - 1); itr++) {
-    vector<string> nGram;
 
-    for (auto jtr = itr; jtr != itr + n; jtr++)
-      nGram.push_back(*jtr);
-
-    if (corpus.count(nGram) == 0) {
-      corpus[nGram] = 1;
-    } else{
-      corpus[nGram] = corpus[nGram] + 1;
-    }
-  }
-
-  return corpus;
+double getProbGT(vector<Corpus> corpus, Tokens nGram, unsigned int n, double delta, double N, double V, unsigned int threshold) {
+  std::cerr << "Good Turing is not implemented" << '\n';
+  exit(-1);
+  return 0;
 }
 
-double getProb(vector<string> nGram, unordered_map<vector<string>, int> corpus, double delta, double N, double V) {
-  double prob = delta;
 
-  if (corpus.count(nGram) != 0)
-    prob += corpus[nGram];
 
-  prob /= (N + delta * pow(V, nGram.size()));
+double getProb(vector<Corpus> corpus, Tokens nGram, unsigned int n, double delta, double N, double V, unsigned int threshold, bool model) {
+  if (model == 0)
+    return getProbGT(corpus, nGram, n, delta, N, V, threshold);
 
-  return prob;
+  else if (model == 1)
+    return getProbAD(corpus, nGram, n, delta, N, V);
+
+  else return 0;
 }
 
 
@@ -45,7 +39,7 @@ double getProb(vector<string> nGram, unordered_map<vector<string>, int> corpus, 
 int main(int argc, char const *argv[]) {
   // If there are not enough args, return -1
   if (argc < 5) {
-    std::cerr << "Usage: P4 <corpus> <sentence> <n> <delta>" << '\n';
+    std::cerr << "Usage: P7 <corpus> <sentence> <dictionary> <n> <threshold> <delta> <model>" << '\n';
     return -1;
   }
 
@@ -59,10 +53,11 @@ int main(int argc, char const *argv[]) {
   bool model = stoi(argv[7]);
 
 
+
   // Capture all tokens
-  vector<string> corpusTokens;
-  vector<string> sentenceTokens;
-  vector<string> dictionaryTokens;
+  Tokens corpusTokens;
+  Tokens sentenceTokens;
+  Tokens dictionaryTokens;
   read_tokens(corpusFileName, corpusTokens, false);
   read_tokens(sentenceFileName, sentenceTokens, true);
   read_tokens(dictionaryFileName, dictionaryTokens, false);
@@ -79,8 +74,14 @@ int main(int argc, char const *argv[]) {
   }
 
 
+  unordered_map <string, int> vocabulary;
   unordered_map <string, int> dictionary;
-  unordered_map <vector<string>, int> corpus;
+  vector<Corpus> corpus = getCorpusList(corpusTokens, n);
+
+  for (auto &word : corpusTokens) {
+    if (vocabulary.count(word) == 0)
+      vocabulary[word] = 1;
+  }
 
   for (auto &word : dictionaryTokens) {
     if (dictionary.count(word) == 0)
@@ -89,79 +90,71 @@ int main(int argc, char const *argv[]) {
 
   vector<double> probs;
 
-  int V = dictionary.size() + 1;
+  int V = vocabulary.size() + 1;
   double N = corpusTokens.size();
 
-  int m = 1;
-  bool reCorpus = true;
-  unordered_map<vector<string>, int> corpusA;
-  unordered_map<vector<string>, int> corpusB;
-
-  for (auto sItr = sentenceTokens.begin(); sItr != sentenceTokens.end() - (n - 1); ) {
-
-    if (m == 1) {
-      if (reCorpus) {
-        corpusA = hashCorpus(corpusTokens, m);
-      }
-
-      // Create nGram
-      vector<string> nGram;
-      nGram.push_back(*sItr);
-
-      // Get probs
-      double prob = getProb(nGram, corpusA, delta, N, V);
-
-      probs.push_back(prob);
+  // Collect sentences
+  vector<Tokens> sentences;
+  Tokens sentence;
+  for (auto &word : sentenceTokens) {
+    if (word == EOS) {
+      sentences.push_back(sentence);
+      sentence.clear();
+    } else {
+      sentence.push_back(word);
     }
-    else {
-      if (reCorpus) {
-        corpusA = hashCorpus(corpusTokens, m);
-        corpusB = hashCorpus(corpusTokens, m - 1);
-      }
-
-      // Create nGrams
-      vector<string> nGramA;
-      for (auto jtr = sItr; jtr != sItr + m; jtr++)
-        nGramA.push_back(*jtr);
-
-      vector<string> nGramB;
-      for (auto jtr = sItr; jtr != sItr + (m - 1); jtr++)
-        nGramB.push_back(*jtr);
-
-      // Get probs
-      // P(a | B) = P(A) / P(B), P(A) = P(Ba)
-      // P(A)
-      double probA = getProb(nGramA, corpusA, delta, N, V);
-
-      // P(B)
-      double probB = getProb(nGramB, corpusB, delta, N, V);
-
-      // P(a | B) = P(A) / P(B), P(A) = P(Ba)
-      probs.push_back(probA / probB);
-    }
-
-    if (m < n)  {
-      m++;
-      reCorpus = true;
-    }
-    else {
-      sItr++;
-      reCorpus = false;
-    }
-
   }
 
-  double probability = 0;
+  // Proof sentences
+  for (auto &sentence : sentences) {
+    std::cout << "Sentence:\t";
+    for (auto &word : sentence)
+      std::cout << word << ' ';
+    std::cout << '\n';
+    // Check against all words within reasonable distance
+    vector<Tokens> candidateWords;
+    for (auto &word : sentence) {
+      Tokens candidates;
+      for (auto &candidate : dictionary)
+        if (uiLevenshteinDistance(word, candidate.first) <= 1)
+          candidates.push_back(candidate.first);
 
-  for (auto &prob : probs) {
-    if (prob == 0 && delta == 0) {
-      probability = -DBL_MAX;;
-      break;
+      candidateWords.push_back(candidates);
     }
-    probability += log(prob);
+
+    // Check that the produced sentences from the candidate words makes semantic sense
+    vector<Tokens> candidateSentences;
+
+    // for (auto &words : candidateWords) {
+    //   for (auto &word : words) {
+    //     Tokens temp = sentence;
+    //     temp
+    //     candidateSentences.push_back(temp)
+    //   }
+    // }
+
+    for (int i = 0; i < candidateWords.size(); i++) {
+      for (auto &word : candidateWords[i]) {
+        Tokens temp = sentence;
+        temp[i] = word;
+        candidateSentences.push_back(temp);
+      }
+    }
+
+    double bestProb = -DBL_MAX;
+    Tokens bestSentence;
+
+    for (auto &sentence : candidateSentences) {
+      double prob = getProb(corpus, sentence, n, delta, N, V, threshold, model);
+      if (prob > bestProb) {
+        bestProb = prob;
+        bestSentence = sentence;
+      }
+    }
+    std::cout << "Suggestion:\t";
+    for (auto &word : bestSentence)
+      std::cout << word << " ";
+    std::cout << "\n";
   }
-
-  std::cout << probability << '\n';
-
   return 0;
 }

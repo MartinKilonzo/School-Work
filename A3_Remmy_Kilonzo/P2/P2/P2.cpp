@@ -1,5 +1,3 @@
-// Take from command line: input filename, k-most-frequent words
-
 #include <stdlib.h>
 #include <iostream>
 #include <unordered_map>

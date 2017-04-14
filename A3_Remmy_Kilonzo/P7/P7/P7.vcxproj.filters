@@ -35,5 +35,11 @@
     <ClInclude Include="..\..\Ngrams\VectorHash.h">
       <Filter>Source Files\Deps</Filter>
     </ClInclude>
+    <ClInclude Include="addDelta.h">
+      <Filter>Source Files\Deps</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.h">
+      <Filter>Source Files\Deps</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

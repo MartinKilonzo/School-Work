@@ -9,11 +9,13 @@ using namespace std;
 #include "../../Ngrams/VectorHash.h"
 #include "../../Ngrams/utilsToStudents.h"
 
+typedef vector<string> Tokens;
+typedef unordered_map<Tokens, int> Corpus;
 
-unordered_map<vector<string>, int> hashCorpus (vector<string> tokens, int n) {
-  unordered_map<vector<string>, int> corpus;
+Corpus hashCorpus (Tokens tokens, int n) {
+  Corpus corpus;
   for (auto itr = tokens.begin(); itr != tokens.end() - (n - 1); itr++) {
-    vector<string> nGram;
+    Tokens nGram;
 
     for (auto jtr = itr; jtr != itr + n; jtr++)
       nGram.push_back(*jtr);
@@ -28,7 +30,7 @@ unordered_map<vector<string>, int> hashCorpus (vector<string> tokens, int n) {
   return corpus;
 }
 
-vector<double> generateFreqCounts (unordered_map<vector<string>, int> corpus, int size, double B) {
+vector<double> generateFreqCounts (Corpus corpus, int size, double B) {
   vector<double> frequencies(size);
 
   for (auto &itr : frequencies)
@@ -47,7 +49,7 @@ vector<double> generateFreqCounts (unordered_map<vector<string>, int> corpus, in
 }
 
 
-double getProb(vector<string> nGram, unordered_map<vector<string>, int> corpus, vector<double> frequencies, int threshold, int N) {
+double getProb(Tokens nGram, Corpus corpus, vector<double> frequencies, int threshold, int N) {
   double rate = 0;
   if (corpus.count(nGram) != 0)
     rate += corpus[nGram];
@@ -66,35 +68,31 @@ double getProb(vector<string> nGram, unordered_map<vector<string>, int> corpus, 
 
 
 int main(int argc, char const *argv[]) {
-  // // If there are not enough args, return -1
-  // if (argc < 5)
-  //   return -1;
-  //
-  // // Otherwise, collect the function parameters
-  // string corpusFileName = argv[1];
-  // string sentenceFileName = argv[2];
-  // unsigned int n = atoi(argv[3]);
-  // double delta = atoi(argv[4]);
-  string corpusFileName = "../../InputOutput/p4_textModel.txt";
-  string sentenceFileName = "../../InputOutput/p4_sentence_a.txt";
-  unsigned int n = atoi("3");
-  double threshold = atof("3");
+  // If there are not enough args, return -1
+  if (argc < 5)
+    return -1;
+
+  // Otherwise, collect the function parameters
+  string corpusFileName = argv[1];
+  string sentenceFileName = argv[2];
+  unsigned int n = atoi(argv[3]);
+  double threshold = atoi(argv[4]);
 
 
   // Capture all tokens
-  vector<string> corpusTokens;
-  vector<string> sentenceTokens;
+  Tokens corpusTokens;
+  Tokens sentenceTokens;
   read_tokens(corpusFileName, corpusTokens, false);
   read_tokens(sentenceFileName, sentenceTokens, false);
 
 
   if (corpusTokens.size() < n) {
-    cout << "\nInput file '" << corpusFileName << "' is too small to create any nGrams of size " << n;
+    std::cerr << "\nInput file '" << corpusFileName << "' is too small to create any nGrams of size " << n;
     return -1;
   }
 
   if (sentenceTokens.size() < n) {
-    cout << "\nInput file '" << sentenceFileName << "' is too small to create any nGrams of size " << n;
+    std::cerr << "\nInput file '" << sentenceFileName << "' is too small to create any nGrams of size " << n;
     return -1;
   }
 
@@ -115,8 +113,8 @@ int main(int argc, char const *argv[]) {
   double bB;
   double normFactA;
   double normFactB;
-  unordered_map<vector<string>, int> corpusA;
-  unordered_map<vector<string>, int> corpusB;
+  Corpus corpusA;
+  Corpus corpusB;
   vector<double> frequenciesA;
   vector<double> frequenciesB;
 
@@ -141,7 +139,7 @@ int main(int argc, char const *argv[]) {
           threshold = t;
       }
 
-      vector<string> nGram;
+      Tokens nGram;
       nGram.push_back(*sItr);
 
       double rate = 0;
@@ -153,12 +151,6 @@ int main(int argc, char const *argv[]) {
         prob = (rate + 1) * frequenciesA[rate + 1] / (N * frequenciesA[rate]);
       else
         prob = rate / N;
-
-      // Print the probability for each word
-      std::cout << "P( ";
-      for (auto &itr : nGram)
-        std::cout << itr << ' ';
-      std::cout << ") => [( " << rate << " | " << prob << " )]\n";
 
       probs.push_back(prob);
     } else {
@@ -180,8 +172,8 @@ int main(int argc, char const *argv[]) {
         if (t < threshold)
           threshold = t;
 
-        vector<pair<vector<string>, double>> obsA;
-        vector<pair<vector<string>, double>> obsB;
+        // vector<pair<Tokens, double>> obsA;
+        // vector<pair<Tokens, double>> obsB;
 
         // for (auto &itr : corpusA)
         //   obsA.push_back(make_pair(itr.first, getProb(itr.first, corpusA, frequenciesA, threshold, N)));
@@ -193,24 +185,20 @@ int main(int argc, char const *argv[]) {
         //   std::cout << ") = " << itr.second << '\n';
         //   sum += itr.second;
         // }
-
         double sum = 0;
         int i = 0;
         for (auto &itr : corpusA)
           sum += getProb(itr.first, corpusA, frequenciesA, threshold, N);
         normFactA = (1 - frequenciesA[1] / N) / sum;
-
         sum = 0;
         for (auto &itr : corpusB)
           sum += getProb(itr.first, corpusB, frequenciesB, threshold, N);
         normFactB = (1 - frequenciesB[1] / N) / sum;
-
-        std::cout << "normFactA " << normFactA << ' ' << "normFactB " << normFactB << '\n';
       }
-
+      std::cout << "..." << '\n';
       // Get P(a|B) = P(A) / P(B), P(A) = P(Ba)
       // Get P(A) = P(Ba)
-      vector<string> nGramA;
+      Tokens nGramA;
       for (auto itr = sItr; itr != sItr + m; itr++)
         nGramA.push_back(*itr);
 
@@ -220,7 +208,7 @@ int main(int argc, char const *argv[]) {
       probA *= normFactA;
 
       // Get P(B)
-      vector<string> nGramB;
+      Tokens nGramB;
       for (auto itr = sItr; itr != sItr + (m - 1); itr++)
         nGramB.push_back(*itr);
 
@@ -228,15 +216,6 @@ int main(int argc, char const *argv[]) {
 
       // Normalize probB
       probB *= normFactB;
-
-      // Print the probability for each word
-      std::cout << "P( ";
-      for (auto &itr : nGramA)
-        std::cout << itr << ' ';
-      std::cout << ") / P( ";
-      for (auto &itr : nGramB)
-        std::cout << itr << ' ';
-      std::cout << ") => [( " << probA  << " ) / ( " << probB << " )] ==> " << probA / probB << "\n";
 
       // P(a|B) = P(A) / P(B), P(A) = P(Ba)
       probs.push_back(probA / probB);

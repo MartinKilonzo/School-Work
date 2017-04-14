@@ -141,7 +141,6 @@ double calcProb(vector<Corpus> languageCorpus,Tokens sentence, unsigned int n, d
     ret += probs[i];
   if (isinf(ret))
     ret = -DBL_MAX;
-  //cout << ret << '\n';
   return ret;
 }
 

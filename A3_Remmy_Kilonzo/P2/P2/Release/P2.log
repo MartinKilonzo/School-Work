@@ -1,0 +1,18 @@
+﻿Build started 2017-04-13 11:38:10 PM.
+     1>Project "C:\Users\Martin\Dropbox\School\4th Year\CS 4442 - Artificial Intelligence II\Assignments\Assignment 3\A3_Remmy_Kilonzo\P2\P2\P2.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt P2.cpp
+         P2.cpp
+     1>P2.cpp(42): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+     1>P2.cpp(51): warning C4018: '<' : signed/unsigned mismatch
+     1>P2.cpp(54): warning C4018: '<' : signed/unsigned mismatch
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Martin\Dropbox\School\4th Year\CS 4442 - Artificial Intelligence II\Assignments\Assignment 3\A3_Remmy_Kilonzo\P2\Release\P2.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Martin\Dropbox\School\4th Year\CS 4442 - Artificial Intelligence II\Assignments\Assignment 3\A3_Remmy_Kilonzo\P2\Release\P2.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Martin\Dropbox\School\4th Year\CS 4442 - Artificial Intelligence II\Assignments\Assignment 3\A3_Remmy_Kilonzo\P2\Release\P2.lib" /MACHINE:X86 /SAFESEH Release\fileRead.obj
+         Release\P2.obj
+     1>MSVCRT.lib(crtexew.obj) : error LNK2001: unresolved external symbol _WinMain@16
+     1>C:\Users\Martin\Dropbox\School\4th Year\CS 4442 - Artificial Intelligence II\Assignments\Assignment 3\A3_Remmy_Kilonzo\P2\Release\P2.exe : fatal error LNK1120: 1 unresolved externals
+     1>Done Building Project "C:\Users\Martin\Dropbox\School\4th Year\CS 4442 - Artificial Intelligence II\Assignments\Assignment 3\A3_Remmy_Kilonzo\P2\P2\P2.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:01.01
