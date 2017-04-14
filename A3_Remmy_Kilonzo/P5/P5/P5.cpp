@@ -195,15 +195,17 @@ int main(int argc, char const *argv[]) {
         // }
 
         double sum = 0;
+        int i = 0;
         for (auto &itr : corpusA)
           sum += getProb(itr.first, corpusA, frequenciesA, threshold, N);
         normFactA = (1 - frequenciesA[1] / N) / sum;
 
         sum = 0;
-        for (auto &itr : corpusA)
-          sum += getProb(itr.first, corpusA, frequenciesA, threshold, N);
+        for (auto &itr : corpusB)
+          sum += getProb(itr.first, corpusB, frequenciesB, threshold, N);
         normFactB = (1 - frequenciesB[1] / N) / sum;
-        std::cout << normFactA << ' ' << normFactB << '\n';
+
+        std::cout << "normFactA " << normFactA << ' ' << "normFactB " << normFactB << '\n';
       }
 
       // Get P(a|B) = P(A) / P(B), P(A) = P(Ba)

@@ -54,17 +54,18 @@ int main(int argc, char const *argv[]) {
   string sentenceFileName = argv[2];
   string dictionaryFileName = argv[3];
   unsigned int n = stoi(argv[4]);
-  unsigned int threshold = stoi(argv[5])
+  unsigned int threshold = stoi(argv[5]);
   double delta = stod(argv[6]);
-  bool model = stob(argv[7])
-
+  bool model = stoi(argv[7]);
 
 
   // Capture all tokens
   vector<string> corpusTokens;
   vector<string> sentenceTokens;
+  vector<string> dictionaryTokens;
   read_tokens(corpusFileName, corpusTokens, false);
-  read_tokens(sentenceFileName, sentenceTokens, false);
+  read_tokens(sentenceFileName, sentenceTokens, true);
+  read_tokens(dictionaryFileName, dictionaryTokens, false);
 
 
   if (corpusTokens.size() < n) {
@@ -81,7 +82,7 @@ int main(int argc, char const *argv[]) {
   unordered_map <string, int> dictionary;
   unordered_map <vector<string>, int> corpus;
 
-  for (auto &word : corpusTokens) {
+  for (auto &word : dictionaryTokens) {
     if (dictionary.count(word) == 0)
       dictionary[word] = 1;
   }

@@ -13,5 +13,65 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Deps">
+      <UniqueIdentifier>{140f7125-ff7a-427c-a4c0-de2aea332686}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Ngrams\fileRead.cpp">
+      <Filter>Source Files\Deps</Filter>
+    </ClCompile>
+    <ClCompile Include="P6.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Ngrams\fileRead.h">
+      <Filter>Source Files\Deps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Ngrams\utilsToStudents.h">
+      <Filter>Source Files\Deps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Ngrams\VectorHash.h">
+      <Filter>Source Files\Deps</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Debug\danish1.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\Debug\danish2.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\Debug\english1.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\Debug\english2.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\Debug\french1.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\Debug\french2.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\Debug\italian1.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\Debug\italian2.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\Debug\latin1.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\Debug\latin2.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\Debug\sweedish1.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="..\Debug\sweedish2.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -78,6 +78,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Ngrams\fileRead.cpp" />
+    <ClCompile Include="P6.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Ngrams\fileRead.h" />
+    <ClInclude Include="..\..\Ngrams\utilsToStudents.h" />
+    <ClInclude Include="..\..\Ngrams\VectorHash.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Debug\danish1.txt" />
+    <Text Include="..\Debug\danish2.txt" />
+    <Text Include="..\Debug\english1.txt" />
+    <Text Include="..\Debug\english2.txt" />
+    <Text Include="..\Debug\french1.txt" />
+    <Text Include="..\Debug\french2.txt" />
+    <Text Include="..\Debug\italian1.txt" />
+    <Text Include="..\Debug\italian2.txt" />
+    <Text Include="..\Debug\latin1.txt" />
+    <Text Include="..\Debug\latin2.txt" />
+    <Text Include="..\Debug\sweedish1.txt" />
+    <Text Include="..\Debug\sweedish2.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
